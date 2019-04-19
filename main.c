@@ -51,8 +51,11 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 #include <sys/mman.h>
+#include <signal.h>
 
 #include <linux/input-event-codes.h>
+
+#include <alsa/asoundlib.h>
 
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
@@ -236,9 +239,9 @@ static int init_gbm(void)
 }
 
 int vnum=14*3;
-char *vertex_shader_source;
-char *fragment_shader_source;
-char mvfd, mffd;
+//static const char *vertex_shader_source;
+//static const char *fragment_shader_source;
+//char mvfd, mffd;
 static int init_gl(void)
 {
 	EGLint major, minor, n;
@@ -375,7 +378,7 @@ static int init_gl(void)
 		EGL_NONE
 	};
 
-	/*
+
 	static const char *vertex_shader_source =
 			"uniform mat4 modelviewMatrix;      \n"
 			"uniform mat4 modelviewprojectionMatrix;\n"
@@ -391,7 +394,7 @@ static int init_gl(void)
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_Position = modelviewprojectionMatrix * in_position/vec4(2,1,1,1);\n"
+			"    gl_Position = modelviewprojectionMatrix * in_position;\n"
 			"    vec3 vEyeNormal = normalMatrix * in_normal;\n"
 			"    vec4 vPosition4 = modelviewMatrix * in_position;\n"
 			"    vec3 vPosition3 = vPosition4.xyz / vPosition4.w;\n"
@@ -399,10 +402,10 @@ static int init_gl(void)
 			"    float diff = max(0.0, dot(vEyeNormal, vLightDir));\n"
 			"    vVaryingColor = vec4(diff * in_color.rgb, 1.0);\n"
 			"}                                  \n";
-*/
 
-/*
-	static const char *fragment_shader_source; =
+
+
+	static const char *fragment_shader_source =
 			"precision mediump float;           \n"
 			"                                   \n"
 			"varying vec4 vVaryingColor;        \n"
@@ -411,7 +414,7 @@ static int init_gl(void)
 			"{                                  \n"
 			"    gl_FragColor = vVaryingColor;  \n"
 			"}                                  \n";
-			*/
+
 
 	PFNEGLGETPLATFORMDISPLAYEXTPROC get_platform_display = NULL;
 	get_platform_display =
@@ -613,9 +616,11 @@ struct config{
 }conf;
 char mousepath[256];
 char keyboardpath[256];
-char mvspath[256];
-char mfspath[256];
-int mpid,kpid;
+//char mvspath[256];
+//char mfspath[256];
+int mpid,kpid,spid;
+//long int rate;
+//char channels;
 
 GLfloat aspect,frustumW,frustumH;
 
@@ -623,6 +628,10 @@ int main(int argc, char *argv[])
 {
 	//read config
 	conf.fd = open("editme.conf",0);
+	if(conf.fd==-1){
+		syscall(SYS_write,1,"ERROR: no editme.conf\n",21);
+		return -1;
+	}
 	conf.size = read(conf.fd,&conf.text,2000);
 	close(conf.fd);
 	conf.op=0;
@@ -645,8 +654,8 @@ int main(int argc, char *argv[])
 				 }
 				break;
 				}
+			 }
 			}
-		}
 		case 1:{
 			switch(conf.text[symb]){
 			case '/':{
@@ -662,32 +671,126 @@ int main(int argc, char *argv[])
 					keyboardpath[csmb]=conf.text[symb];
 				 }
 				break;
+				}
 			}
-			}
-		}
+		       }
+		       /*
 		case 2:{
-			
+			csmb=0;
+			while(conf.text[symb]!='\n'){
+				if(conf.text[symb]=='0')
+					csmb++;
+				if(conf.text[symb]=='1'){
+					rate+=10^csmb;
+					csmb++;}
+				if(conf.text[symb]=='2'){
+					rate+=10^csmb*2;
+					csmb++;}
+				if(conf.text[symb]=='3'){
+					rate+=10^csmb*3;
+					csmb++;}
+				if(conf.text[symb]=='4'){
+					rate+=10^csmb*4;
+					csmb++;}
+				if(conf.text[symb]=='5'){
+					rate+=10^csmb*5;
+					csmb++;}
+				if(conf.text[symb]=='6'){
+					rate+=10^csmb*6;
+					csmb++;}
+				if(conf.text[symb]=='7'){
+					rate+=10^csmb*7;
+					csmb++;}
+				if(conf.text[symb]=='8'){
+					rate+=10^csmb*8;
+					csmb++;}
+				if(conf.text[symb]=='9'){
+					rate+=10^csmb*9;
+					csmb++;}
+				symb++;
+			}
 		       }
 		case 3:{
+				if(conf.text[symb]=='0')
+					channels=0;
+				if(conf.text[symb]=='1')
+					channels=1;
+				if(conf.text[symb]=='2')
+					channels=2;
+				if(conf.text[symb]=='3')
+					channels=3;
+				if(conf.text[symb]=='4')
+					channels=4;
+				if(conf.text[symb]=='5')
+					channels=5;
+				if(conf.text[symb]=='6')
+					channels=6;
+				if(conf.text[symb]=='7')
+					channels=7;
+				if(conf.text[symb]=='8')
+					channels=8;
+				if(conf.text[symb]=='9')
+					channels=9;
 		       }
+		       */
+		       /*
+		case 4:{
+			switch(conf.text[symb]){
+			case '/':{
+				csmb=0;
+				mvspath[csmb]=conf.text[symb];
+				while(symb<conf.size){
+					symb++;
+					csmb++;
+					if(conf.text[symb]=='\n'){
+						conf.op++;
+						break;
+					}
+					mvspath[csmb]=conf.text[symb];
+				 }
+				break;
+				}
+			}
+		       }
+		case 5:{
+			switch(conf.text[symb]){
+			case '/':{
+				csmb=0;
+				mfspath[csmb]=conf.text[symb];
+				while(symb<conf.size){
+					symb++;
+					csmb++;
+					if(conf.text[symb]=='\n'){
+						conf.op++;
+						break;
+					}
+					mfspath[csmb]=conf.text[symb];
+				 }
+				break;
+				}
+			}
+		       }
+		       */
 		}
 	}
+	/*
 	//load shaders
-	mvfd=syscall(SYS_open,"./shaders/main.vert",0);
-	if(syscall(SYS_read,mvfd,vertex_shader_source,8192)==-1){
+	mvfd=syscall(SYS_open,mvspath,0);
+	if(syscall(SYS_read,mvfd,&vertex_shader_source,8192)==-1){
 		close(mvfd);
-		write(1,"Error: no vertex shader file\n",30);
+		write(1,"ERROR: no vertex shader file\n",30);
 		return 4;
 	}
-	close(mvfd);
-	mffd=syscall(SYS_open,"./shaders/main.frag",0);
-	if(syscall(SYS_read,mffd,fragment_shader_source,8192)==-1){
+	close(3);//mvfd is 32 LOL
+	mffd=syscall(SYS_open,mfspath,0);
+	if(syscall(SYS_read,mffd,&fragment_shader_source,8192)==-1){
 		close(mffd);
-		write(1,"Error: no fragment shader file\n",31);
+		write(1,"ERROR: no fragment shader file\n",31);
 		return 4;
 	}
 	close(mffd);
-	
+	*/
+
 	//mouse process
 	mouse = mmap(0,3,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
 	mpid=syscall(SYS_clone,0,0);
@@ -707,6 +810,142 @@ int main(int argc, char *argv[])
 		}
 	}
 	//sound process
+#ifdef SOUND
+	spid=syscall(SYS_clone,0,0);
+	if(spid==0){
+#define PCM_DEVICE "default"
+	
+	char ch=1;
+	float b=6.0;
+	int aa=0;
+
+	unsigned int pcm, tmp, dir;
+	int rate, channels;//, seconds;
+	snd_pcm_t *pcm_handle;
+	snd_pcm_hw_params_t *params;
+	snd_pcm_uframes_t frames;
+	char *buff;
+	int buff_size, loops;
+
+	if (argc < 4) {
+		printf("Usage: %s <sample_rate> <channels> <seconds>\n",
+								argv[0]);
+		return -1;
+	}
+	
+
+	//rate 	 = atoi(argv[1]);
+	//channels = atoi(argv[2]);
+	//seconds  = atoi(argv[3]);
+	
+	void sexithand(){
+		snd_pcm_drain(pcm_handle);
+		snd_pcm_close(pcm_handle);
+		free(buff);
+		syscall(SYS_exit,0);
+	}
+
+	struct sigaction soundexit;
+	soundexit.sa_handler=&sexithand;
+
+	rt_sigaction(15,soundexit,0);
+
+	/* Open the PCM device in playback mode */
+	if (pcm = snd_pcm_open(&pcm_handle, PCM_DEVICE,
+					SND_PCM_STREAM_PLAYBACK, 0) < 0) 
+		printf("ERROR: Can't open \"%s\" PCM device. %s\n",
+					PCM_DEVICE, snd_strerror(pcm));
+
+	/* Allocate parameters object and fill it with default values*/	
+	snd_pcm_hw_params_alloca(&params);
+
+	snd_pcm_hw_params_any(pcm_handle, params);
+
+	/* Set parameters */
+	if (pcm = snd_pcm_hw_params_set_access(pcm_handle, params,
+					SND_PCM_ACCESS_RW_INTERLEAVED) < 0) 
+		printf("ERROR: Can't set interleaved mode. %s\n", snd_strerror(pcm));
+
+	if (pcm = snd_pcm_hw_params_set_format(pcm_handle, params,
+						SND_PCM_FORMAT_S32_LE) < 0) 
+		printf("ERROR: Can't set format. %s\n", snd_strerror(pcm));
+
+	if (pcm = snd_pcm_hw_params_set_channels(pcm_handle, params, channels) < 0) 
+		printf("ERROR: Can't set channels number. %s\n", snd_strerror(pcm));
+
+	if (pcm = snd_pcm_hw_params_set_rate_near(pcm_handle, params, &rate, 0) < 0) 
+		printf("ERROR: Can't set rate. %s\n", snd_strerror(pcm));
+
+	/* Write parameters */
+	if (pcm = snd_pcm_hw_params(pcm_handle, params) < 0)
+		printf("ERROR: Can't set harware parameters. %s\n", snd_strerror(pcm));
+
+	/* Resume information */
+	printf("PCM name: '%s'\n", snd_pcm_name(pcm_handle));
+
+	printf("PCM state: %s\n", snd_pcm_state_name(snd_pcm_state(pcm_handle)));
+
+	snd_pcm_hw_params_get_channels(params, &tmp);
+	printf("channels: %i ", tmp);
+
+	if (tmp == 1)
+		printf("(mono)\n");
+	else if (tmp == 2)
+		printf("(stereo)\n");
+
+	snd_pcm_hw_params_get_rate(params, &tmp, 0);
+	printf("rate: %d bps\n", tmp);
+
+	//printf("seconds: %d\n", seconds);	
+
+	/* Allocate buffer to hold single period */
+	snd_pcm_hw_params_get_period_size(params, &frames, 0);
+
+	buff_size = frames * channels * 2 /* 2 -> sample size */;
+	buff = (char *) malloc(buff_size);
+
+	snd_pcm_hw_params_get_period_time(params, &tmp, NULL);
+
+	/*
+	for (loops = (seconds * 1000000) / tmp; loops > 0; loops--) {
+
+		if (pcm = read(2, buff, buff_size) == 0) {
+			printf("Early end of file.\n");
+			return 0;
+		}
+
+		if (pcm = snd_pcm_writei(pcm_handle, buff, frames) == -EPIPE) {
+			printf("XRUN.\n");
+			snd_pcm_prepare(pcm_handle);
+		} else if (pcm < 0) {
+			printf("ERROR. Can't write to PCM device. %s\n", snd_strerror(pcm));
+		}
+
+	}
+	*/
+	/*
+	char smpl;
+	for (loops = (seconds * 1000000) / tmp; loops > 0; loops--) {
+		for(aa=0;aa<buff_size;) {
+			//b=(sin((aa)/channels*3.1415926/rate/(mouse[0]+1))+sin((aa)/channels*3.1415926/rate/(mouse[2]+1)));
+			
+			for(ch=1;ch<=channels;ch++) {
+				//syscall(1,1,&b,1);
+				buff[aa]=b*mouse[ch]*10;
+			}
+			aa=aa++;
+		}
+		//putchar('\n');
+		//write(1,b,1);
+		snd_pcm_writei(pcm_handle, buff, frames);
+	}
+	*/
+	while(1){
+
+		snd_pcm_writei(pcm_handle, buff, frames);	
+	}
+}
+#endif
 	
 	fd_set fds;
 	drmEventContext evctx = {
@@ -803,6 +1042,11 @@ int main(int argc, char *argv[])
 			goto exit;
 			  }
 		}
+		if(mouse[0]==0x9){
+			if(position[0]<1&&position[0]>-1&&position[1]<1&&position[1]>-1&&position[2]<0){
+				write(1,"\n*You just shot a cube!*\n",24);
+			}
+		}
 
 		waiting_for_flip = 1;
 		i++;
@@ -817,6 +1061,15 @@ int main(int argc, char *argv[])
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		esMatrixLoadIdentity(&modelview);
+		
+		//ESMatrix camera;
+		//esMatrixLoadIdentity(&camera);
+		
+		//esTranslate(&camera, position[0], position[1], position[2]);
+		//esRotate(&camera, cur[0], 0.0f, 1.0f, 0.0f);
+		//esRotate(&camera, cur[1], 0.0f, 0.0f, 1.0f);
+		//esMatrixMultiply(&camera, &modelview, &modelview);
+		
 		esTranslate(&modelview, position[0], position[1], position[2]);
 		//esRotate(&modelview, 45.0f + (0.25f * i), 1.0f, 0.0f, 0.0f);
 		//esRotate(&modelview, 45.0f - (0.5f * i), 0.0f, 1.0f, 0.0f);
