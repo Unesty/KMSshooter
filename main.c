@@ -55,6 +55,7 @@
 
 #include <linux/input-event-codes.h>
 
+#define SOUND
 #include <alsa/asoundlib.h>
 
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
@@ -74,7 +75,7 @@ static struct {
 	EGLContext context;
 	EGLSurface surface;
 	GLuint program;
-	GLint modelviewmatrix, modelviewprojectionmatrix, normalmatrix;
+	GLint modelviewmatrix, modelviewprojectionmatrix, normalmatrix, posoffvector;
 	GLuint vbo;
 	GLuint positionsoffset, colorsoffset, normalsoffset;
 } gl;
@@ -380,7 +381,9 @@ static int init_gl(void)
 
 
 	static const char *vertex_shader_source =
+			"precision mediump float;           \n"
 			"uniform mat4 modelviewMatrix;      \n"
+			"uniform vec4 posoffvector;      \n"
 			"uniform mat4 modelviewprojectionMatrix;\n"
 			"uniform mat3 normalMatrix;         \n"
 			"                                   \n"
@@ -394,7 +397,7 @@ static int init_gl(void)
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_Position = modelviewprojectionMatrix * in_position;\n"
+			"    gl_Position = modelviewprojectionMatrix * in_position + posoffvector;\n"
 			"    vec3 vEyeNormal = normalMatrix * in_normal;\n"
 			"    vec4 vPosition4 = modelviewMatrix * in_position;\n"
 			"    vec3 vPosition3 = vPosition4.xyz / vPosition4.w;\n"
@@ -409,10 +412,11 @@ static int init_gl(void)
 			"precision mediump float;           \n"
 			"                                   \n"
 			"varying vec4 vVaryingColor;        \n"
+			"uniform vec4 posoffvector;      \n"
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_FragColor = vVaryingColor;  \n"
+			"    gl_FragColor = posoffvector;  \n"
 			"}                                  \n";
 
 
@@ -536,6 +540,7 @@ static int init_gl(void)
 	gl.modelviewmatrix = glGetUniformLocation(gl.program, "modelviewMatrix");
 	gl.modelviewprojectionmatrix = glGetUniformLocation(gl.program, "modelviewprojectionMatrix");
 	gl.normalmatrix = glGetUniformLocation(gl.program, "normalMatrix");
+	gl.posoffvector = glGetUniformLocation(gl.program, "posoffvector");
 
 	glViewport(0, 0, drm.mode->hdisplay, drm.mode->vdisplay);
 	glEnable(GL_CULL_FACE);
@@ -619,10 +624,20 @@ char keyboardpath[256];
 //char mvspath[256];
 //char mfspath[256];
 int mpid,kpid,spid;
-//long int rate;
-//char channels;
+#ifdef SOUND
+unsigned int rate=48000;
+char channels;
+#endif
 
 GLfloat aspect,frustumW,frustumH;
+
+GLfloat posoff[4]={100,100,100,100};
+
+struct segasteon{
+	int a;
+	int b;
+	int c;
+}sas={0,0,3};
 
 int main(int argc, char *argv[])
 {
@@ -674,10 +689,11 @@ int main(int argc, char *argv[])
 				}
 			}
 		       }
-		       /*
+#ifdef SOUND
 		case 2:{
+			/*
 			csmb=0;
-			while(conf.text[symb]!='\n'){
+			while(symb<conf.size){
 				if(conf.text[symb]=='0')
 					csmb++;
 				if(conf.text[symb]=='1'){
@@ -707,8 +723,12 @@ int main(int argc, char *argv[])
 				if(conf.text[symb]=='9'){
 					rate+=10^csmb*9;
 					csmb++;}
+				if(conf.text[symb]=='\n'&&rate){
+					conf.op++;
+					break;
+				}
 				symb++;
-			}
+			}*/
 		       }
 		case 3:{
 				if(conf.text[symb]=='0')
@@ -732,7 +752,7 @@ int main(int argc, char *argv[])
 				if(conf.text[symb]=='9')
 					channels=9;
 		       }
-		       */
+#endif
 		       /*
 		case 4:{
 			switch(conf.text[symb]){
@@ -790,7 +810,9 @@ int main(int argc, char *argv[])
 	}
 	close(mffd);
 	*/
-
+	
+	syscall(SYS_rt_sigaction,17,&sas,0,8);
+	
 	//mouse process
 	mouse = mmap(0,3,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
 	mpid=syscall(SYS_clone,0,0);
@@ -817,21 +839,23 @@ int main(int argc, char *argv[])
 	
 	char ch=1;
 	float b=6.0;
-	int aa=0;
+	//int aa=100;
 
 	unsigned int pcm, tmp, dir;
-	int rate, channels;//, seconds;
+	//int rate, channels;//, seconds;
 	snd_pcm_t *pcm_handle;
 	snd_pcm_hw_params_t *params;
 	snd_pcm_uframes_t frames;
-	char *buff;
-	int buff_size, loops;
+	double buff;
+	//int buff_size, loops;
 
+	/*
 	if (argc < 4) {
 		printf("Usage: %s <sample_rate> <channels> <seconds>\n",
 								argv[0]);
 		return -1;
 	}
+	*/
 	
 
 	//rate 	 = atoi(argv[1]);
@@ -841,27 +865,28 @@ int main(int argc, char *argv[])
 	void sexithand(){
 		snd_pcm_drain(pcm_handle);
 		snd_pcm_close(pcm_handle);
-		free(buff);
+		//free(buff);
 		syscall(SYS_exit,0);
 	}
 
 	struct sigaction soundexit;
 	soundexit.sa_handler=&sexithand;
 
-	rt_sigaction(15,soundexit,0);
+	//rt_sigaction(15,soundexit,0);
+	syscall(SYS_rt_sigaction,17,&soundexit,0,15);
 
-	/* Open the PCM device in playback mode */
+	// Open the PCM device in playback mode
 	if (pcm = snd_pcm_open(&pcm_handle, PCM_DEVICE,
 					SND_PCM_STREAM_PLAYBACK, 0) < 0) 
 		printf("ERROR: Can't open \"%s\" PCM device. %s\n",
 					PCM_DEVICE, snd_strerror(pcm));
 
-	/* Allocate parameters object and fill it with default values*/	
+	// Allocate parameters object and fill it with default values
 	snd_pcm_hw_params_alloca(&params);
 
 	snd_pcm_hw_params_any(pcm_handle, params);
 
-	/* Set parameters */
+	// Set parameters
 	if (pcm = snd_pcm_hw_params_set_access(pcm_handle, params,
 					SND_PCM_ACCESS_RW_INTERLEAVED) < 0) 
 		printf("ERROR: Can't set interleaved mode. %s\n", snd_strerror(pcm));
@@ -876,11 +901,11 @@ int main(int argc, char *argv[])
 	if (pcm = snd_pcm_hw_params_set_rate_near(pcm_handle, params, &rate, 0) < 0) 
 		printf("ERROR: Can't set rate. %s\n", snd_strerror(pcm));
 
-	/* Write parameters */
+	// Write parameters
 	if (pcm = snd_pcm_hw_params(pcm_handle, params) < 0)
 		printf("ERROR: Can't set harware parameters. %s\n", snd_strerror(pcm));
 
-	/* Resume information */
+	// Resume information
 	printf("PCM name: '%s'\n", snd_pcm_name(pcm_handle));
 
 	printf("PCM state: %s\n", snd_pcm_state_name(snd_pcm_state(pcm_handle)));
@@ -888,21 +913,24 @@ int main(int argc, char *argv[])
 	snd_pcm_hw_params_get_channels(params, &tmp);
 	printf("channels: %i ", tmp);
 
-	if (tmp == 1)
+	if (tmp == 1){
 		printf("(mono)\n");
-	else if (tmp == 2)
+	}else if (tmp == 2){
 		printf("(stereo)\n");
+	}else{
+		printf("(%d)\n",channels);
+	}
 
 	snd_pcm_hw_params_get_rate(params, &tmp, 0);
 	printf("rate: %d bps\n", tmp);
 
 	//printf("seconds: %d\n", seconds);	
 
-	/* Allocate buffer to hold single period */
+	// Allocate buffer to hold single period
 	snd_pcm_hw_params_get_period_size(params, &frames, 0);
 
-	buff_size = frames * channels * 2 /* 2 -> sample size */;
-	buff = (char *) malloc(buff_size);
+	//buff_size = frames * channels * 2; // 2 -> sample size ;
+	//buff = (char *) malloc(buff_size);
 
 	snd_pcm_hw_params_get_period_time(params, &tmp, NULL);
 
@@ -940,9 +968,34 @@ int main(int argc, char *argv[])
 		snd_pcm_writei(pcm_handle, buff, frames);
 	}
 	*/
+	if(channels==1){
 	while(1){
+		if(mouse[0]==0x9){
+			buff=99999999999999999999999999999.0f;
+			snd_pcm_writei(pcm_handle, &buff, frames);
+			//aa++;
+			//if(aa>1000)
+			//	aa=500;
+			buff=0;
+			for(char wait=0;wait<17;wait++)
+				snd_pcm_writei(pcm_handle, &buff, frames);	
+		}
+	}
+	}else{
+	while(1){
+		if(mouse[0]==0x9){
+			buff=7777777777777779999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.0d;
+			snd_pcm_writei(pcm_handle, &buff, 16);	
+			//aa++;
+			//if(aa>1000)
+			//	aa=500;
+			buff=0;
+			for(char wait=0;wait<4;wait++){
+				snd_pcm_writei(pcm_handle, &buff, 16);	
+			}
 
-		snd_pcm_writei(pcm_handle, buff, frames);	
+		}
+	}
 	}
 }
 #endif
@@ -1001,6 +1054,7 @@ int main(int argc, char *argv[])
 	aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
 
 	//moufd=syscall(SYS_open,mousepath,0);
+	posoff[3]=1;
 	while (1) {
 		//syscall(SYS_read,moufd,&mouse,3);
 		cur[0]+=mouse[1];
@@ -1065,12 +1119,15 @@ int main(int argc, char *argv[])
 		//ESMatrix camera;
 		//esMatrixLoadIdentity(&camera);
 		
-		//esTranslate(&camera, position[0], position[1], position[2]);
+		esTranslate(&modelview, 0.0f, 0.0f, -15.0f);
 		//esRotate(&camera, cur[0], 0.0f, 1.0f, 0.0f);
 		//esRotate(&camera, cur[1], 0.0f, 0.0f, 1.0f);
 		//esMatrixMultiply(&camera, &modelview, &modelview);
 		
-		esTranslate(&modelview, position[0], position[1], position[2]);
+		posoff[0]=position[0];
+		posoff[1]=position[1];
+		posoff[2]=position[2];
+		//esTranslate(&modelview, position[0], position[1], position[2]);
 		//esRotate(&modelview, 45.0f + (0.25f * i), 1.0f, 0.0f, 0.0f);
 		//esRotate(&modelview, 45.0f - (0.5f * i), 0.0f, 1.0f, 0.0f);
 		//esRotate(&modelview, 10.0f + (0.15f * i), 0.0f, 0.0f, 1.0f);
@@ -1103,6 +1160,8 @@ int main(int argc, char *argv[])
 		glUniformMatrix4fv(gl.modelviewmatrix, 1, GL_FALSE, &modelview.m[0][0]);
 		glUniformMatrix4fv(gl.modelviewprojectionmatrix, 1, GL_FALSE, &modelviewprojection.m[0][0]);
 		glUniformMatrix3fv(gl.normalmatrix, 1, GL_FALSE, normal);
+		glUniform4fv(gl.posoffvector, 4, posoff);
+		//write(1,&posoff,16);
 
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, vnum/3);
 		//glDrawArrays(GL_TRIANGLE_STRIP, 4, 4);
@@ -1147,8 +1206,11 @@ int main(int argc, char *argv[])
 		bo = next_bo;
 	}
 exit:
-	syscall(62,mpid,15);
-	syscall(62,kpid,15);
+	syscall(SYS_kill,mpid,15);
+	syscall(SYS_kill,kpid,15);
+#ifdef SOUND
+	syscall(SYS_kill,spid,15);
+#endif
 	drmModeSetCrtc(drm.fd, drm.crtc_id, fb->fb_id, 0, 0,
 			&drm.connector_id, 1, drm.mode);
 	//drmModeFreeCrtc (crtc);
