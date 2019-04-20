@@ -55,7 +55,7 @@
 
 #include <linux/input-event-codes.h>
 
-#define SOUND
+//#define SOUND
 #include <alsa/asoundlib.h>
 
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
@@ -66,8 +66,9 @@ char mapfd;
 char *keyboard;
 char kfd;
 char kapfd;
-float cur[2];
-float position[3];
+//float cur[2];
+float *cur;
+//float position[3];
 
 static struct {
 	EGLDisplay display;
@@ -397,7 +398,7 @@ static int init_gl(void)
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_Position = modelviewprojectionMatrix * in_position + posoffvector;\n"
+			"    gl_Position = modelviewprojectionMatrix * (in_position+posoffvector);\n"
 			"    vec3 vEyeNormal = normalMatrix * in_normal;\n"
 			"    vec4 vPosition4 = modelviewMatrix * in_position;\n"
 			"    vec3 vPosition3 = vPosition4.xyz / vPosition4.w;\n"
@@ -416,7 +417,7 @@ static int init_gl(void)
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_FragColor = posoffvector;  \n"
+			"    gl_FragColor = posoffvector+vVaryingColor;  \n"
 			"}                                  \n";
 
 
@@ -631,7 +632,7 @@ char channels;
 
 GLfloat aspect,frustumW,frustumH;
 
-GLfloat posoff[4]={100,100,100,100};
+float posoff[4]={10,10,10,0};
 
 struct segasteon{
 	int a;
@@ -815,11 +816,14 @@ int main(int argc, char *argv[])
 	
 	//mouse process
 	mouse = mmap(0,3,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
+	cur = mmap(0,8,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
 	mpid=syscall(SYS_clone,0,0);
 	if(mpid==0){
 		moufd=syscall(SYS_open,mousepath,0);
 		while(1){
 			syscall(SYS_read,moufd,mouse,3);
+			cur[0]+=(float)mouse[1]/100;
+			cur[1]-=(float)mouse[2]/100;
 		}
 	}
 	//keyboard process
@@ -985,16 +989,21 @@ int main(int argc, char *argv[])
 	while(1){
 		if(mouse[0]==0x9){
 			buff=7777777777777779999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.0d;
-			snd_pcm_writei(pcm_handle, &buff, 16);	
+			snd_pcm_writei(pcm_handle, &buff, 16);
 			//aa++;
 			//if(aa>1000)
 			//	aa=500;
 			buff=0;
-			for(char wait=0;wait<4;wait++){
-				snd_pcm_writei(pcm_handle, &buff, 16);	
-			}
+			snd_pcm_writei(pcm_handle, &buff, 16);	
+			snd_pcm_writei(pcm_handle, &buff, 16);	
+			snd_pcm_writei(pcm_handle, &buff, 16);	
+			snd_pcm_writei(pcm_handle, &buff, 16);	
 
+		}else{
+			buff=0;
+			snd_pcm_writei(pcm_handle, &buff, 16);	
 		}
+
 	}
 	}
 }
@@ -1057,31 +1066,31 @@ int main(int argc, char *argv[])
 	posoff[3]=1;
 	while (1) {
 		//syscall(SYS_read,moufd,&mouse,3);
-		cur[0]+=mouse[1];
-		cur[1]+=mouse[2];
+		//cur[0]+=mouse[1];
+		//cur[1]+=mouse[2];
 		switch(keyboard[20]){
 		case 0x1b:{
-			position[2]-=1.0;
+			posoff[2]-=1.0;
 			break;
 			  }
 		case 0x1d:{
-			position[2]+=1.0;
+			posoff[2]+=1.0;
 			break;
 			  }
 		case 0x1c:{
-			position[0]+=0.1;
+			posoff[0]+=0.1;
 			break;
 			  }
 		case 0x23:{
-			position[0]-=0.1;
+			posoff[0]-=0.1;
 			break;
 			  }
 		case 0x24:{
-			position[1]-=0.1;
+			posoff[1]-=0.1;
 			break;
 			  }
 		case 0x15:{
-			position[1]+=0.1;
+			posoff[1]+=0.1;
 			break;
 			  }
 		case 0x2d:{
@@ -1097,7 +1106,7 @@ int main(int argc, char *argv[])
 			  }
 		}
 		if(mouse[0]==0x9){
-			if(position[0]<1&&position[0]>-1&&position[1]<1&&position[1]>-1&&position[2]<0){
+			if(posoff[0]<1&&posoff[0]>-1&&posoff[1]<1&&posoff[1]>-1&&posoff[2]<0){
 				write(1,"\n*You just shot a cube!*\n",24);
 			}
 		}
@@ -1119,20 +1128,20 @@ int main(int argc, char *argv[])
 		//ESMatrix camera;
 		//esMatrixLoadIdentity(&camera);
 		
-		esTranslate(&modelview, 0.0f, 0.0f, -15.0f);
+		esTranslate(&modelview, 0.0f, 0.0f, -25.0f);
 		//esRotate(&camera, cur[0], 0.0f, 1.0f, 0.0f);
 		//esRotate(&camera, cur[1], 0.0f, 0.0f, 1.0f);
 		//esMatrixMultiply(&camera, &modelview, &modelview);
 		
-		posoff[0]=position[0];
-		posoff[1]=position[1];
-		posoff[2]=position[2];
+		//posoff[0]=position[0];
+		//posoff[1]=position[1];
+		//posoff[2]=position[2];
 		//esTranslate(&modelview, position[0], position[1], position[2]);
 		//esRotate(&modelview, 45.0f + (0.25f * i), 1.0f, 0.0f, 0.0f);
 		//esRotate(&modelview, 45.0f - (0.5f * i), 0.0f, 1.0f, 0.0f);
 		//esRotate(&modelview, 10.0f + (0.15f * i), 0.0f, 0.0f, 1.0f);
 		esRotate(&modelview, cur[0], 0.0f, 1.0f, 0.0f);
-		esRotate(&modelview, cur[1], 0.0f, 0.0f, 1.0f);
+		esRotate(&modelview, cur[1], 1.0f, 0.0f, 0.0f);
 
 		//GLfloat aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
 
@@ -1160,7 +1169,7 @@ int main(int argc, char *argv[])
 		glUniformMatrix4fv(gl.modelviewmatrix, 1, GL_FALSE, &modelview.m[0][0]);
 		glUniformMatrix4fv(gl.modelviewprojectionmatrix, 1, GL_FALSE, &modelviewprojection.m[0][0]);
 		glUniformMatrix3fv(gl.normalmatrix, 1, GL_FALSE, normal);
-		glUniform4fv(gl.posoffvector, 4, posoff);
+		glUniform4fv(gl.posoffvector, 1, posoff);
 		//write(1,&posoff,16);
 
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, vnum/3);
@@ -1211,6 +1220,8 @@ exit:
 #ifdef SOUND
 	syscall(SYS_kill,spid,15);
 #endif
+	syscall(SYS_munmap,mouse,3);
+	syscall(SYS_munmap,keyboard,72);
 	drmModeSetCrtc(drm.fd, drm.crtc_id, fb->fb_id, 0, 0,
 			&drm.connector_id, 1, drm.mode);
 	//drmModeFreeCrtc (crtc);
@@ -1226,5 +1237,8 @@ exit:
 	eglTerminate (gl.display);
 	gbm_device_destroy (gbm.dev);
 
+	ret=syscall(SYS_wait4,mpid,0,0,0);
+	ret=syscall(SYS_wait4,kpid,0,0,0);
+	ret=syscall(SYS_wait4,spid,0,0,0);
 	return ret;
 }
