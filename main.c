@@ -70,13 +70,15 @@ char kapfd;
 float *cur;
 //float position[3];
 
+char cardpath[256];
+
 static struct {
 	EGLDisplay display;
 	EGLConfig config;
 	EGLContext context;
 	EGLSurface surface;
 	GLuint program;
-	GLint modelviewmatrix, modelviewprojectionmatrix, normalmatrix, posoffvector;
+	GLint modelviewmatrix, modelviewprojectionmatrix, normalmatrix;//, posoffvector;
 	GLuint vbo;
 	GLuint positionsoffset, colorsoffset, normalsoffset;
 } gl;
@@ -146,7 +148,7 @@ static int init_drm(void)
 	drmModeEncoder *encoder = NULL;
 	int i, area;
 
-	drm.fd = open("/dev/dri/card0", O_RDWR);
+	drm.fd = open(cardpath, O_RDWR);
 
 	if (drm.fd < 0) {
 		printf("could not open drm device\n");
@@ -384,7 +386,7 @@ static int init_gl(void)
 	static const char *vertex_shader_source =
 			"precision mediump float;           \n"
 			"uniform mat4 modelviewMatrix;      \n"
-			"uniform vec4 posoffvector;      \n"
+			//"uniform vec4 posoffvector;      \n"
 			"uniform mat4 modelviewprojectionMatrix;\n"
 			"uniform mat3 normalMatrix;         \n"
 			"                                   \n"
@@ -398,7 +400,7 @@ static int init_gl(void)
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_Position = modelviewprojectionMatrix * (in_position+posoffvector);\n"
+			"    gl_Position = modelviewprojectionMatrix * in_position;\n"
 			"    vec3 vEyeNormal = normalMatrix * in_normal;\n"
 			"    vec4 vPosition4 = modelviewMatrix * in_position;\n"
 			"    vec3 vPosition3 = vPosition4.xyz / vPosition4.w;\n"
@@ -413,11 +415,11 @@ static int init_gl(void)
 			"precision mediump float;           \n"
 			"                                   \n"
 			"varying vec4 vVaryingColor;        \n"
-			"uniform vec4 posoffvector;      \n"
+			//"uniform vec4 posoffvector;      \n"
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_FragColor = posoffvector+vVaryingColor;  \n"
+			"    gl_FragColor = vVaryingColor;  \n"
 			"}                                  \n";
 
 
@@ -541,7 +543,7 @@ static int init_gl(void)
 	gl.modelviewmatrix = glGetUniformLocation(gl.program, "modelviewMatrix");
 	gl.modelviewprojectionmatrix = glGetUniformLocation(gl.program, "modelviewprojectionMatrix");
 	gl.normalmatrix = glGetUniformLocation(gl.program, "normalMatrix");
-	gl.posoffvector = glGetUniformLocation(gl.program, "posoffvector");
+	//gl.posoffvector = glGetUniformLocation(gl.program, "posoffvector");
 
 	glViewport(0, 0, drm.mode->hdisplay, drm.mode->vdisplay);
 	glEnable(GL_CULL_FACE);
@@ -624,7 +626,7 @@ char mousepath[256];
 char keyboardpath[256];
 //char mvspath[256];
 //char mfspath[256];
-int mpid,kpid,spid;
+int mpid,kpid,spid=0;
 #ifdef SOUND
 unsigned int rate=48000;
 char channels;
@@ -632,7 +634,7 @@ char channels;
 
 GLfloat aspect,frustumW,frustumH;
 
-float posoff[4]={10,10,10,0};
+float posoff[4]={0.0f,0.0f,0.0f,0.0f};
 
 struct segasteon{
 	int a;
@@ -654,9 +656,9 @@ int main(int argc, char *argv[])
 	int csmb;
 	for(int symb=0;symb<conf.size;++symb){
 		switch(conf.op){
-		case 0:{
+		case 0:
 			switch(conf.text[symb]){
-			case '/':{
+			case '/':
 				csmb=0;
 				mousepath[csmb]=conf.text[symb];
 				while(symb<conf.size){
@@ -669,12 +671,11 @@ int main(int argc, char *argv[])
 					mousepath[csmb]=conf.text[symb];
 				 }
 				break;
-				}
 			 }
-			}
-		case 1:{
+			break;
+		case 1:
 			switch(conf.text[symb]){
-			case '/':{
+			case '/':
 				csmb=0;
 				keyboardpath[csmb]=conf.text[symb];
 				while(symb<conf.size){
@@ -687,11 +688,27 @@ int main(int argc, char *argv[])
 					keyboardpath[csmb]=conf.text[symb];
 				 }
 				break;
-				}
 			}
-		       }
+		       
+		case 2:
+			switch(conf.text[symb]){
+			case '/':
+				csmb=0;
+				cardpath[csmb]=conf.text[symb];
+				while(symb<conf.size){
+					symb++;
+					csmb++;
+					if(conf.text[symb]=='\n'){
+						conf.op++;
+						break;
+					}
+					cardpath[csmb]=conf.text[symb];
+				 }
+				break;
+			}
+			break;
 #ifdef SOUND
-		case 2:{
+		case 3:{
 			/*
 			csmb=0;
 			while(symb<conf.size){
@@ -731,7 +748,7 @@ int main(int argc, char *argv[])
 				symb++;
 			}*/
 		       }
-		case 3:{
+		case 4:{
 				if(conf.text[symb]=='0')
 					channels=0;
 				if(conf.text[symb]=='1')
@@ -755,7 +772,7 @@ int main(int argc, char *argv[])
 		       }
 #endif
 		       /*
-		case 4:{
+		case 5:{
 			switch(conf.text[symb]){
 			case '/':{
 				csmb=0;
@@ -773,7 +790,7 @@ int main(int argc, char *argv[])
 				}
 			}
 		       }
-		case 5:{
+		case 6:{
 			switch(conf.text[symb]){
 			case '/':{
 				csmb=0;
@@ -814,27 +831,6 @@ int main(int argc, char *argv[])
 	
 	syscall(SYS_rt_sigaction,17,&sas,0,8);
 	
-	//mouse process
-	mouse = mmap(0,3,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
-	cur = mmap(0,8,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
-	mpid=syscall(SYS_clone,0,0);
-	if(mpid==0){
-		moufd=syscall(SYS_open,mousepath,0);
-		while(1){
-			syscall(SYS_read,moufd,mouse,3);
-			cur[0]+=(float)mouse[1]/100;
-			cur[1]-=(float)mouse[2]/100;
-		}
-	}
-	//keyboard process
-	keyboard = mmap(0,72,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,kapfd,0);
-	kpid=syscall(SYS_clone,0,0);
-	if(kpid==0){
-		kfd=syscall(SYS_open,keyboardpath,0);
-		while(1){
-			syscall(SYS_read,kfd,keyboard,72);
-		}
-	}
 	//sound process
 #ifdef SOUND
 	spid=syscall(SYS_clone,0,0);
@@ -1022,7 +1018,7 @@ int main(int argc, char *argv[])
 	ret = init_drm();
 	if (ret) {
 		printf("failed to initialize DRM\n");
-		return ret;
+		goto exit;
 	}
 
 	FD_ZERO(&fds);
@@ -1032,13 +1028,13 @@ int main(int argc, char *argv[])
 	ret = init_gbm();
 	if (ret) {
 		printf("failed to initialize GBM\n");
-		return ret;
+		goto exit;
 	}
 
 	ret = init_gl();
 	if (ret) {
 		printf("failed to initialize EGL\n");
-		return ret;
+		goto exit;
 	}
 
 	/* clear the color buffer */
@@ -1053,7 +1049,29 @@ int main(int argc, char *argv[])
 			&drm.connector_id, 1, drm.mode);
 	if (ret) {
 		printf("failed to set mode: %s\n", strerror(errno));
-		return ret;
+		goto exit;
+	}
+
+	//mouse process
+	mouse = mmap(0,3,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
+	cur = mmap(0,8,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
+	mpid=syscall(SYS_clone,0,0);
+	if(mpid==0){
+		moufd=syscall(SYS_open,mousepath,0);
+		while(1){
+			syscall(SYS_read,moufd,mouse,3);
+			cur[0]+=(float)mouse[1]/100;
+			cur[1]-=(float)mouse[2]/100;
+		}
+	}
+	//keyboard process
+	keyboard = mmap(0,72,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,kapfd,0);
+	kpid=syscall(SYS_clone,0,0);
+	if(kpid==0){
+		kfd=syscall(SYS_open,keyboardpath,0);
+		while(1){
+			syscall(SYS_read,kfd,keyboard,72);
+		}
 	}
 
 
@@ -1070,35 +1088,35 @@ int main(int argc, char *argv[])
 		//cur[1]+=mouse[2];
 		switch(keyboard[20]){
 		case 0x1b:{
-			posoff[2]-=1.0;
+			posoff[2]-=0.5;
 			break;
 			  }
 		case 0x1d:{
-			posoff[2]+=1.0;
+			posoff[2]+=0.5;
 			break;
 			  }
 		case 0x1c:{
-			posoff[0]+=0.1;
+			posoff[0]+=0.5;
 			break;
 			  }
 		case 0x23:{
-			posoff[0]-=0.1;
+			posoff[0]-=0.5;
 			break;
 			  }
 		case 0x24:{
-			posoff[1]-=0.1;
+			posoff[1]-=0.5;
 			break;
 			  }
 		case 0x15:{
-			posoff[1]+=0.1;
+			posoff[1]+=0.5;
 			break;
 			  }
 		case 0x2d:{
-			aspect+=0.05;
+			aspect+=0.01;
 			break;
 			  }
 		case 0x2b:{
-			aspect-=0.05;
+			aspect-=0.01;
 			break;
 			  }
 		case 0x76:{
@@ -1107,7 +1125,7 @@ int main(int argc, char *argv[])
 		}
 		if(mouse[0]==0x9){
 			if(posoff[0]<1&&posoff[0]>-1&&posoff[1]<1&&posoff[1]>-1&&posoff[2]<0){
-				write(1,"\n*You just shot a cube!*\n",24);
+				write(1,"*You just shot a cube!*\n",25);
 			}
 		}
 
@@ -1120,7 +1138,7 @@ int main(int argc, char *argv[])
 		ESMatrix modelview;
 
 		/* clear the color buffer */
-		glClearColor(0.5, 0.5, 0.5, 1.0);
+		glClearColor(1.0-(posoff[1]/100.0f), 1.0-(posoff[1]/10000.0f), 1.0-(posoff[1]/40000.0f), 1.0);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		esMatrixLoadIdentity(&modelview);
@@ -1128,7 +1146,7 @@ int main(int argc, char *argv[])
 		//ESMatrix camera;
 		//esMatrixLoadIdentity(&camera);
 		
-		esTranslate(&modelview, 0.0f, 0.0f, -25.0f);
+		//esTranslate(&modelview, 0.0f, 0.0f, -25.0f);
 		//esRotate(&camera, cur[0], 0.0f, 1.0f, 0.0f);
 		//esRotate(&camera, cur[1], 0.0f, 0.0f, 1.0f);
 		//esMatrixMultiply(&camera, &modelview, &modelview);
@@ -1137,11 +1155,20 @@ int main(int argc, char *argv[])
 		//posoff[1]=position[1];
 		//posoff[2]=position[2];
 		//esTranslate(&modelview, position[0], position[1], position[2]);
+		esTranslate(&modelview, posoff[0], posoff[1], posoff[2]);
 		//esRotate(&modelview, 45.0f + (0.25f * i), 1.0f, 0.0f, 0.0f);
 		//esRotate(&modelview, 45.0f - (0.5f * i), 0.0f, 1.0f, 0.0f);
 		//esRotate(&modelview, 10.0f + (0.15f * i), 0.0f, 0.0f, 1.0f);
 		esRotate(&modelview, cur[0], 0.0f, 1.0f, 0.0f);
 		esRotate(&modelview, cur[1], 1.0f, 0.0f, 0.0f);
+		/*
+		modelview[0][0]=posoff[0];
+		modelview[1][0]=posoff[0];
+		modelview[2][0]=posoff[0];
+		modelview[0][1]=posoff[1];
+		modelview[1][1]=posoff[1];
+		modelview[2][1]=posoff[1];
+		*/
 
 		//GLfloat aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
 
@@ -1169,7 +1196,7 @@ int main(int argc, char *argv[])
 		glUniformMatrix4fv(gl.modelviewmatrix, 1, GL_FALSE, &modelview.m[0][0]);
 		glUniformMatrix4fv(gl.modelviewprojectionmatrix, 1, GL_FALSE, &modelviewprojection.m[0][0]);
 		glUniformMatrix3fv(gl.normalmatrix, 1, GL_FALSE, normal);
-		glUniform4fv(gl.posoffvector, 1, posoff);
+		//glUniform4fv(gl.posoffvector, 1, posoff);
 		//write(1,&posoff,16);
 
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, vnum/3);
@@ -1199,10 +1226,11 @@ int main(int argc, char *argv[])
 			ret = select(drm.fd + 1, &fds, NULL, NULL, NULL);
 			if (ret < 0) {
 				printf("select err: %s\n", strerror(errno));
-				return ret;
+				goto exit;
 			} else if (ret == 0) {
 				printf("select timeout!\n");
-				return -1;
+				ret=-1;
+				goto exit;
 			} else if (FD_ISSET(0, &fds)) {
 				printf("user interrupted!\n");
 				break;
@@ -1237,8 +1265,13 @@ exit:
 	eglTerminate (gl.display);
 	gbm_device_destroy (gbm.dev);
 
-	ret=syscall(SYS_wait4,mpid,0,0,0);
-	ret=syscall(SYS_wait4,kpid,0,0,0);
-	ret=syscall(SYS_wait4,spid,0,0,0);
+	syscall(SYS_wait4,mpid,0,0,0);
+	syscall(SYS_wait4,kpid,0,0,0);
+#ifdef SOUND
+	syscall(SYS_wait4,spid,0,0,0);
+	syscall(SYS_kill,spid,9);
+#endif
+	syscall(SYS_kill,mpid,9);
+	syscall(SYS_kill,kpid,9);
 	return ret;
 }
