@@ -53,6 +53,7 @@
 #include <sys/mman.h>
 #include <signal.h>
 
+#define DYNAMIC_KEYS
 #include <linux/input-event-codes.h>
 
 //#define SOUND
@@ -63,7 +64,7 @@
 char *mouse;
 char moufd;
 char mapfd;
-char *keyboard;
+//char *keyboard;
 char kfd;
 char kapfd;
 //float cur[2];
@@ -78,7 +79,7 @@ static struct {
 	EGLContext context;
 	EGLSurface surface;
 	GLuint program;
-	GLint modelviewmatrix, modelviewprojectionmatrix, normalmatrix;//, posoffvector;
+	GLint modelviewmatrix, modelviewprojectionmatrix, normalmatrix, posoffvector;
 	GLuint vbo;
 	GLuint positionsoffset, colorsoffset, normalsoffset;
 } gl;
@@ -242,31 +243,61 @@ static int init_gbm(void)
 	return 0;
 }
 
-int vnum=14*3;
+int vnum=14*3*3+6;
 //static const char *vertex_shader_source;
 //static const char *fragment_shader_source;
 //char mvfd, mffd;
-static int init_gl(void)
-{
-	EGLint major, minor, n;
-	GLuint vertex_shader, fragment_shader;
-	GLint ret;
+	static GLfloat vVertices[] = {
+	-1.0f, 1.0f, 1.0f,	// Front-top-left
+	-1.0f, -1.0f, 1.0f,	// Front-top-right
+	1.0f, 1.0f, 1.0f,	// Front-bottom-left
+	1.0f, -1.0f, 1.0f,	// Front-bottom-right
+	1.0f, -1.0f, -1.0f,	// Back-bottom-right
+	-1.0f, -1.0f, 1.0f,	// Front-top-right
+	-1.0f, -1.0f, -1.0f,	// Back-top-right
+	-1.0f, 1.0f, 1.0f,	// Front-top-left
+	-1.0f, 1.0f, -1.0f,	// Back-top-left
+	1.0f, 1.0f, 1.0f,	// Front-bottom-left
+	1.0f, 1.0f, -1.0f,	// Back-bottom-left
+	1.0f, -1.0f, -1.0f,	// Back-bottom-right
+	-1.0f, 1.0f, -1.0f,	// Back-top-left
+	-1.0f, -1.0f, -1.0f,	// Back-top-right
+	-1.0f, -1.0f, -1.0f,
 
-	static const GLfloat vVertices[] = {
-	-1.0f, 1.0f, 1.0f,     // Front-top-left
-	-1.0f, -1.0f, 1.0f,      // Front-top-right
-	1.0f, 1.0f, 1.0f,    // Front-bottom-left
-	1.0f, -1.0f, 1.0f,     // Front-bottom-right
-	1.0f, -1.0f, -1.0f,    // Back-bottom-right
-	-1.0f, -1.0f, 1.0f,      // Front-top-right
-	-1.0f, -1.0f, -1.0f,     // Back-top-right
-	-1.0f, 1.0f, 1.0f,     // Front-top-left
-	-1.0f, 1.0f, -1.0f,    // Back-top-left
-	1.0f, 1.0f, 1.0f,    // Front-bottom-left
-	1.0f, 1.0f, -1.0f,   // Back-bottom-left
-	1.0f, -1.0f, -1.0f,    // Back-bottom-right
-	-1.0f, 1.0f, -1.0f,    // Back-top-left
-	-1.0f, -1.0f, -1.0f      // Back-top-right
+	25-1.0f, 25+1.0f, 25+1.0f,
+	25-1.0f, 25+1.0f, 25+1.0f,
+	25-1.0f, 25+1.0f, 25+1.0f,	// Front-top-left
+	25-1.0f, 25-1.0f, 25+1.0f,	// Front-top-right
+	25+1.0f, 25+1.0f, 25+1.0f,	// Front-bottom-left
+	25+1.0f, 25-1.0f, 25+1.0f,	// Front-bottom-right
+	25+1.0f, 25-1.0f, 25-1.0f,	// Back-bottom-right
+	25-1.0f, 25-1.0f, 25+1.0f,	// Front-top-right
+	25-1.0f, 25-1.0f, 25-1.0f,	// Back-top-right
+	25-1.0f, 25+1.0f, 25+1.0f,	// Front-top-left
+	25-1.0f, 25+1.0f, 25-1.0f,	// Back-top-left
+	25+1.0f, 25+1.0f, 25+1.0f,	// Front-bottom-left
+	25+1.0f, 25+1.0f, 25-1.0f,	// Back-bottom-left
+	25+1.0f, 25-1.0f, 25-1.0f,	// Back-bottom-right
+	25-1.0f, 25+1.0f, 25-1.0f,	// Back-top-left
+	25-1.0f, 25-1.0f, 25-1.0f,	// Back-top-right
+	25-1.0f, 25-1.0f, 25-1.0f,
+
+	30-1.0f, 30+1.0f, 5+1.0f,
+	30-1.0f, 30+1.0f, 5+1.0f,
+	30-1.0f, 30+1.0f, 5+1.0f,	// Front-top-left
+	30-1.0f, 30-1.0f, 5+1.0f,	// Front-top-right
+	30+1.0f, 30+1.0f, 5+1.0f,	// Front-bottom-left
+	30+1.0f, 30-1.0f, 5+1.0f,	// Front-bottom-right
+	30+1.0f, 30-1.0f, 5-1.0f,	// Back-bottom-right
+	30-1.0f, 30-1.0f, 5+1.0f,	// Front-top-right
+	30-1.0f, 30-1.0f, 5-1.0f,	// Back-top-right
+	30-1.0f, 30+1.0f, 5+1.0f,	// Front-top-left
+	30-1.0f, 30+1.0f, 5-1.0f,	// Back-top-left
+	30+1.0f, 30+1.0f, 5+1.0f,	// Front-bottom-left
+	30+1.0f, 30+1.0f, 5-1.0f,	// Back-bottom-left
+	30+1.0f, 30-1.0f, 5-1.0f,	// Back-bottom-right
+	30-1.0f, 30+1.0f, 5-1.0f,	// Back-top-left
+	30-1.0f, 30-1.0f, 5-1.0f,	// Back-top-right
 	/*
 			// front
 			-1.0f, -1.0f, +1.0f,
@@ -300,6 +331,12 @@ static int init_gl(void)
 			+1.0f, -1.0f, +1.0f,
 			*/
 	};
+static int init_gl(void)
+{
+	EGLint major, minor, n;
+	GLuint vertex_shader, fragment_shader;
+	GLint ret;
+
 
 	static const GLfloat vColors[] = {
 			// front
@@ -386,21 +423,22 @@ static int init_gl(void)
 	static const char *vertex_shader_source =
 			"precision mediump float;           \n"
 			"uniform mat4 modelviewMatrix;      \n"
-			//"uniform vec4 posoffvector;      \n"
+			"uniform vec4 posoffvector;         \n"
 			"uniform mat4 modelviewprojectionMatrix;\n"
 			"uniform mat3 normalMatrix;         \n"
 			"                                   \n"
 			"attribute vec4 in_position;        \n"
 			"attribute vec3 in_normal;          \n"
 			"attribute vec4 in_color;           \n"
-			"\n"
 			"vec4 lightSource = vec4(2.0, 2.0, 20.0, 0.0);\n"
 			"                                   \n"
 			"varying vec4 vVaryingColor;        \n"
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_Position = modelviewprojectionMatrix * in_position;\n"
+			//"    gl_Position = posoffvector + modelviewprojectionMatrix * (in_position-posoffvector);\n"
+			"    gl_Position = modelviewprojectionMatrix * (in_position-posoffvector);\n"
+			//"    gl_Position = in_position * modelviewprojectionMatrix;\n"
 			"    vec3 vEyeNormal = normalMatrix * in_normal;\n"
 			"    vec4 vPosition4 = modelviewMatrix * in_position;\n"
 			"    vec3 vPosition3 = vPosition4.xyz / vPosition4.w;\n"
@@ -415,11 +453,11 @@ static int init_gl(void)
 			"precision mediump float;           \n"
 			"                                   \n"
 			"varying vec4 vVaryingColor;        \n"
-			//"uniform vec4 posoffvector;      \n"
+			"uniform vec4 posoffvector;      \n"
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_FragColor = vVaryingColor;  \n"
+			"    gl_FragColor = vVaryingColor+posoffvector;  \n"
 			"}                                  \n";
 
 
@@ -543,7 +581,7 @@ static int init_gl(void)
 	gl.modelviewmatrix = glGetUniformLocation(gl.program, "modelviewMatrix");
 	gl.modelviewprojectionmatrix = glGetUniformLocation(gl.program, "modelviewprojectionMatrix");
 	gl.normalmatrix = glGetUniformLocation(gl.program, "normalMatrix");
-	//gl.posoffvector = glGetUniformLocation(gl.program, "posoffvector");
+	gl.posoffvector = glGetUniformLocation(gl.program, "posoffvector");
 
 	glViewport(0, 0, drm.mode->hdisplay, drm.mode->vdisplay);
 	glEnable(GL_CULL_FACE);
@@ -624,9 +662,11 @@ struct config{
 }conf;
 char mousepath[256];
 char keyboardpath[256];
+char keyoffset;
+char key[20];
 //char mvspath[256];
 //char mfspath[256];
-int mpid,kpid,spid=0;
+int ppid,mpid,kpid,spid=0;
 #ifdef SOUND
 unsigned int rate=48000;
 char channels;
@@ -634,7 +674,8 @@ char channels;
 
 GLfloat aspect,frustumW,frustumH;
 
-float posoff[4]={0.0f,0.0f,0.0f,0.0f};
+float *posoff;
+float cubeoff[2]={0,0};
 
 struct segasteon{
 	int a;
@@ -689,8 +730,189 @@ int main(int argc, char *argv[])
 				 }
 				break;
 			}
-		       
 		case 2:
+			if(conf.text[symb]>='0'&&conf.text[symb]<='9'){
+				csmb=0;
+				while(csmb<3){
+				switch(conf.text[symb]){
+				case '0':
+					switch(csmb){
+					case 0:
+						csmb++;
+						break;
+					case 1:
+						keyoffset=keyoffset*10;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				case '1':
+					switch(csmb){
+					case 0:
+						csmb++;
+						keyoffset=1;
+						break;
+					case 1:
+						keyoffset=keyoffset*10+1;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10+1;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				case '2':
+					switch(csmb){
+					case 0:
+						csmb++;
+						keyoffset=2;
+						break;
+					case 1:
+						keyoffset=keyoffset*10+2;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10+2;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				case '3':
+					switch(csmb){
+					case 0:
+						csmb++;
+						keyoffset=3;
+						break;
+					case 1:
+						keyoffset=keyoffset*10+3;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10+3;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				case '4':
+					switch(csmb){
+					case 0:
+						csmb++;
+						keyoffset=4;
+						break;
+					case 1:
+						keyoffset=keyoffset*10+4;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10+4;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				case '5':
+					switch(csmb){
+					case 0:
+						csmb++;
+						keyoffset=5;
+						break;
+					case 1:
+						keyoffset=keyoffset*10+5;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10+5;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				case '6':
+					switch(csmb){
+					case 0:
+						csmb++;
+						keyoffset=6;
+						break;
+					case 1:
+						keyoffset=keyoffset*10+6;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10+6;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				case '7':
+					switch(csmb){
+					case 0:
+						csmb++;
+						keyoffset=7;
+						break;
+					case 1:
+						keyoffset=keyoffset*10+7;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10+7;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				case '8':
+					switch(csmb){
+					case 0:
+						csmb++;
+						keyoffset=8;
+						break;
+					case 1:
+						keyoffset=keyoffset*10+8;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10+8;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				case '9':
+					switch(csmb){
+					case 0:
+						csmb++;
+						keyoffset=9;
+						break;
+					case 1:
+						keyoffset=keyoffset*10+9;
+						csmb++;
+						break;
+					case 2:
+						keyoffset=keyoffset*10+9;
+						conf.op++;
+						csmb++;
+						break;
+					}
+					break;
+				default:
+					conf.op++;
+					csmb=3;
+					break;
+				}
+				symb++;
+				}
+			}
+		case 3:
 			switch(conf.text[symb]){
 			case '/':
 				csmb=0;
@@ -708,7 +930,7 @@ int main(int argc, char *argv[])
 			}
 			break;
 #ifdef SOUND
-		case 3:{
+		case 4:{
 			/*
 			csmb=0;
 			while(symb<conf.size){
@@ -748,7 +970,7 @@ int main(int argc, char *argv[])
 				symb++;
 			}*/
 		       }
-		case 4:{
+		case 5:{
 				if(conf.text[symb]=='0')
 					channels=0;
 				if(conf.text[symb]=='1')
@@ -772,7 +994,7 @@ int main(int argc, char *argv[])
 		       }
 #endif
 		       /*
-		case 5:{
+		case 6:{
 			switch(conf.text[symb]){
 			case '/':{
 				csmb=0;
@@ -790,7 +1012,7 @@ int main(int argc, char *argv[])
 				}
 			}
 		       }
-		case 6:{
+		case 7:{
 			switch(conf.text[symb]){
 			case '/':{
 				csmb=0;
@@ -992,8 +1214,6 @@ int main(int argc, char *argv[])
 			buff=0;
 			snd_pcm_writei(pcm_handle, &buff, 16);	
 			snd_pcm_writei(pcm_handle, &buff, 16);	
-			snd_pcm_writei(pcm_handle, &buff, 16);	
-			snd_pcm_writei(pcm_handle, &buff, 16);	
 
 		}else{
 			buff=0;
@@ -1038,8 +1258,8 @@ int main(int argc, char *argv[])
 	}
 
 	/* clear the color buffer */
-	glClearColor(0.5, 0.5, 0.5, 1.0);
-	glClear(GL_COLOR_BUFFER_BIT);
+	//glClearColor(0.5, 0.5, 0.5, 1.0);
+	//glClear(GL_COLOR_BUFFER_BIT);
 	eglSwapBuffers(gl.display, gl.surface);
 	bo = gbm_surface_lock_front_buffer(gbm.surface);
 	fb = drm_fb_get_from_bo(bo);
@@ -1051,64 +1271,108 @@ int main(int argc, char *argv[])
 		printf("failed to set mode: %s\n", strerror(errno));
 		goto exit;
 	}
+	struct gbm_bo *next_bo;
+	int waiting_for_flip = 1;
+	/*
+		eglSwapBuffers(gl.display, gl.surface);
+		next_bo = gbm_surface_lock_front_buffer(gbm.surface);
+		fb = drm_fb_get_from_bo(next_bo);
 
+		ret = drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,
+				DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
+		if (ret) {
+			printf("failed to queue page flip: %s\n", strerror(errno));
+			ret= -1;
+			goto exit;
+		}
+
+		while (waiting_for_flip) {
+			ret = select(drm.fd + 1, &fds, NULL, NULL, NULL);
+			if (ret < 0) {
+				printf("select err: %s\n", strerror(errno));
+				goto exit;
+			} else if (ret == 0) {
+				printf("select timeout!\n");
+				ret= -1;
+				goto exit;
+			} else if (FD_ISSET(0, &fds)) {
+				printf("user interrupted!\n");
+				break;
+			}
+			drmHandleEvent(drm.fd, &evctx);
+		}
+		gbm_surface_release_buffer(gbm.surface, bo);
+		bo = next_bo;
+		*/
 	//mouse process
 	mouse = mmap(0,3,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
 	cur = mmap(0,8,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
+	//int ppid = getpid();
+	char *quit = mmap(0,1,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
+	quit[0]=0;
 	mpid=syscall(SYS_clone,0,0);
 	if(mpid==0){
 		moufd=syscall(SYS_open,mousepath,0);
+		if(moufd==-1){
+			syscall(SYS_munmap,mouse,3);
+			syscall(1,"Meow! Where is the mouse?\n",26);
+			return 0;
+		}
 		while(1){
 			syscall(SYS_read,moufd,mouse,3);
-			cur[0]+=(float)mouse[1]/100;
-			cur[1]-=(float)mouse[2]/100;
+			cur[0]-=(float)mouse[1]/10;
+			cur[1]+=(float)mouse[2]/10;
 		}
 	}
 	//keyboard process
-	keyboard = mmap(0,72,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,kapfd,0);
+	//keyboard = mmap(0,72,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,kapfd,0);
+	posoff = mmap(0,12,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,kapfd,0);
 	kpid=syscall(SYS_clone,0,0);
 	if(kpid==0){
 		kfd=syscall(SYS_open,keyboardpath,0);
+		if(kfd==-1){
+			//syscall(SYS_munmap,keyboard,72);
+			syscall(1,"no keyboard found\n",18);
+			return 0;
+		}
+		char keyboard[72];
+#ifdef DYNAMIC_KEYS
+		char ck=0;
+		while(ck<7){
+			syscall(SYS_read,kfd,keyboard,72);
+			if(keyboard[44]==1){
+				key[ck]=keyboard[20];
+				ck++;
+			}
+		}
+#endif
 		while(1){
 			syscall(SYS_read,kfd,keyboard,72);
-		}
-	}
-
-
-
-	struct gbm_bo *next_bo;
-	int waiting_for_flip = 1;
-	aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
-
-	//moufd=syscall(SYS_open,mousepath,0);
-	posoff[3]=1;
-	while (1) {
-		//syscall(SYS_read,moufd,&mouse,3);
-		//cur[0]+=mouse[1];
-		//cur[1]+=mouse[2];
+#ifndef DYNAMIC_KEYS
+		//PS/2 keys
 		switch(keyboard[20]){
 		case 0x1b:{
-			posoff[2]-=0.5;
+			posoff[2]-=0.1;
 			break;
 			  }
 		case 0x1d:{
-			posoff[2]+=0.5;
+			posoff[2]+=0.1;
 			break;
 			  }
 		case 0x1c:{
-			posoff[0]+=0.5;
+			posoff[0]+=0.1;
 			break;
 			  }
 		case 0x23:{
-			posoff[0]-=0.5;
+			posoff[0]-=0.1;
 			break;
 			  }
 		case 0x24:{
-			posoff[1]-=0.5;
+			posoff[1]-=0.1;
 			break;
 			  }
 		case 0x15:{
-			posoff[1]+=0.5;
+			posoff[1]+=0.1;
 			break;
 			  }
 		case 0x2d:{
@@ -1120,12 +1384,125 @@ int main(int argc, char *argv[])
 			break;
 			  }
 		case 0x76:{
-			goto exit;
+			//goto exit;
+			syscall(SYS_exit,0);
 			  }
 		}
+#else
+		//if(keyboard[44]==1){
+			if(keyboard[keyoffset]==key[0])
+				posoff[2]-=0.6;
+			else if(keyboard[keyoffset]==key[1])
+				posoff[2]+=0.6;
+			else if(keyboard[keyoffset]==key[2])
+				posoff[0]+=0.6;
+			else if(keyboard[keyoffset]==key[3])
+				posoff[0]-=0.6;
+			else if(keyboard[keyoffset]==key[4])
+				posoff[1]-=0.6;
+			else if(keyboard[keyoffset]==key[5])
+				posoff[1]+=0.6;
+			else if (keyboard[44]==1 && keyboard[keyoffset]==key[6]){
+				//syscall(SYS_exit,0);
+				//syscall(SYS_kill,ppid,15);
+				quit[0]=1;
+				printf("quit");
+			}
+		//}
+		/*
+		if(keyboard[44]==0){
+			if(keyboard[keyoffset]==key[0] || keyboard[keyoffset]==key[1])
+				posoff[2]=0.0;
+			if(keyboard[keyoffset]==key[2] || keyboard[keyoffset]==key[3])
+				posoff[0]=0.0;
+			if(keyboard[keyoffset]==key[4] || keyboard[keyoffset]==key[5])
+				posoff[1]=0.0;
+		}
+		*/
+#endif
+		}
+	}
+
+
+
+	aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
+
+	//moufd=syscall(SYS_open,mousepath,0);
+	posoff[0]=0;
+	posoff[1]=0;
+	posoff[2]=20;
+		ESMatrix modelview;
+		esMatrixLoadIdentity(&modelview);
+		ESMatrix projection;
+		esMatrixLoadIdentity(&projection);
+		esFrustum(&projection, -2.8f*3, +2.8f*3, -2.8f * aspect*3, +2.8f * aspect*3, 10.00f, 100000000.0f);
+		ESMatrix modelviewprojection;
+		esMatrixLoadIdentity(&modelviewprojection);
+#define g 0.098
+	while(quit[0]==0) {
+		//posoff[1]=posoff[1]-g;
+		//syscall(SYS_read,moufd,&mouse,3);
+		//cur[0]+=mouse[1];
+		//cur[1]+=mouse[2];
 		if(mouse[0]==0x9){
-			if(posoff[0]<1&&posoff[0]>-1&&posoff[1]<1&&posoff[1]>-1&&posoff[2]<0){
+			if(posoff[0]<(1)&&posoff[0]>(-1)&&posoff[1]<(1)&&posoff[1]>(-1)&&posoff[2]>0){
 				write(1,"*You just shot a cube!*\n",25);
+				posoff[0]+=rand()%2;
+				posoff[1]+=rand()%2;
+				/*
+				cubeoff[0]=random()*0.2;
+				//cubeoff[1]=random()*1.1;
+				vVertices[0]+=cubeoff[0];
+				vVertices[3]+=cubeoff[0];
+				vVertices[6]+=cubeoff[0];
+				vVertices[9]+=cubeoff[0];
+				vVertices[12]+=cubeoff[0];
+				vVertices[15]+=cubeoff[0];
+				vVertices[18]+=cubeoff[0];
+				vVertices[21]+=cubeoff[0];
+				vVertices[24]+=cubeoff[0];
+				vVertices[27]+=cubeoff[0];
+				vVertices[30]+=cubeoff[0];
+				vVertices[33]+=cubeoff[0];
+				vVertices[36]+=cubeoff[0];
+				vVertices[39]+=cubeoff[0];
+				vVertices[1]+=cubeoff[0];
+				vVertices[4]+=cubeoff[0];
+				vVertices[7]+=cubeoff[0];
+				vVertices[10]+=cubeoff[0];
+				vVertices[13]+=cubeoff[0];
+				vVertices[16]+=cubeoff[0];
+				vVertices[19]+=cubeoff[0];
+				vVertices[22]+=cubeoff[0];
+				vVertices[25]+=cubeoff[0];
+				vVertices[28]+=cubeoff[0];
+				vVertices[31]+=cubeoff[0];
+				vVertices[34]+=cubeoff[0];
+				vVertices[37]+=cubeoff[0];
+				vVertices[40]+=cubeoff[0];
+				glBufferSubData(GL_ARRAY_BUFFER, gl.positionsoffset, vnum, &vVertices[0]);
+				*/
+	/*vVertices[] = {
+	-1.0f, 1.0f, 1.0f,     // Front-top-left
+	-1.0f, -1.0f, 1.0f,      // Front-top-right
+	1.0f, 1.0f, 1.0f,    // Front-bottom-left
+	1.0f, -1.0f, 1.0f,     // Front-bottom-right
+	1.0f, -1.0f, -1.0f,    // Back-bottom-right
+	-1.0f, -1.0f, 1.0f,      // Front-top-right
+	-1.0f, -1.0f, -1.0f,     // Back-top-right
+	-1.0f, 1.0f, 1.0f,     // Front-top-left
+	-1.0f, 1.0f, -1.0f,    // Back-top-left
+	1.0f, 1.0f, 1.0f,    // Front-bottom-left
+	1.0f, 1.0f, -1.0f,   // Back-bottom-left
+	1.0f, -1.0f, -1.0f,    // Back-bottom-right
+	-1.0f, 1.0f, -1.0f,    // Back-top-left
+	-1.0f, -1.0f, -1.0f      // Back-top-right
+	*/
+				//vVertices[
+
+			}else if(posoff[1]>100000){
+				write(1,"*You have reached the space! You win!*\n",40);
+				goto exit;
 			}
 		}
 
@@ -1135,51 +1512,55 @@ int main(int argc, char *argv[])
 		/*if(mouse[0]==12){
 			break;
 		}*/
-		ESMatrix modelview;
 
 		/* clear the color buffer */
-		glClearColor(1.0-(posoff[1]/100.0f), 1.0-(posoff[1]/10000.0f), 1.0-(posoff[1]/40000.0f), 1.0);
-		glClear(GL_COLOR_BUFFER_BIT);
+		//glClearColor((10/(posoff[1]+.01)), (1000.0f/(posoff[1]+.01)), (2500.0f/(posoff[1]+.01)), 1.0);
+		//glClear(GL_COLOR_BUFFER_BIT);
 
-		esMatrixLoadIdentity(&modelview);
-		
-		//ESMatrix camera;
-		//esMatrixLoadIdentity(&camera);
-		
-		//esTranslate(&modelview, 0.0f, 0.0f, -25.0f);
-		//esRotate(&camera, cur[0], 0.0f, 1.0f, 0.0f);
-		//esRotate(&camera, cur[1], 0.0f, 0.0f, 1.0f);
-		//esMatrixMultiply(&camera, &modelview, &modelview);
-		
+		//ESMatrix modelview;
+		//esMatrixLoadIdentity(&modelview);
+
+		//esTranslate(&modelview, 0.0, 0.0, 0.0);
+		//esTranslate(&modelview, posoff[0], posoff[1], posoff[2]);
+		//esRotate(&modelview, 90, 0.0f, 0.0f, 1.0f);
+		modelview.m[0][0]=1.0f;
+		modelview.m[0][1]=0.0f;
+		modelview.m[0][2]=0.0f;
+		modelview.m[0][3]=0.0f;
+		modelview.m[1][0]=0.0f;
+		modelview.m[1][1]=1.0f;
+		modelview.m[1][2]=0.0f;
+		modelview.m[1][3]=0.0f;
+		modelview.m[2][0]=0.0f;
+		modelview.m[2][1]=0.0f;
+		modelview.m[2][2]=1.0f;
+		modelview.m[2][3]=0.0f;
+		modelview.m[3][0]=0.0f;
+		modelview.m[3][1]=0.0f;
+		modelview.m[3][2]=0.0f;
+		modelview.m[3][3]=1.0f;
+		esRotate(&modelview, cur[0], 0.0f, 1.0f, 0.0f);
+		esRotate(&modelview, cur[1], 1.0f, 0.0f, 0.0f);
+
 		//posoff[0]=position[0];
 		//posoff[1]=position[1];
 		//posoff[2]=position[2];
 		//esTranslate(&modelview, position[0], position[1], position[2]);
-		esTranslate(&modelview, posoff[0], posoff[1], posoff[2]);
+		//esTranslate(&modelview, posoff[0], posoff[1], posoff[2]);
+		
 		//esRotate(&modelview, 45.0f + (0.25f * i), 1.0f, 0.0f, 0.0f);
 		//esRotate(&modelview, 45.0f - (0.5f * i), 0.0f, 1.0f, 0.0f);
 		//esRotate(&modelview, 10.0f + (0.15f * i), 0.0f, 0.0f, 1.0f);
-		esRotate(&modelview, cur[0], 0.0f, 1.0f, 0.0f);
-		esRotate(&modelview, cur[1], 1.0f, 0.0f, 0.0f);
-		/*
-		modelview[0][0]=posoff[0];
-		modelview[1][0]=posoff[0];
-		modelview[2][0]=posoff[0];
-		modelview[0][1]=posoff[1];
-		modelview[1][1]=posoff[1];
-		modelview[2][1]=posoff[1];
-		*/
+		
 
 		//GLfloat aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
 
-		ESMatrix projection;
-		esMatrixLoadIdentity(&projection);
+		//ESMatrix projection;
+		//esMatrixLoadIdentity(&projection);
 
 		//esFrustum(&projection, -frustumW, frustumW, -frustumH, frustumH, 1.0f, 100.0f);
-		esFrustum(&projection, -2.8f, +2.8f, -2.8f * aspect, +2.8f * aspect, 10.00f, 100000.0f);
+		//esFrustum(&projection, -2.8f*3, +2.8f*3, -2.8f * aspect*3, +2.8f * aspect*3, 10.00f, 100000000.0f);
 
-		ESMatrix modelviewprojection;
-		esMatrixLoadIdentity(&modelviewprojection);
 		esMatrixMultiply(&modelviewprojection, &modelview, &projection);
 
 		float normal[9];
@@ -1196,7 +1577,7 @@ int main(int argc, char *argv[])
 		glUniformMatrix4fv(gl.modelviewmatrix, 1, GL_FALSE, &modelview.m[0][0]);
 		glUniformMatrix4fv(gl.modelviewprojectionmatrix, 1, GL_FALSE, &modelviewprojection.m[0][0]);
 		glUniformMatrix3fv(gl.normalmatrix, 1, GL_FALSE, normal);
-		//glUniform4fv(gl.posoffvector, 1, posoff);
+		glUniform4fv(gl.posoffvector, 1, posoff);
 		//write(1,&posoff,16);
 
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, vnum/3);
@@ -1210,11 +1591,14 @@ int main(int argc, char *argv[])
 		next_bo = gbm_surface_lock_front_buffer(gbm.surface);
 		fb = drm_fb_get_from_bo(next_bo);
 
+		drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,0,0);
+	//			DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
 		/*
 		 * Here you could also update drm plane layers if you want
 		 * hw composition
 		 */
 
+		/*
 		ret = drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,
 				DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
 		if (ret) {
@@ -1237,6 +1621,7 @@ int main(int argc, char *argv[])
 			}
 			drmHandleEvent(drm.fd, &evctx);
 		}
+		*/
 
 		/* release last buffer to render on again: */
 		gbm_surface_release_buffer(gbm.surface, bo);
@@ -1249,7 +1634,8 @@ exit:
 	syscall(SYS_kill,spid,15);
 #endif
 	syscall(SYS_munmap,mouse,3);
-	syscall(SYS_munmap,keyboard,72);
+	syscall(SYS_munmap,cur,8);
+	syscall(SYS_munmap,posoff,12);
 	drmModeSetCrtc(drm.fd, drm.crtc_id, fb->fb_id, 0, 0,
 			&drm.connector_id, 1, drm.mode);
 	//drmModeFreeCrtc (crtc);
@@ -1259,6 +1645,12 @@ exit:
 		gbm_surface_release_buffer (gbm.surface, bo);
 	}
 
+	//glDetachShader(gl.program,vertex_shader);
+	//glDetachShader(gl.program,fragment_shader);
+	//glDeleteShader(vertex_shader);
+	//glDeleteShader(fragment_shader);
+	glDeleteProgram(gl.program);
+	//glDeleteBuffers(&bo);
 	eglDestroySurface (gl.display, gl.surface);
 	gbm_surface_destroy (gbm.surface);
 	eglDestroyContext (gl.display, gl.context);
