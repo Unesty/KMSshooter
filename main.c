@@ -38,13 +38,14 @@
 
 #define GL_GLEXT_PROTOTYPES 1
 #include <GLES2/gl2.h>
-#include <GLES2/gl2ext.h>
+//#include <GLES2/gl2ext.h>
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 
 #include <assert.h>
 
 #include "esUtil.h"
+#include "esTransform.c"
 #define PI 3.1415926535897932384626433832795f
 #include <math.h>
 
@@ -52,6 +53,7 @@
 #include <unistd.h>
 #include <sys/mman.h>
 #include <signal.h>
+
 
 #define DYNAMIC_KEYS
 #include <linux/input-event-codes.h>
@@ -243,7 +245,7 @@ static int init_gbm(void)
 	return 0;
 }
 
-int vnum=14*3*3+6;
+int vnum=14*3*4+9;
 //static const char *vertex_shader_source;
 //static const char *fragment_shader_source;
 //char mvfd, mffd;
@@ -298,6 +300,26 @@ int vnum=14*3*3+6;
 	30+1.0f, 30-1.0f, 5-1.0f,	// Back-bottom-right
 	30-1.0f, 30+1.0f, 5-1.0f,	// Back-top-left
 	30-1.0f, 30-1.0f, 5-1.0f,	// Back-top-right
+	30-1.0f, 30-1.0f, 5-1.0f,
+
+	-60.0f, 60.0f, 60.0f,
+	-60.0f, 60.0f, 60.0f,
+	-60.0f, 60.0f, 60.0f,	// Front-top-right
+	-60.0f, -60.0f, 60.0f,	// Front-top-left
+	60.0f, 60.0f, 60.0f,	// Front-bottom-left
+	60.0f, -60.0f, 60.0f,	// Front-bottom-right
+	60.0f, -60.0f, -60.0f,	// Back-bottom-right
+	-60.0f, -60.0f, 60.0f,	// Front-top-right
+	-60.0f, -60.0f, -60.0f,	// Back-top-right
+	-60.0f, 60.0f, 60.0f,	// Front-top-left
+	-60.0f, 60.0f, -60.0f,	// Back-top-left
+	60.0f, 60.0f, 60.0f,	// Front-bottom-left
+	60.0f, 60.0f, -60.0f,	// Back-bottom-left
+	60.0f, -60.0f, -60.0f,	// Back-bottom-right
+	-60.0f, 60.0f, -60.0f,	// Back-top-left
+	-60.0f, -60.0f, -60.0f,	// Back-top-right
+	-20.0f, -20.0f, -20.0f,	// Back-top-right
+	-10.0f, -20.0f, -20.0f,	// Back-top-right
 	/*
 			// front
 			-1.0f, -1.0f, +1.0f,
@@ -344,34 +366,154 @@ static int init_gl(void)
 			1.0f,  0.0f,  1.0f, // magenta
 			0.0f,  1.0f,  1.0f, // cyan
 			1.0f,  1.0f,  1.0f, // white
-			// back
+			
 			1.0f,  0.0f,  0.0f, // red
 			0.0f,  0.0f,  1.0f, // blue
+			1.0f,  1.0f,  1.0f, // white
 			1.0f,  1.0f,  0.0f, // yellow
 			0.0f,  1.0f,  0.0f, // green
-			// right
 			1.0f,  0.0f,  1.0f, // magenta
 			1.0f,  0.0f,  0.0f, // red
 			1.0f,  1.0f,  1.0f, // white
 			1.0f,  1.0f,  0.0f, // yellow
-			// left
-			0.0f,  0.0f,  0.0f, // black
 			0.0f,  0.0f,  1.0f, // blue
+			1.0f,  1.0f,  1.0f, // white
 			0.0f,  1.0f,  0.0f, // green
 			0.0f,  1.0f,  1.0f, // cyan
-			// top
+			0.0f,  0.0f,  1.0f, // blue
 			0.0f,  1.0f,  1.0f, // cyan
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  1.0f,  0.0f, // yellow
 			1.0f,  1.0f,  1.0f, // white
 			0.0f,  1.0f,  0.0f, // green
 			1.0f,  1.0f,  0.0f, // yellow
-			// bottom
-			0.0f,  0.0f,  0.0f, // black
+			1.0f,  1.0f,  1.0f, // white
 			1.0f,  0.0f,  0.0f, // red
 			0.0f,  0.0f,  1.0f, // blue
-			1.0f,  0.0f,  1.0f  // magenta
+			1.0f,  0.0f,  1.0f, // magenta
+			1.0f,  1.0f,  0.0f, // yellow
+			0.0f,  1.0f,  1.0f, // cyan
+			1.0f,  0.0f,  1.0f, // magenta
+			1.0f,  1.0f,  1.0f, // white
+			0.0f,  1.0f,  1.0f, // cyan
+			1.0f,  0.0f,  0.0f, // red
+			0.0f,  0.0f,  1.0f, // blue
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  1.0f,  0.0f, // yellow
+			1.0f,  0.0f,  1.0f, // magenta
+			0.0f,  1.0f,  1.0f, // cyan
+			1.0f,  0.0f,  1.0f, // magenta
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  0.0f,  0.0f, // red
+			1.0f,  0.0f,  1.0f, // magenta
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  1.0f,  1.0f, // white
+			0.0f,  1.0f,  0.0f, // green
+			0.0f,  1.0f,  1.0f, // cyan
+			0.0f,  0.0f,  1.0f, // blue
+			0.0f,  1.0f,  1.0f, // cyan
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  1.0f,  0.0f, // yellow
+			1.0f,  1.0f,  1.0f, // white
+			0.0f,  1.0f,  0.0f, // green
+			1.0f,  1.0f,  0.0f, // yellow
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  0.0f,  0.0f, // red
+			0.0f,  0.0f,  1.0f, // blue
+			1.0f,  0.0f,  1.0f, // magenta
+			1.0f,  1.0f,  0.0f, // yellow
+			0.0f,  1.0f,  1.0f, // cyan
+			1.0f,  0.0f,  1.0f, // magenta
+			1.0f,  1.0f,  1.0f, // white
+			0.0f,  1.0f,  1.0f, // cyan
+			1.0f,  0.0f,  0.0f, // red
+			0.0f,  0.0f,  1.0f, // blue
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  1.0f,  0.0f, // yellow
+			1.0f,  0.0f,  1.0f, // magenta
+			0.0f,  1.0f,  1.0f, // cyan
+			1.0f,  0.0f,  1.0f, // magenta
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  0.0f,  0.0f, // red
+			1.0f,  0.0f,  1.0f, // magenta
+			1.0f,  1.0f,  1.0f, // white
+			1.0f,  1.0f,  1.0f, // white
 	};
 
 	static const GLfloat vNormals[] = {
+			// front
+			+0.0f, +0.0f, +1.0f, // forward
+			+0.0f, +0.0f, +1.0f, // forward
+			+1.0f, +0.0f, +1.0f, // forward
+			+1.0f, -1.0f, +1.0f, // forward
+			+1.0f, -1.0f, 0.0f, // right
+			-1.0f, -1.0f, 0.0f, // down
+			-1.0f, -1.0f, +0.0f, // down
+			-1.0f, +1.0f, +0.0f, // left
+			-1.0f, +1.0f, +0.0f, // left
+			+1.0f, +1.0f, +0.0f, // up
+			+1.0f, +1.0f, -1.0f, // up
+			+1.0f, +0.0f, -1.0f, // right
+			// back
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			// front
+			+0.0f, +0.0f, +1.0f, // forward
+			+0.0f, +0.0f, +1.0f, // forward
+			+1.0f, +0.0f, +1.0f, // forward
+			+1.0f, -1.0f, +1.0f, // forward
+			+1.0f, -1.0f, 0.0f, // right
+			-1.0f, -1.0f, 0.0f, // down
+			-1.0f, -1.0f, +0.0f, // down
+			-1.0f, +1.0f, +0.0f, // left
+			-1.0f, +1.0f, +0.0f, // left
+			+1.0f, +1.0f, +0.0f, // up
+			+1.0f, +1.0f, -1.0f, // up
+			+1.0f, +0.0f, -1.0f, // right
+			// back
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			// front
+			+0.0f, +0.0f, +1.0f, // forward
+			+0.0f, +0.0f, +1.0f, // forward
+			+1.0f, +0.0f, +1.0f, // forward
+			+1.0f, -1.0f, +1.0f, // forward
+			+1.0f, -1.0f, 0.0f, // right
+			-1.0f, -1.0f, 0.0f, // down
+			-1.0f, -1.0f, +0.0f, // down
+			-1.0f, +1.0f, +0.0f, // left
+			-1.0f, +1.0f, +0.0f, // left
+			+1.0f, +1.0f, +0.0f, // up
+			+1.0f, +1.0f, -1.0f, // up
+			+1.0f, +0.0f, -1.0f, // right
+			// back
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			// front
+			+0.0f, +0.0f, +1.0f, // forward
+			+0.0f, +0.0f, +1.0f, // forward
+			+1.0f, +0.0f, +1.0f, // forward
+			+1.0f, -1.0f, +1.0f, // forward
+			+1.0f, -1.0f, 0.0f, // right
+			-1.0f, -1.0f, 0.0f, // down
+			-1.0f, -1.0f, +0.0f, // down
+			-1.0f, +1.0f, +0.0f, // left
+			-1.0f, +1.0f, +0.0f, // left
+			+1.0f, +1.0f, +0.0f, // up
+			+1.0f, +1.0f, -1.0f, // up
+			+1.0f, +0.0f, -1.0f, // right
+			// back
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
+			+0.0f, +0.0f, -1.0f, // backward
 			// front
 			+0.0f, +0.0f, +1.0f, // forward
 			+0.0f, +0.0f, +1.0f, // forward
@@ -453,11 +595,11 @@ static int init_gl(void)
 			"precision mediump float;           \n"
 			"                                   \n"
 			"varying vec4 vVaryingColor;        \n"
-			"uniform vec4 posoffvector;      \n"
+			//"uniform vec4 posoffvector;      \n"
 			"                                   \n"
 			"void main()                        \n"
 			"{                                  \n"
-			"    gl_FragColor = vVaryingColor+posoffvector;  \n"
+			"    gl_FragColor = vVaryingColor;  \n"
 			"}                                  \n";
 
 
@@ -673,6 +815,9 @@ char channels;
 #endif
 
 GLfloat aspect,frustumW,frustumH;
+float nearcp=6.0f;
+float farcp=2000.0f;
+float viewsize=4.0f;
 
 float *posoff;
 float cubeoff[2]={0,0};
@@ -688,8 +833,11 @@ int main(int argc, char *argv[])
 	//read config
 	conf.fd = open("editme.conf",0);
 	if(conf.fd==-1){
+		conf.fd = open("/etc/editme.conf",0);
+	if(conf.fd==-1){
 		syscall(SYS_write,1,"ERROR: no editme.conf\n",21);
 		return -1;
+	}
 	}
 	conf.size = read(conf.fd,&conf.text,2000);
 	close(conf.fd);
@@ -1435,21 +1583,22 @@ int main(int argc, char *argv[])
 		esMatrixLoadIdentity(&modelview);
 		ESMatrix projection;
 		esMatrixLoadIdentity(&projection);
-		esFrustum(&projection, -2.8f*3, +2.8f*3, -2.8f * aspect*3, +2.8f * aspect*3, 10.00f, 100000000.0f);
+		esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
 		ESMatrix modelviewprojection;
 		esMatrixLoadIdentity(&modelviewprojection);
 #define g 0.098
 	while(quit[0]==0) {
-		//posoff[1]=posoff[1]-g;
+		posoff[1]=posoff[1]-g*(posoff[1]>-50);
 		//syscall(SYS_read,moufd,&mouse,3);
 		//cur[0]+=mouse[1];
 		//cur[1]+=mouse[2];
+		/*
 		if(mouse[0]==0x9){
 			if(posoff[0]<(1)&&posoff[0]>(-1)&&posoff[1]<(1)&&posoff[1]>(-1)&&posoff[2]>0){
 				write(1,"*You just shot a cube!*\n",25);
 				posoff[0]+=rand()%2;
 				posoff[1]+=rand()%2;
-				/*
+
 				cubeoff[0]=random()*0.2;
 				//cubeoff[1]=random()*1.1;
 				vVertices[0]+=cubeoff[0];
@@ -1500,11 +1649,131 @@ int main(int argc, char *argv[])
 	*/
 				//vVertices[
 
+		/*
 			}else if(posoff[1]>100000){
 				write(1,"*You have reached the space! You win!*\n",40);
 				goto exit;
 			}
 		}
+		*/
+		/*
+		switch(mouse[0]){
+		case 0x09:
+			farcp-=10.0f;
+			projection.m[0][0]=1.0f;
+			projection.m[0][1]=0.0f;
+			projection.m[0][2]=0.0f;
+			projection.m[0][3]=0.0f;
+			projection.m[1][0]=0.0f;
+			projection.m[1][1]=1.0f;
+			projection.m[1][2]=0.0f;
+			projection.m[1][3]=0.0f;
+			projection.m[2][0]=0.0f;
+			projection.m[2][1]=0.0f;
+			projection.m[2][2]=1.0f;
+			projection.m[2][3]=0.0f;
+			projection.m[3][0]=0.0f;
+			projection.m[3][1]=0.0f;
+			projection.m[3][2]=0.0f;
+			projection.m[3][3]=1.0f;
+			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
+		case 0x29:
+			farcp+=10.0f;
+			projection.m[0][0]=1.0f;
+			projection.m[0][1]=0.0f;
+			projection.m[0][2]=0.0f;
+			projection.m[0][3]=0.0f;
+			projection.m[1][0]=0.0f;
+			projection.m[1][1]=1.0f;
+			projection.m[1][2]=0.0f;
+			projection.m[1][3]=0.0f;
+			projection.m[2][0]=0.0f;
+			projection.m[2][1]=0.0f;
+			projection.m[2][2]=1.0f;
+			projection.m[2][3]=0.0f;
+			projection.m[3][0]=0.0f;
+			projection.m[3][1]=0.0f;
+			projection.m[3][2]=0.0f;
+			projection.m[3][3]=1.0f;
+			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
+		case 0x0a:
+			nearcp+=1.0f;
+			projection.m[0][0]=1.0f;
+			projection.m[0][1]=0.0f;
+			projection.m[0][2]=0.0f;
+			projection.m[0][3]=0.0f;
+			projection.m[1][0]=0.0f;
+			projection.m[1][1]=1.0f;
+			projection.m[1][2]=0.0f;
+			projection.m[1][3]=0.0f;
+			projection.m[2][0]=0.0f;
+			projection.m[2][1]=0.0f;
+			projection.m[2][2]=1.0f;
+			projection.m[2][3]=0.0f;
+			projection.m[3][0]=0.0f;
+			projection.m[3][1]=0.0f;
+			projection.m[3][2]=0.0f;
+			projection.m[3][3]=1.0f;
+			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
+		case 0x1a:
+			nearcp-=1.0f;
+			projection.m[0][0]=1.0f;
+			projection.m[0][1]=0.0f;
+			projection.m[0][2]=0.0f;
+			projection.m[0][3]=0.0f;
+			projection.m[1][0]=0.0f;
+			projection.m[1][1]=1.0f;
+			projection.m[1][2]=0.0f;
+			projection.m[1][3]=0.0f;
+			projection.m[2][0]=0.0f;
+			projection.m[2][1]=0.0f;
+			projection.m[2][2]=1.0f;
+			projection.m[2][3]=0.0f;
+			projection.m[3][0]=0.0f;
+			projection.m[3][1]=0.0f;
+			projection.m[3][2]=0.0f;
+			projection.m[3][3]=1.0f;
+			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
+		case 0x0c:
+			viewsize-=1.0f;
+			projection.m[0][0]=1.0f;
+			projection.m[0][1]=0.0f;
+			projection.m[0][2]=0.0f;
+			projection.m[0][3]=0.0f;
+			projection.m[1][0]=0.0f;
+			projection.m[1][1]=1.0f;
+			projection.m[1][2]=0.0f;
+			projection.m[1][3]=0.0f;
+			projection.m[2][0]=0.0f;
+			projection.m[2][1]=0.0f;
+			projection.m[2][2]=1.0f;
+			projection.m[2][3]=0.0f;
+			projection.m[3][0]=0.0f;
+			projection.m[3][1]=0.0f;
+			projection.m[3][2]=0.0f;
+			projection.m[3][3]=1.0f;
+			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
+		case 0x2c:
+			viewsize+=1.0f;
+			projection.m[0][0]=1.0f;
+			projection.m[0][1]=0.0f;
+			projection.m[0][2]=0.0f;
+			projection.m[0][3]=0.0f;
+			projection.m[1][0]=0.0f;
+			projection.m[1][1]=1.0f;
+			projection.m[1][2]=0.0f;
+			projection.m[1][3]=0.0f;
+			projection.m[2][0]=0.0f;
+			projection.m[2][1]=0.0f;
+			projection.m[2][2]=1.0f;
+			projection.m[2][3]=0.0f;
+			projection.m[3][0]=0.0f;
+			projection.m[3][1]=0.0f;
+			projection.m[3][2]=0.0f;
+			projection.m[3][3]=1.0f;
+			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
+		}
+		*/
 
 		waiting_for_flip = 1;
 		i++;
@@ -1514,8 +1783,8 @@ int main(int argc, char *argv[])
 		}*/
 
 		/* clear the color buffer */
-		//glClearColor((10/(posoff[1]+.01)), (1000.0f/(posoff[1]+.01)), (2500.0f/(posoff[1]+.01)), 1.0);
-		//glClear(GL_COLOR_BUFFER_BIT);
+		glClearColor((10/(posoff[1]+.01)), (1000.0f/(posoff[1]+.01)), (2500.0f/(posoff[1]+.01)), 1.0);
+		glClear(GL_COLOR_BUFFER_BIT);
 
 		//ESMatrix modelview;
 		//esMatrixLoadIdentity(&modelview);
@@ -1591,14 +1860,14 @@ int main(int argc, char *argv[])
 		next_bo = gbm_surface_lock_front_buffer(gbm.surface);
 		fb = drm_fb_get_from_bo(next_bo);
 
-		drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,0,0);
+		//drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,0,0);
 	//			DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
 		/*
 		 * Here you could also update drm plane layers if you want
 		 * hw composition
 		 */
 
-		/*
+		
 		ret = drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,
 				DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
 		if (ret) {
@@ -1621,7 +1890,7 @@ int main(int argc, char *argv[])
 			}
 			drmHandleEvent(drm.fd, &evctx);
 		}
-		*/
+		
 
 		/* release last buffer to render on again: */
 		gbm_surface_release_buffer(gbm.surface, bo);

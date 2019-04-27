@@ -1,0 +1,4 @@
+gcc -I/usr/include/libdrm -I/usr/include -L/usr/lib -I/usr/lib       -O1 main.c -o kmsshooter -ldrm -lGLESv2 -lgbm -lGL -lm -lEGL
+#gcc -lm -I/usr/include/libdrm -O1 main.c -o main
+#gcc -lm -I/usr/include/libdrm  -I/usr/include -ldrm -lGLESv2 -lgbm -lGL  -lEGL -O1 main.s -o main.o
+#gcc -lm -I/usr/include/libdrm  -I/usr/include -ldrm -lGLESv2 -lgbm -lGL  -lEGL -O1 main.o -o main
