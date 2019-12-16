@@ -1,31 +1,7 @@
-/*
- * Copyright (c) 2012 Arvin Schnell <arvin.schnell@gmail.com>
- * Copyright (c) 2012 Rob Clark <rob@ti.com>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sub license,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice (including the
- * next paragraph) shall be included in all copies or substantial portions
- * of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
-
-/* Based on a egl cube test app originally written by Arvin Schnell */
-
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/ioctl.h>
+#include <sys/time.h>
 #include <fcntl.h>
 #include <string.h>
 #include <stdio.h>
@@ -34,19 +10,21 @@
 
 #include <xf86drm.h>
 #include <xf86drmMode.h>
+//#include <libdrm/drm.h>
+//#include <libdrm/drm_mode.h>
+
 #include <gbm.h>
 
 #define GL_GLEXT_PROTOTYPES 1
-#include <GLES2/gl2.h>
+//#include <GLES3/gl32.h>
 //#include <GLES2/gl2ext.h>
+#include <GL/glcorearb.h>
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 
 #include <assert.h>
 
-#include "esUtil.h"
-#include "esTransform.c"
-#define PI 3.1415926535897932384626433832795f
+#define PI 3.1415926535897932384626433832795
 #include <math.h>
 
 #include <sys/syscall.h>
@@ -54,6 +32,8 @@
 #include <sys/mman.h>
 #include <signal.h>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb/stb_image.h>
 
 #define DYNAMIC_KEYS
 #include <linux/input-event-codes.h>
@@ -63,13 +43,14 @@
 
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
+//char mouse[3];
 char *mouse;
 char moufd;
 char mapfd;
-//char *keyboard;
+char *keyboard;
 char kfd;
 char kapfd;
-//float cur[2];
+//float cur[2]={90,-90};
 float *cur;
 //float position[3];
 
@@ -80,10 +61,13 @@ static struct {
 	EGLConfig config;
 	EGLContext context;
 	EGLSurface surface;
-	GLuint program;
-	GLint modelviewmatrix, modelviewprojectionmatrix, normalmatrix, posoffvector;
-	GLuint vbo;
-	GLuint positionsoffset, colorsoffset, normalsoffset;
+	unsigned int program;
+	unsigned int mouse;
+	unsigned int time;
+	unsigned int resolution;
+	unsigned int textures[5];
+	unsigned int vbo;
+	unsigned int positionsoffset, colorsoffset, normalsoffset;
 } gl;
 
 static struct {
@@ -103,660 +87,26 @@ struct drm_fb {
 	uint32_t fb_id;
 };
 
-static uint32_t find_crtc_for_encoder(const drmModeRes *resources,
-				      const drmModeEncoder *encoder) {
-	int i;
-
-	for (i = 0; i < resources->count_crtcs; i++) {
-		/* possible_crtcs is a bitmask as described here:
-		 * https://dvdhrm.wordpress.com/2012/09/13/linux-drm-mode-setting-api
-		 */
-		const uint32_t crtc_mask = 1 << i;
-		const uint32_t crtc_id = resources->crtcs[i];
-		if (encoder->possible_crtcs & crtc_mask) {
-			return crtc_id;
-		}
-	}
-
-	/* no match found */
-	return -1;
-}
-
-static uint32_t find_crtc_for_connector(const drmModeRes *resources,
-					const drmModeConnector *connector) {
-	int i;
-
-	for (i = 0; i < connector->count_encoders; i++) {
-		const uint32_t encoder_id = connector->encoders[i];
-		drmModeEncoder *encoder = drmModeGetEncoder(drm.fd, encoder_id);
-
-		if (encoder) {
-			const uint32_t crtc_id = find_crtc_for_encoder(resources, encoder);
-
-			drmModeFreeEncoder(encoder);
-			if (crtc_id != 0) {
-				return crtc_id;
-			}
-		}
-	}
-
-	/* no match found */
-	return -1;
-}
-
-static int init_drm(void)
-{
-	drmModeRes *resources;
-	drmModeConnector *connector = NULL;
-	drmModeEncoder *encoder = NULL;
-	int i, area;
-
-	drm.fd = open(cardpath, O_RDWR);
-
-	if (drm.fd < 0) {
-		printf("could not open drm device\n");
-		return -1;
-	}
-
-	resources = drmModeGetResources(drm.fd);
-	if (!resources) {
-		printf("drmModeGetResources failed: %s\n", strerror(errno));
-		return -1;
-	}
-
-	/* find a connected connector: */
-	for (i = 0; i < resources->count_connectors; i++) {
-		connector = drmModeGetConnector(drm.fd, resources->connectors[i]);
-		if (connector->connection == DRM_MODE_CONNECTED) {
-			/* it's connected, let's use this! */
-			break;
-		}
-		drmModeFreeConnector(connector);
-		connector = NULL;
-	}
-
-	if (!connector) {
-		/* we could be fancy and listen for hotplug events and wait for
-		 * a connector..
-		 */
-		printf("no connected connector!\n");
-		return -1;
-	}
-
-	/* find prefered mode or the highest resolution mode: */
-	for (i = 0, area = 0; i < connector->count_modes; i++) {
-		drmModeModeInfo *current_mode = &connector->modes[i];
-
-		if (current_mode->type & DRM_MODE_TYPE_PREFERRED) {
-			drm.mode = current_mode;
-		}
-
-		int current_area = current_mode->hdisplay * current_mode->vdisplay;
-		if (current_area > area) {
-			drm.mode = current_mode;
-			area = current_area;
-		}
-	}
-
-	if (!drm.mode) {
-		printf("could not find mode!\n");
-		return -1;
-	}
-
-	/* find encoder: */
-	for (i = 0; i < resources->count_encoders; i++) {
-		encoder = drmModeGetEncoder(drm.fd, resources->encoders[i]);
-		if (encoder->encoder_id == connector->encoder_id)
-			break;
-		drmModeFreeEncoder(encoder);
-		encoder = NULL;
-	}
-
-	if (encoder) {
-		drm.crtc_id = encoder->crtc_id;
-	} else {
-		uint32_t crtc_id = find_crtc_for_connector(resources, connector);
-		if (crtc_id == 0) {
-			printf("no crtc found!\n");
-			return -1;
-		}
-
-		drm.crtc_id = crtc_id;
-	}
-
-	drm.connector_id = connector->connector_id;
-
-	return 0;
-}
-
-static int init_gbm(void)
-{
-	gbm.dev = gbm_create_device(drm.fd);
-
-	gbm.surface = gbm_surface_create(gbm.dev,
-			drm.mode->hdisplay, drm.mode->vdisplay,
-			GBM_FORMAT_XRGB8888,
-			GBM_BO_USE_SCANOUT | GBM_BO_USE_RENDERING);
-	if (!gbm.surface) {
-		printf("failed to create gbm surface\n");
-		return -1;
-	}
-
-	return 0;
-}
-
 int vnum=14*3*4+9;
-//static const char *vertex_shader_source;
-//static const char *fragment_shader_source;
-//char mvfd, mffd;
-	static GLfloat vVertices[] = {
-	-1.0f, 1.0f, 1.0f,	// Front-top-left
-	-1.0f, -1.0f, 1.0f,	// Front-top-right
-	1.0f, 1.0f, 1.0f,	// Front-bottom-left
-	1.0f, -1.0f, 1.0f,	// Front-bottom-right
-	1.0f, -1.0f, -1.0f,	// Back-bottom-right
-	-1.0f, -1.0f, 1.0f,	// Front-top-right
-	-1.0f, -1.0f, -1.0f,	// Back-top-right
-	-1.0f, 1.0f, 1.0f,	// Front-top-left
-	-1.0f, 1.0f, -1.0f,	// Back-top-left
-	1.0f, 1.0f, 1.0f,	// Front-bottom-left
-	1.0f, 1.0f, -1.0f,	// Back-bottom-left
-	1.0f, -1.0f, -1.0f,	// Back-bottom-right
-	-1.0f, 1.0f, -1.0f,	// Back-top-left
-	-1.0f, -1.0f, -1.0f,	// Back-top-right
-	-1.0f, -1.0f, -1.0f,
-
-	25-1.0f, 25+1.0f, 25+1.0f,
-	25-1.0f, 25+1.0f, 25+1.0f,
-	25-1.0f, 25+1.0f, 25+1.0f,	// Front-top-left
-	25-1.0f, 25-1.0f, 25+1.0f,	// Front-top-right
-	25+1.0f, 25+1.0f, 25+1.0f,	// Front-bottom-left
-	25+1.0f, 25-1.0f, 25+1.0f,	// Front-bottom-right
-	25+1.0f, 25-1.0f, 25-1.0f,	// Back-bottom-right
-	25-1.0f, 25-1.0f, 25+1.0f,	// Front-top-right
-	25-1.0f, 25-1.0f, 25-1.0f,	// Back-top-right
-	25-1.0f, 25+1.0f, 25+1.0f,	// Front-top-left
-	25-1.0f, 25+1.0f, 25-1.0f,	// Back-top-left
-	25+1.0f, 25+1.0f, 25+1.0f,	// Front-bottom-left
-	25+1.0f, 25+1.0f, 25-1.0f,	// Back-bottom-left
-	25+1.0f, 25-1.0f, 25-1.0f,	// Back-bottom-right
-	25-1.0f, 25+1.0f, 25-1.0f,	// Back-top-left
-	25-1.0f, 25-1.0f, 25-1.0f,	// Back-top-right
-	25-1.0f, 25-1.0f, 25-1.0f,
-
-	30-1.0f, 30+1.0f, 5+1.0f,
-	30-1.0f, 30+1.0f, 5+1.0f,
-	30-1.0f, 30+1.0f, 5+1.0f,	// Front-top-left
-	30-1.0f, 30-1.0f, 5+1.0f,	// Front-top-right
-	30+1.0f, 30+1.0f, 5+1.0f,	// Front-bottom-left
-	30+1.0f, 30-1.0f, 5+1.0f,	// Front-bottom-right
-	30+1.0f, 30-1.0f, 5-1.0f,	// Back-bottom-right
-	30-1.0f, 30-1.0f, 5+1.0f,	// Front-top-right
-	30-1.0f, 30-1.0f, 5-1.0f,	// Back-top-right
-	30-1.0f, 30+1.0f, 5+1.0f,	// Front-top-left
-	30-1.0f, 30+1.0f, 5-1.0f,	// Back-top-left
-	30+1.0f, 30+1.0f, 5+1.0f,	// Front-bottom-left
-	30+1.0f, 30+1.0f, 5-1.0f,	// Back-bottom-left
-	30+1.0f, 30-1.0f, 5-1.0f,	// Back-bottom-right
-	30-1.0f, 30+1.0f, 5-1.0f,	// Back-top-left
-	30-1.0f, 30-1.0f, 5-1.0f,	// Back-top-right
-	30-1.0f, 30-1.0f, 5-1.0f,
-
-	-60.0f, 60.0f, 60.0f,
-	-60.0f, 60.0f, 60.0f,
-	-60.0f, 60.0f, 60.0f,	// Front-top-right
-	-60.0f, -60.0f, 60.0f,	// Front-top-left
-	60.0f, 60.0f, 60.0f,	// Front-bottom-left
-	60.0f, -60.0f, 60.0f,	// Front-bottom-right
-	60.0f, -60.0f, -60.0f,	// Back-bottom-right
-	-60.0f, -60.0f, 60.0f,	// Front-top-right
-	-60.0f, -60.0f, -60.0f,	// Back-top-right
-	-60.0f, 60.0f, 60.0f,	// Front-top-left
-	-60.0f, 60.0f, -60.0f,	// Back-top-left
-	60.0f, 60.0f, 60.0f,	// Front-bottom-left
-	60.0f, 60.0f, -60.0f,	// Back-bottom-left
-	60.0f, -60.0f, -60.0f,	// Back-bottom-right
-	-60.0f, 60.0f, -60.0f,	// Back-top-left
-	-60.0f, -60.0f, -60.0f,	// Back-top-right
-	-20.0f, -20.0f, -20.0f,	// Back-top-right
-	-10.0f, -20.0f, -20.0f,	// Back-top-right
-	/*
-			// front
-			-1.0f, -1.0f, +1.0f,
-			+1.0f, -1.0f, +1.0f,
-			-1.0f, +1.0f, +1.0f,
-			+1.0f, +1.0f, +1.0f,
-			// back
-			+1.0f, -1.0f, -1.0f,
-			-1.0f, -1.0f, -1.0f,
-			+1.0f, +1.0f, -1.0f,
-			-1.0f, +1.0f, -1.0f,
-			// right
-			+1.0f, -1.0f, +1.0f,
-			+1.0f, -1.0f, -1.0f,
-			+1.0f, +1.0f, +1.0f,
-			+1.0f, +1.0f, -1.0f,
-			// left
-			-1.0f, -1.0f, -1.0f,
-			-1.0f, -1.0f, +1.0f,
-			-1.0f, +1.0f, -1.0f,
-			-1.0f, +1.0f, +1.0f,
-			// top
-			-1.0f, +1.0f, +1.0f,
-			+1.0f, +1.0f, +1.0f,
-			-1.0f, +1.0f, -1.0f,
-			+1.0f, +1.0f, -1.0f,
-			// bottom
-			-1.0f, -1.0f, -1.0f,
-			+1.0f, -1.0f, -1.0f,
-			-1.0f, -1.0f, +1.0f,
-			+1.0f, -1.0f, +1.0f,
-			*/
-	};
-static int init_gl(void)
-{
-	EGLint major, minor, n;
-	GLuint vertex_shader, fragment_shader;
-	GLint ret;
-
-
-	static const GLfloat vColors[] = {
-			// front
-			0.0f,  0.0f,  1.0f, // blue
-			1.0f,  0.0f,  1.0f, // magenta
-			0.0f,  1.0f,  1.0f, // cyan
-			1.0f,  1.0f,  1.0f, // white
-			
-			1.0f,  0.0f,  0.0f, // red
-			0.0f,  0.0f,  1.0f, // blue
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  1.0f,  0.0f, // yellow
-			0.0f,  1.0f,  0.0f, // green
-			1.0f,  0.0f,  1.0f, // magenta
-			1.0f,  0.0f,  0.0f, // red
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  1.0f,  0.0f, // yellow
-			0.0f,  0.0f,  1.0f, // blue
-			1.0f,  1.0f,  1.0f, // white
-			0.0f,  1.0f,  0.0f, // green
-			0.0f,  1.0f,  1.0f, // cyan
-			0.0f,  0.0f,  1.0f, // blue
-			0.0f,  1.0f,  1.0f, // cyan
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  1.0f,  0.0f, // yellow
-			1.0f,  1.0f,  1.0f, // white
-			0.0f,  1.0f,  0.0f, // green
-			1.0f,  1.0f,  0.0f, // yellow
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  0.0f,  0.0f, // red
-			0.0f,  0.0f,  1.0f, // blue
-			1.0f,  0.0f,  1.0f, // magenta
-			1.0f,  1.0f,  0.0f, // yellow
-			0.0f,  1.0f,  1.0f, // cyan
-			1.0f,  0.0f,  1.0f, // magenta
-			1.0f,  1.0f,  1.0f, // white
-			0.0f,  1.0f,  1.0f, // cyan
-			1.0f,  0.0f,  0.0f, // red
-			0.0f,  0.0f,  1.0f, // blue
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  1.0f,  0.0f, // yellow
-			1.0f,  0.0f,  1.0f, // magenta
-			0.0f,  1.0f,  1.0f, // cyan
-			1.0f,  0.0f,  1.0f, // magenta
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  0.0f,  0.0f, // red
-			1.0f,  0.0f,  1.0f, // magenta
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  1.0f,  1.0f, // white
-			0.0f,  1.0f,  0.0f, // green
-			0.0f,  1.0f,  1.0f, // cyan
-			0.0f,  0.0f,  1.0f, // blue
-			0.0f,  1.0f,  1.0f, // cyan
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  1.0f,  0.0f, // yellow
-			1.0f,  1.0f,  1.0f, // white
-			0.0f,  1.0f,  0.0f, // green
-			1.0f,  1.0f,  0.0f, // yellow
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  0.0f,  0.0f, // red
-			0.0f,  0.0f,  1.0f, // blue
-			1.0f,  0.0f,  1.0f, // magenta
-			1.0f,  1.0f,  0.0f, // yellow
-			0.0f,  1.0f,  1.0f, // cyan
-			1.0f,  0.0f,  1.0f, // magenta
-			1.0f,  1.0f,  1.0f, // white
-			0.0f,  1.0f,  1.0f, // cyan
-			1.0f,  0.0f,  0.0f, // red
-			0.0f,  0.0f,  1.0f, // blue
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  1.0f,  0.0f, // yellow
-			1.0f,  0.0f,  1.0f, // magenta
-			0.0f,  1.0f,  1.0f, // cyan
-			1.0f,  0.0f,  1.0f, // magenta
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  0.0f,  0.0f, // red
-			1.0f,  0.0f,  1.0f, // magenta
-			1.0f,  1.0f,  1.0f, // white
-			1.0f,  1.0f,  1.0f, // white
-	};
-
-	static const GLfloat vNormals[] = {
-			// front
-			+0.0f, +0.0f, +1.0f, // forward
-			+0.0f, +0.0f, +1.0f, // forward
-			+1.0f, +0.0f, +1.0f, // forward
-			+1.0f, -1.0f, +1.0f, // forward
-			+1.0f, -1.0f, 0.0f, // right
-			-1.0f, -1.0f, 0.0f, // down
-			-1.0f, -1.0f, +0.0f, // down
-			-1.0f, +1.0f, +0.0f, // left
-			-1.0f, +1.0f, +0.0f, // left
-			+1.0f, +1.0f, +0.0f, // up
-			+1.0f, +1.0f, -1.0f, // up
-			+1.0f, +0.0f, -1.0f, // right
-			// back
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			// front
-			+0.0f, +0.0f, +1.0f, // forward
-			+0.0f, +0.0f, +1.0f, // forward
-			+1.0f, +0.0f, +1.0f, // forward
-			+1.0f, -1.0f, +1.0f, // forward
-			+1.0f, -1.0f, 0.0f, // right
-			-1.0f, -1.0f, 0.0f, // down
-			-1.0f, -1.0f, +0.0f, // down
-			-1.0f, +1.0f, +0.0f, // left
-			-1.0f, +1.0f, +0.0f, // left
-			+1.0f, +1.0f, +0.0f, // up
-			+1.0f, +1.0f, -1.0f, // up
-			+1.0f, +0.0f, -1.0f, // right
-			// back
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			// front
-			+0.0f, +0.0f, +1.0f, // forward
-			+0.0f, +0.0f, +1.0f, // forward
-			+1.0f, +0.0f, +1.0f, // forward
-			+1.0f, -1.0f, +1.0f, // forward
-			+1.0f, -1.0f, 0.0f, // right
-			-1.0f, -1.0f, 0.0f, // down
-			-1.0f, -1.0f, +0.0f, // down
-			-1.0f, +1.0f, +0.0f, // left
-			-1.0f, +1.0f, +0.0f, // left
-			+1.0f, +1.0f, +0.0f, // up
-			+1.0f, +1.0f, -1.0f, // up
-			+1.0f, +0.0f, -1.0f, // right
-			// back
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			// front
-			+0.0f, +0.0f, +1.0f, // forward
-			+0.0f, +0.0f, +1.0f, // forward
-			+1.0f, +0.0f, +1.0f, // forward
-			+1.0f, -1.0f, +1.0f, // forward
-			+1.0f, -1.0f, 0.0f, // right
-			-1.0f, -1.0f, 0.0f, // down
-			-1.0f, -1.0f, +0.0f, // down
-			-1.0f, +1.0f, +0.0f, // left
-			-1.0f, +1.0f, +0.0f, // left
-			+1.0f, +1.0f, +0.0f, // up
-			+1.0f, +1.0f, -1.0f, // up
-			+1.0f, +0.0f, -1.0f, // right
-			// back
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			// front
-			+0.0f, +0.0f, +1.0f, // forward
-			+0.0f, +0.0f, +1.0f, // forward
-			+1.0f, +0.0f, +1.0f, // forward
-			+1.0f, -1.0f, +1.0f, // forward
-			+1.0f, -1.0f, 0.0f, // right
-			-1.0f, -1.0f, 0.0f, // down
-			-1.0f, -1.0f, +0.0f, // down
-			-1.0f, +1.0f, +0.0f, // left
-			-1.0f, +1.0f, +0.0f, // left
-			+1.0f, +1.0f, +0.0f, // up
-			+1.0f, +1.0f, -1.0f, // up
-			+1.0f, +0.0f, -1.0f, // right
-			// back
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			+0.0f, +0.0f, -1.0f, // backward
-			// right
-			+1.0f, +0.0f, +0.0f, // right
-			+1.0f, +0.0f, +0.0f, // right
-			// left
-			-1.0f, +0.0f, +0.0f, // left
-			-1.0f, +0.0f, +0.0f, // left
-			// top
-			+0.0f, +1.0f, +0.0f, // up
-			+0.0f, +1.0f, +0.0f, // up
-			// bottom
-			+0.0f, -1.0f, +0.0f, // down
-			+0.0f, -1.0f, +0.0f  // down
-	};
-
-	static const EGLint context_attribs[] = {
-		EGL_CONTEXT_CLIENT_VERSION, 2,
-		EGL_NONE
-	};
-
-	static const EGLint config_attribs[] = {
-		EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
-		EGL_RED_SIZE, 1,
-		EGL_GREEN_SIZE, 1,
-		EGL_BLUE_SIZE, 1,
-		EGL_ALPHA_SIZE, 0,
-		EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
-		EGL_NONE
-	};
-
-
-	static const char *vertex_shader_source =
-			"precision mediump float;           \n"
-			"uniform mat4 modelviewMatrix;      \n"
-			"uniform vec4 posoffvector;         \n"
-			"uniform mat4 modelviewprojectionMatrix;\n"
-			"uniform mat3 normalMatrix;         \n"
-			"                                   \n"
-			"attribute vec4 in_position;        \n"
-			"attribute vec3 in_normal;          \n"
-			"attribute vec4 in_color;           \n"
-			"vec4 lightSource = vec4(2.0, 2.0, 20.0, 0.0);\n"
-			"                                   \n"
-			"varying vec4 vVaryingColor;        \n"
-			"                                   \n"
-			"void main()                        \n"
-			"{                                  \n"
-			//"    gl_Position = posoffvector + modelviewprojectionMatrix * (in_position-posoffvector);\n"
-			"    gl_Position = modelviewprojectionMatrix * (in_position-posoffvector);\n"
-			//"    gl_Position = in_position * modelviewprojectionMatrix;\n"
-			"    vec3 vEyeNormal = normalMatrix * in_normal;\n"
-			"    vec4 vPosition4 = modelviewMatrix * in_position;\n"
-			"    vec3 vPosition3 = vPosition4.xyz / vPosition4.w;\n"
-			"    vec3 vLightDir = normalize(lightSource.xyz - vPosition3);\n"
-			"    float diff = max(0.0, dot(vEyeNormal, vLightDir));\n"
-			"    vVaryingColor = vec4(diff * in_color.rgb, 1.0);\n"
-			"}                                  \n";
-
-
-
-	static const char *fragment_shader_source =
-			"precision mediump float;           \n"
-			"                                   \n"
-			"varying vec4 vVaryingColor;        \n"
-			//"uniform vec4 posoffvector;      \n"
-			"                                   \n"
-			"void main()                        \n"
-			"{                                  \n"
-			"    gl_FragColor = vVaryingColor;  \n"
-			"}                                  \n";
-
-
-	PFNEGLGETPLATFORMDISPLAYEXTPROC get_platform_display = NULL;
-	get_platform_display =
-		(void *) eglGetProcAddress("eglGetPlatformDisplayEXT");
-	assert(get_platform_display != NULL);
-
-	gl.display = get_platform_display(EGL_PLATFORM_GBM_KHR, gbm.dev, NULL);
-
-	if (!eglInitialize(gl.display, &major, &minor)) {
-		printf("failed to initialize\n");
-		return -1;
-	}
-
-	printf("Using display %p with EGL version %d.%d\n",
-			gl.display, major, minor);
-
-	printf("EGL Version \"%s\"\n", eglQueryString(gl.display, EGL_VERSION));
-	printf("EGL Vendor \"%s\"\n", eglQueryString(gl.display, EGL_VENDOR));
-	printf("EGL Extensions \"%s\"\n", eglQueryString(gl.display, EGL_EXTENSIONS));
-
-	if (!eglBindAPI(EGL_OPENGL_ES_API)) {
-		printf("failed to bind api EGL_OPENGL_ES_API\n");
-		return -1;
-	}
-
-	if (!eglChooseConfig(gl.display, config_attribs, &gl.config, 1, &n) || n != 1) {
-		printf("failed to choose config: %d\n", n);
-		return -1;
-	}
-
-	gl.context = eglCreateContext(gl.display, gl.config,
-			EGL_NO_CONTEXT, context_attribs);
-	if (gl.context == NULL) {
-		printf("failed to create context\n");
-		return -1;
-	}
-
-	gl.surface = eglCreateWindowSurface(gl.display, gl.config, gbm.surface, NULL);
-	if (gl.surface == EGL_NO_SURFACE) {
-		printf("failed to create egl surface\n");
-		return -1;
-	}
-
-	/* connect the context to the surface */
-	eglMakeCurrent(gl.display, gl.surface, gl.surface, gl.context);
-
-	printf("GL Extensions: \"%s\"\n", glGetString(GL_EXTENSIONS));
-
-	vertex_shader = glCreateShader(GL_VERTEX_SHADER);
-
-	glShaderSource(vertex_shader, 1, &vertex_shader_source, NULL);
-	glCompileShader(vertex_shader);
-
-	glGetShaderiv(vertex_shader, GL_COMPILE_STATUS, &ret);
-	if (!ret) {
-		char *log;
-
-		printf("vertex shader compilation failed!:\n");
-		glGetShaderiv(vertex_shader, GL_INFO_LOG_LENGTH, &ret);
-		if (ret > 1) {
-			log = malloc(ret);
-			glGetShaderInfoLog(vertex_shader, ret, NULL, log);
-			printf("%s", log);
-		}
-
-		return -1;
-	}
-
-	fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
-
-	glShaderSource(fragment_shader, 1, &fragment_shader_source, NULL);
-	glCompileShader(fragment_shader);
-
-	glGetShaderiv(fragment_shader, GL_COMPILE_STATUS, &ret);
-	if (!ret) {
-		char *log;
-
-		printf("fragment shader compilation failed!:\n");
-		glGetShaderiv(fragment_shader, GL_INFO_LOG_LENGTH, &ret);
-
-		if (ret > 1) {
-			log = malloc(ret);
-			glGetShaderInfoLog(fragment_shader, ret, NULL, log);
-			printf("%s", log);
-		}
-
-		return -1;
-	}
-
-	gl.program = glCreateProgram();
-
-	glAttachShader(gl.program, vertex_shader);
-	glAttachShader(gl.program, fragment_shader);
-
-	glBindAttribLocation(gl.program, 0, "in_position");
-	glBindAttribLocation(gl.program, 1, "in_normal");
-	glBindAttribLocation(gl.program, 2, "in_color");
-
-	glLinkProgram(gl.program);
-
-	glGetProgramiv(gl.program, GL_LINK_STATUS, &ret);
-	if (!ret) {
-		char *log;
-
-		printf("program linking failed!:\n");
-		glGetProgramiv(gl.program, GL_INFO_LOG_LENGTH, &ret);
-
-		if (ret > 1) {
-			log = malloc(ret);
-			glGetProgramInfoLog(gl.program, ret, NULL, log);
-			printf("%s", log);
-		}
-
-		return -1;
-	}
-
-	glUseProgram(gl.program);
-
-	gl.modelviewmatrix = glGetUniformLocation(gl.program, "modelviewMatrix");
-	gl.modelviewprojectionmatrix = glGetUniformLocation(gl.program, "modelviewprojectionMatrix");
-	gl.normalmatrix = glGetUniformLocation(gl.program, "normalMatrix");
-	gl.posoffvector = glGetUniformLocation(gl.program, "posoffvector");
-
-	glViewport(0, 0, drm.mode->hdisplay, drm.mode->vdisplay);
-	glEnable(GL_CULL_FACE);
-
-	gl.positionsoffset = 0;
-	gl.colorsoffset = sizeof(vVertices);
-	gl.normalsoffset = sizeof(vVertices) + sizeof(vColors);
-	glGenBuffers(1, &gl.vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, gl.vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vVertices) + sizeof(vColors) + sizeof(vNormals), 0, GL_STATIC_DRAW);
-	glBufferSubData(GL_ARRAY_BUFFER, gl.positionsoffset, sizeof(vVertices), &vVertices[0]);
-	glBufferSubData(GL_ARRAY_BUFFER, gl.colorsoffset, sizeof(vColors), &vColors[0]);
-	glBufferSubData(GL_ARRAY_BUFFER, gl.normalsoffset, sizeof(vNormals), &vNormals[0]);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)(intptr_t)gl.positionsoffset);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)(intptr_t)gl.normalsoffset);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)(intptr_t)gl.colorsoffset);
-	glEnableVertexAttribArray(2);
-
-	return 0;
-}
-
+char mvfd, mffd;
+char nocs=0;
+char mcspath[512];
+char novs=0;
+char mvspath[512];
+char nogs=0;
+char mgspath[512];
+char nofs=0;
+char mfspath[512];
+static GLfloat vVertices[] = {
+};
 
 static void
 drm_fb_destroy_callback(struct gbm_bo *bo, void *data)
 {
 	struct drm_fb *fb = data;
 	struct gbm_device *gbm = gbm_bo_get_device(bo);
-
 	if (fb->fb_id)
 		drmModeRmFB(drm.fd, fb->fb_id);
-
 	free(fb);
 }
 
@@ -765,27 +115,21 @@ static struct drm_fb * drm_fb_get_from_bo(struct gbm_bo *bo)
 	struct drm_fb *fb = gbm_bo_get_user_data(bo);
 	uint32_t width, height, stride, handle;
 	int ret;
-
 	if (fb)
 		return fb;
-
 	fb = calloc(1, sizeof *fb);
 	fb->bo = bo;
-
 	width = gbm_bo_get_width(bo);
 	height = gbm_bo_get_height(bo);
 	stride = gbm_bo_get_stride(bo);
 	handle = gbm_bo_get_handle(bo).u32;
-
 	ret = drmModeAddFB(drm.fd, width, height, 24, 32, stride, handle, &fb->fb_id);
 	if (ret) {
 		printf("failed to create fb: %s\n", strerror(errno));
 		free(fb);
 		return NULL;
 	}
-
 	gbm_bo_set_user_data(bo, fb, drm_fb_destroy_callback);
-
 	return fb;
 }
 
@@ -806,21 +150,16 @@ char mousepath[256];
 char keyboardpath[256];
 char keyoffset;
 char key[20];
-//char mvspath[256];
-//char mfspath[256];
 int ppid,mpid,kpid,spid=0;
 #ifdef SOUND
 unsigned int rate=48000;
 char channels;
 #endif
 
-GLfloat aspect,frustumW,frustumH;
-float nearcp=6.0f;
-float farcp=2000.0f;
-float viewsize=4.0f;
-
-float *posoff;
-float cubeoff[2]={0,0};
+float aspect;
+float viewsize=1.0f;
+unsigned int grAPI;
+char grAPIversion[2];
 
 struct segasteon{
 	int a;
@@ -828,8 +167,74 @@ struct segasteon{
 	int c;
 }sas={0,0,3};
 
+//network
+
+//
+
+//game stack
+int deck[52][4]={{60,200,770,11},{70,0,0,12},{990,60,30,13},{770,220,0,14},{0,0,0,15},{80,43,0,16},{10,60,0,17},{23,86,0,18},{92,123,0,19},{0,0,0,110},{0,0,0,111},{0,0,0,112},{0,0,0,113},{0,0,0,21},{0,0,0,22},{0,0,0,23},{0,0,0,24},{0,0,0,25},{0,0,0,26},{0,0,0,27},{0,0,0,28},{0,0,0,29},{0,0,0,210},{0,0,0,211},{0,0,0,212},{0,0,0,213},{0,0,0,31},{0,0,0,32},{0,0,0,33},{0,0,0,34},{0,0,0,35},{0,0,0,36},{0,0,0,37},{0,0,0,38},{0,0,0,39},{0,0,0,310},{0,0,0,311},{0,0,0,312},{0,0,0,313},{0,0,0,41},{0,0,0,42},{0,0,0,43},{0,0,0,44},{0,0,0,45},{0,0,0,46},{0,0,0,47},{0,0,0,48},{0,0,0,49},{0,0,0,410},{0,0,0,411},{0,0,0,412},{50,100,0,413}};
+
+//float deck[52][4]={{0.7,0.2,770,11},{0,0,0,12},{0,0,30,13},{0,0,0,14},{0,0,0,15},{0,0.3,0,16},{0,0,0,17},{0.8,0.4,0,18},{0.23,0.11,0,19},{0.3,0,0,110},{0,0,0,111},{0,0,0,112},{0,0,0,113},{0,0,0,21},{0,0,0,22},{0,0,0,23},{0,0,0,24},{0,0,0,25},{0,0,0,26},{0,0,0,27},{0,0,0,28},{0,0,0,29},{0,0,0,210},{0,0,0,211},{0,0,0,212},{0,0,0,213},{0,0,0,31},{0,0,0,32},{0,0,0,33},{0,0,0,34},{0,0,0,35},{0,0,0,36},{0,0,0,37},{0,0,0,38},{0,0,0,39},{0,0,0,310},{0,0,0,311},{0,0,0,312},{0,0,0,313},{0,0,0,41},{0,0,0,42},{0,0,0,43},{0,0,0,44},{0,0,0,45},{0,0,0,46},{0,0,0,47},{0,0,0,48},{0,0,0,49},{0,0,0,410},{0,0,0,411},{0,0,0,412},{0.050,0.1,0,413}};
+
+
+#define csx 0.6
+#define csz 0.6
+/*
+float deck[12]={
+0.5f, -0.5f, -0.5f,	// Back-bottom-right
+0.5f, 0.5f, -0.5f,	// Back-bottom-left
+-0.5f, -0.5f, 0.5f,// Front-top-right
+0.5f, -0.5f, -0.5f,	// Back-bottom-right
+-0.5f, 0.5f, -0.5f,	// Back-top-left
+-0.5f, -0.5f, -0.5f,	// Back-top-right
+0.5f, -0.5f, 0.5f,// Front-bottom-right
+0.5f, 0.5f, 0.5f,// Front-bottom-left
+-0.5f, 0.5f, 0.5f,	// Front-top-left
+-0.5f, 0.5f, 0.5f,	// Front-top-left
+-0.5f, -0.5f, 0.5f,	// Front-top-right
+-0.5f, -0.5f, -0.5f,	// Back-top-right
+-0.5f, 0.5f, -0.5f,	// Back-top-left
+0.5f, 0.5f, 0.5f,	// Front-bottom-left
+-0.5f, -0.5f, -0.5f,// Back-top-right
+};
+*/
+unsigned int udeck;
+char top=0;
+float card[24];
+char hand[52];
+float playerspos[8][2]={{500,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
+unsigned int uplayerpos;
+char holding=-1;
+//
 int main(int argc, char *argv[])
 {
+	//parse arguments
+	for(int arg=1;arg<argc;arg++){
+		switch(argv[arg][0]){
+		case '-':
+			switch(argv[arg][1]){
+			case '-':
+				switch(argv[arg][2]){
+					case 'h':
+					switch(argv[arg][3]){
+						case 'e':
+							switch(argv[arg][4]){
+								case 'l':
+									switch(argv[arg][5]){
+										case 'p':
+											goto help_tip;
+									}
+							}
+					}
+				}
+				break;
+			case 'h':
+			help_tip:
+				printf("Usage:\n%s [OPTIONS]\nOptions to replace editme.conf in /etc or $HOME/config/ or ./:\n --mou [PATH]	set mouse device\n --kb [PATH]	set keyboard device\n --api [0 or 1]	0 for OpenGLES, 1 for Vulkan\n --help or -h print this text\n",argv[0]);
+				return 0;
+			}
+		}
+	}
 	//read config
 	conf.fd = open("editme.conf",0);
 	if(conf.fd==-1){
@@ -1077,8 +482,129 @@ int main(int argc, char *argv[])
 				break;
 			}
 			break;
+		case 4:
+			switch(conf.text[symb]){
+			case '0':
+				grAPI=8;//OpenGL
+				conf.op++;
+				break;
+			case '1':
+				grAPI=1;//OpenGL ES
+				conf.op++;
+				break;
+			case '2':
+				grAPI=4;//OpenGL ES 2
+				conf.op++;
+				break;
+			case '3':
+				grAPI=64;//OpenGL ES 3
+				conf.op++;
+				break;
+			case '4':
+				grAPI=0;//Vulkan
+				conf.op++;
+				break;
+			}
+			break;
+		case 5:
+			if(conf.text[symb]>='0'&&conf.text[symb]<='9'){
+				csmb=0;
+				while(csmb==0){
+					switch(conf.text[symb]){
+					case '0':
+						grAPIversion[0]=0;
+						csmb++;
+						break;
+					case '1':
+						grAPIversion[0]=1;
+						csmb++;
+						break;
+					case '2':
+						grAPIversion[0]=2;
+						csmb++;
+						break;
+					case '3':
+						grAPIversion[0]=3;
+						csmb++;
+						break;
+					case '4':
+						grAPIversion[0]=4;
+						csmb++;
+						break;
+					case '5':
+						grAPIversion[0]=5;
+						csmb++;
+						break;
+					case '6':
+						grAPIversion[0]=6;
+						csmb++;
+						break;
+					case '7':
+						grAPIversion[0]=7;
+						csmb++;
+						break;
+					case '8':
+						grAPIversion[0]=8;
+						csmb++;
+						break;
+					case '9':
+						grAPIversion[0]=9;
+						csmb++;
+						break;
+					}
+					symb++;
+				}
+				while(csmb==1){
+					switch(conf.text[symb]){
+					case '0':
+						grAPIversion[1]=0;
+						csmb++;
+						break;
+					case '1':
+						grAPIversion[1]=1;
+						csmb++;
+						break;
+					case '2':
+						grAPIversion[1]=2;
+						csmb++;
+						break;
+					case '3':
+						grAPIversion[1]=3;
+						csmb++;
+						break;
+					case '4':
+						grAPIversion[1]=4;
+						csmb++;
+						break;
+					case '5':
+						grAPIversion[1]=5;
+						csmb++;
+						break;
+					case '6':
+						grAPIversion[1]=6;
+						csmb++;
+						break;
+					case '7':
+						grAPIversion[1]=7;
+						csmb++;
+						break;
+					case '8':
+						grAPIversion[1]=8;
+						csmb++;
+						break;
+					case '9':
+						grAPIversion[1]=9;
+						csmb++;
+						break;
+					}
+					symb++;
+				}
+				conf.op++;
+			}
+			break;
+
 #ifdef SOUND
-		case 4:{
+		case 6:{
 			/*
 			csmb=0;
 			while(symb<conf.size){
@@ -1118,51 +644,133 @@ int main(int argc, char *argv[])
 				symb++;
 			}*/
 		       }
-		case 5:{
-				if(conf.text[symb]=='0')
-					channels=0;
-				if(conf.text[symb]=='1')
-					channels=1;
-				if(conf.text[symb]=='2')
-					channels=2;
-				if(conf.text[symb]=='3')
-					channels=3;
-				if(conf.text[symb]=='4')
-					channels=4;
-				if(conf.text[symb]=='5')
-					channels=5;
-				if(conf.text[symb]=='6')
-					channels=6;
-				if(conf.text[symb]=='7')
-					channels=7;
-				if(conf.text[symb]=='8')
-					channels=8;
-				if(conf.text[symb]=='9')
-					channels=9;
+		case 7:{
+			switch(conf.text[symb])
+			case '0':
+				channels=0;
+				conf.op++;
+				break;
+			case '1':
+				channels=1;
+				conf.op++;
+				break;
+			case '2':
+				channels=2;
+				conf.op++;
+				break;
+			case '3':
+				channels=3;
+				conf.op++;
+				break;
+			case '4':
+				channels=4;
+				conf.op++;
+				break;
+			case '5':
+				channels=5;
+				conf.op++;
+				break;
+			case '6':
+				channels=6;
+				conf.op++;
+				break;
+			case '7':
+				channels=7;
+				conf.op++;
+				brreak;
+			case '8':
+				channels=8;
+				conf.op++;
+				break;
+			case '9':
+				channels=9;
+				conf.op++;
+				break;
+			break;
 		       }
+#else
+		case 6:
+		       conf.op+=2;
 #endif
-		       /*
-		case 6:{
+		case 8:{
 			switch(conf.text[symb]){
-			case '/':{
+			case '/':
+			case '.':
 				csmb=0;
+				write(1,"compute shader loading\n",8);
+				mcspath[csmb]=conf.text[symb];
+				while(symb<conf.size){
+					symb++;
+					csmb++;
+					if(conf.text[symb]=='\n'){
+						conf.op++;
+						printf("%s",mcspath);
+						break;
+					}
+					mcspath[csmb]=conf.text[symb];
+				 }
+				break;
+			case '0':
+				 nocs=1;
+				 write(1,"skip cs\n",8);
+				 conf.op++;
+				 symb++;
+			}
+		       }
+		case 9:{
+			switch(conf.text[symb]){
+			case '/':
+			case '.':
+				csmb=0;
+				write(1,"vs load\n",8);
 				mvspath[csmb]=conf.text[symb];
 				while(symb<conf.size){
 					symb++;
 					csmb++;
 					if(conf.text[symb]=='\n'){
 						conf.op++;
+						printf("%s",mvspath);
 						break;
 					}
 					mvspath[csmb]=conf.text[symb];
 				 }
 				break;
-				}
+			case '0':
+				 novs=1;
+				 write(1,"skip vs\n",8);
+				 conf.op++;
+				 symb++;
 			}
 		       }
-		case 7:{
+		case 10:{
 			switch(conf.text[symb]){
-			case '/':{
+			case '/':
+			case '.':
+				csmb=0;
+				write(1,"gs load\n",8);
+				mgspath[csmb]=conf.text[symb];
+				while(symb<conf.size){
+					symb++;
+					csmb++;
+					if(conf.text[symb]=='\n'){
+						conf.op++;
+						printf("%s",mgspath);
+						break;
+					}
+					mgspath[csmb]=conf.text[symb];
+				 }
+				break;
+			case '0':
+				 nogs=1;
+				 write(1,"skip gs\n",8);
+				 conf.op++;
+				 symb++;
+			}
+		       }
+		case 11:{
+			switch(conf.text[symb]){
+			case '/':
+			case '.':
 				csmb=0;
 				mfspath[csmb]=conf.text[symb];
 				while(symb<conf.size){
@@ -1175,29 +783,78 @@ int main(int argc, char *argv[])
 					mfspath[csmb]=conf.text[symb];
 				 }
 				break;
-				}
+			case '0':
+				 nofs=1;
+				 write(1,"skip fs\n",8);
+				 conf.op++;
+				 symb++;
 			}
 		       }
-		       */
 		}
 	}
-	/*
-	//load shaders
-	mvfd=syscall(SYS_open,mvspath,0);
-	if(syscall(SYS_read,mvfd,&vertex_shader_source,8192)==-1){
-		close(mvfd);
-		write(1,"ERROR: no vertex shader file\n",30);
-		return 4;
+	//parse arguments	
+	for(int arg=1;arg<argc;arg++){
+		switch(argv[arg][0]){
+		case '-':
+			switch(argv[arg][1]){
+			case '-':
+				switch(argv[arg][2]){
+				case 'm':
+					switch(argv[arg][3]){
+					case 'o':
+						switch(argv[arg][4]){
+						case 'u':
+							csmb=0;
+							while(csmb<200){
+								if(mousepath[csmb]==0){
+									break;
+								}
+								mousepath[csmb]=0;
+								csmb++;
+							}
+							csmb=0;
+							while(csmb<200){
+								if(argv[arg+1][csmb]==0){
+									break;
+								}
+								mousepath[csmb]=argv[arg+1][csmb];
+								csmb++;
+							}
+							arg++;
+							break;
+						}
+						break;
+					}
+					break;
+				case 'k':
+					switch(argv[arg][4]){
+					case 'b':
+						csmb=0;
+						while(csmb<200){
+							if(mousepath[csmb]==0){
+								break;
+							}
+							mousepath[csmb]=0;
+							csmb++;
+						}
+						csmb=0;
+						while(csmb<200){
+							if(argv[arg+1][csmb]==0){
+								break;
+							}
+							mousepath[csmb]=argv[arg+1][csmb];
+							csmb++;
+						}
+						arg++;
+						break;
+					}
+					break;
+				}
+				break;
+			}
+			break;
+		}
 	}
-	close(3);//mvfd is 32 LOL
-	mffd=syscall(SYS_open,mfspath,0);
-	if(syscall(SYS_read,mffd,&fragment_shader_source,8192)==-1){
-		close(mffd);
-		write(1,"ERROR: no fragment shader file\n",31);
-		return 4;
-	}
-	close(mffd);
-	*/
 	
 	syscall(SYS_rt_sigaction,17,&sas,0,8);
 	
@@ -1212,12 +869,12 @@ int main(int argc, char *argv[])
 	//int aa=100;
 
 	unsigned int pcm, tmp, dir;
-	//int rate, channels;//, seconds;
+	int rate, channels;//, seconds;
 	snd_pcm_t *pcm_handle;
 	snd_pcm_hw_params_t *params;
 	snd_pcm_uframes_t frames;
-	double buff;
-	//int buff_size, loops;
+	char* buff;
+	int buff_size, loops;
 
 	/*
 	if (argc < 4) {
@@ -1338,6 +995,7 @@ int main(int argc, char *argv[])
 		snd_pcm_writei(pcm_handle, buff, frames);
 	}
 	*/
+	/*
 	if(channels==1){
 	while(1){
 		if(mouse[0]==0x9){
@@ -1370,6 +1028,8 @@ int main(int argc, char *argv[])
 
 	}
 	}
+	*/
+
 }
 #endif
 	
@@ -1378,41 +1038,550 @@ int main(int argc, char *argv[])
 			.version = DRM_EVENT_CONTEXT_VERSION,
 			.page_flip_handler = page_flip_handler,
 	};
-	struct gbm_bo *bo;
-	struct drm_fb *fb;
-	uint32_t i = 0;
-	int ret;
+	//char fbstick=0;
 
-	ret = init_drm();
-	if (ret) {
-		printf("failed to initialize DRM\n");
+	uint32_t i = 0;
+	int ret=0;
+
+	drmModeRes *resources;
+	drmModeConnector *connector = NULL;
+	drmModeEncoder *encoder = NULL;
+	int area;
+
+	drm.fd = open(cardpath, O_RDWR);
+
+	if (drm.fd < 0) {
+		printf("could not open drm device\n");
+		//return -1;
 		goto exit;
 	}
+
+	resources = drmModeGetResources(drm.fd);
+	if (!resources) {
+		printf("drmModeGetResources failed: %s\n", strerror(errno));
+		//return -1;
+		goto exit;
+	}
+
+	/* find a connected connector: */
+	char conn_count=0;
+	for (i = 0; i < resources->count_connectors; i++) {
+		connector = drmModeGetConnector(drm.fd, resources->connectors[i]);
+		if (connector->connection == DRM_MODE_CONNECTED) {
+			conn_count++;
+			break;
+		}
+		drmModeFreeConnector(connector);
+		connector = NULL;
+	}
+/*
+	drmModeConnector **connected = malloc(conn_count*sizeof(drmModeConnector));
+	for (int i=0,j=0; i<resources->count_connectors; i++) {
+		drmModeConnector *conn = drmModeGetConnector(drm.fd,
+		resources->connectors[i]);
+		if (conn->connection == DRM_MODE_CONNECTED) {
+			connected[j] = conn;
+			j++;
+		} else
+			drmModeFreeConnector(conn);
+	}
+	drmModeFreeResources(resources);
+	int conn_n;
+	if (conn_count > 1) {
+		printf("Found multiple displays:\n");
+		for (int i=0; i<conn_count; i++) {
+			printf("(%d) [%d]\n", i, connected[i]->connector_id);
+		}
+		printf("Choose one: ");
+		scanf("%d", &conn_n);
+	} else {
+		conn_n = 0;
+	}
+	connector = connected[conn_n];
+	//drmModeEncoder *enc = drmModeGetEncoder(drm.fd, connected[conn_n]->encoder_id);
+	//drmModeCrtc *crtc = drmModeGetCrtc(drm.fd, enc->crtc_id);
+	//drmModeFreeEncoder(enc);
+	//drmModeCrtc *crtc = get_crtc_from_conn(drm.fd, connected[conn_n]);
+
+	*/
+	if (conn_count==0) {
+		/* we could be fancy and listen for hotplug events and wait for
+		 * a connector..
+		 */
+		printf("no connected connector!\n");
+		goto exit;
+		//return -1;
+	}
+
+	/* find prefered mode or the highest resolution mode: */
+	for (i = 0, area = 0; i < connector->count_modes; i++) {
+		drmModeModeInfo *current_mode = &connector->modes[i];
+
+		if (current_mode->type & DRM_MODE_TYPE_PREFERRED) {
+			drm.mode = current_mode;
+		}
+
+		int current_area = current_mode->hdisplay * current_mode->vdisplay;
+		if (current_area > area) {
+			drm.mode = current_mode;
+			area = current_area;
+		}
+	}
+
+	if (!drm.mode) {
+		printf("could not find mode!\n");
+		//return -1;
+		goto exit;
+	}
+
+	/* find encoder: */
+	for (i = 0; i < resources->count_encoders; i++) {
+		encoder = drmModeGetEncoder(drm.fd, resources->encoders[i]);
+		if (encoder->encoder_id == connector->encoder_id)
+			break;
+		drmModeFreeEncoder(encoder);
+		encoder = NULL;
+	}
+
+	if (encoder) {
+		drm.crtc_id = encoder->crtc_id;
+	} else {
+		uint32_t crtc_id;// = find_crtc_for_connector(resources, connector);
+
+		for (i = 0; i < connector->count_encoders; i++) {
+			const uint32_t encoder_id = connector->encoders[i];
+			drmModeEncoder *encoder = drmModeGetEncoder(drm.fd, encoder_id);
+
+			if (encoder) {
+				const uint32_t crtc_id=-1;
+
+
+				for (i = 0; i < resources->count_crtcs; i++) {
+					// possible_crtcs is a bitmask as described here:
+					// https://dvdhrm.wordpress.com/2012/09/13/linux-drm-mode-setting-api
+					//
+					const uint32_t crtc_mask = 1 << i;
+					const uint32_t crtc_id = resources->crtcs[i];
+					if (encoder->possible_crtcs==0 || crtc_mask==0) {
+						printf("failed to initialize DRM\n");
+						goto exit;
+					}
+				}
+
+				drmModeFreeEncoder(encoder);
+				/*
+				if (crtc_id != 0) {
+					return crtc_id;
+				}
+				*/
+			}
+		}
+
+		// no match found
+
+		if (crtc_id == 0) {
+			printf("no crtc found!\n");
+			printf("failed to initialize DRM\n");
+			goto exit;
+		}
+
+		drm.crtc_id = crtc_id;
+	}
+
+	drm.connector_id = connector->connector_id;
+
+	//drm initialized
 
 	FD_ZERO(&fds);
 	FD_SET(0, &fds);
 	FD_SET(drm.fd, &fds);
 
-	ret = init_gbm();
-	if (ret) {
-		printf("failed to initialize GBM\n");
+	gbm.dev = gbm_create_device(drm.fd);
+
+	gbm.surface = gbm_surface_create(gbm.dev,
+			drm.mode->hdisplay, drm.mode->vdisplay,
+			GBM_FORMAT_XRGB8888,
+			GBM_BO_USE_SCANOUT | GBM_BO_USE_RENDERING);
+	if (!gbm.surface) {
+		printf("failed to create gbm surface\n");
 		goto exit;
 	}
 
-	ret = init_gl();
-	if (ret) {
-		printf("failed to initialize EGL\n");
-		goto exit;
+	EGLint major, minor, n;
+	GLuint compute_shader, vertex_shader, geometry_shader, fragment_shader;
+
+
+	//float vColors[] = {
+	//};
+
+	//float vNormals[] = {
+	//};
+	
+	//float vTexCoord[52*2] = {
+	//};
+
+
+
+	//load shaders
+	char c_s_s[999999];
+	char v_s_s[999999];//faster than malloc, free
+	char g_s_s[999999];
+	char f_s_s[999999];
+	
+	
+	if(nocs==0){
+	mvfd=syscall(SYS_open,mcspath,0);
+	if(read(mvfd,&c_s_s,999999)==-1){
+		close(mvfd);
+		printf("%s",mcspath);
+		write(1,"ERROR: no compute shader file\n",31);
+		return 4;
 	}
+	close(mvfd);
+	}
+	if(novs==0){
+	mvfd=syscall(SYS_open,mvspath,0);
+	if(read(mvfd,&v_s_s,999999)==-1){
+		close(mvfd);
+		printf("%s",mvspath);
+		write(1,"ERROR: no vertex shader file\n",30);
+		return 4;
+	}
+	close(mvfd);
+	//close(3);//mvfd is 32 LOL
+	}
+	if(nogs==0){
+	mvfd=syscall(SYS_open,mgspath,0);
+	if(read(mvfd,&g_s_s,999999)==-1){
+		close(mvfd);
+		printf("%s",mgspath);
+		write(1,"ERROR: no geometry shader file\n",32);
+		return 4;
+	}
+	close(mvfd);
+	}
+	if(nofs==0){
+	mffd=syscall(SYS_open,mfspath,0);
+	if(read(mffd,&f_s_s,999999)==-1){
+		close(mffd);
+		write(1,"ERROR: no fragment shader file\n",32);
+		return 4;
+	}
+	close(mffd);
+	}
+
+	static const char *compute_shader_source;
+
+	compute_shader_source = &c_s_s;
+
+	static const char *vertex_shader_source;
+
+	vertex_shader_source = &v_s_s;
+	
+	static const char *geometry_shader_source;
+
+	geometry_shader_source = &g_s_s;
+
+	static const char *fragment_shader_source;
+
+	fragment_shader_source = &f_s_s;
+
+	//write(1,&f_s_s,400);
+	//write(1,&g_s_s,400);
+	//write(1,&v_s_s,400);
+	//write(1,&c_s_s,400);
+
+
+	PFNEGLGETPLATFORMDISPLAYEXTPROC get_platform_display = NULL;
+	get_platform_display =
+		(void *) eglGetProcAddress("eglGetPlatformDisplayEXT");
+	assert(get_platform_display != NULL);
+
+	gl.display = get_platform_display(EGL_PLATFORM_GBM_KHR, gbm.dev, NULL);
+
+	if (!eglInitialize(gl.display, &major, &minor)) {
+		printf("failed to initialize\n");
+		return -1;
+	}
+
+	printf("Using display %p with EGL version %d.%d\n",
+			gl.display, major, minor);
+
+	printf("EGL Version \"%s\"\n", eglQueryString(gl.display, EGL_VERSION));
+	printf("EGL Vendor \"%s\"\n", eglQueryString(gl.display, EGL_VENDOR));
+	printf("EGL Extensions \"%s\"\n", eglQueryString(gl.display, EGL_EXTENSIONS));
+
+	if (!eglBindAPI(12450*(grAPI==8)+12448*((grAPI==1)+(grAPI==4)+(grAPI==64)))) { //OpenGL=12450  OpenGLES=12448
+		printf("failed to bind api %d \n",grAPI);
+		return -1;
+	}
+
+	EGLint config_attribs[] = {
+		EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+		EGL_RED_SIZE, 1,
+		EGL_GREEN_SIZE, 1,
+		EGL_BLUE_SIZE, 1,
+		EGL_ALPHA_SIZE, 0,
+		EGL_RENDERABLE_TYPE, grAPI,
+		EGL_NONE
+	};
+	//printf("EGL_OPENGL_API is %d\n",EGL_OPENGL_API);
+	//printf("EGL_OPENGL_ES_API is %d\n",EGL_OPENGL_ES_API);
+	//printf("EGL_OPENGL_BIT is %d\n",EGL_OPENGL_BIT);
+	//printf("EGL_OPENGL_ES_BIT is %d\n",EGL_OPENGL_ES_BIT);
+	//printf("EGL_OPENGL_ES2_BIT is %d\n",EGL_OPENGL_ES2_BIT);
+	//printf("EGL_OPENGL_ES3_BIT is %d\n",EGL_OPENGL_ES3_BIT);
+	if (!eglChooseConfig(gl.display, config_attribs, &gl.config, 1, &n) || n != 1) {
+		printf("failed to choose config: %d\n", n);
+		return -1;
+	}
+
+	EGLint context_attribs[] = {
+		EGL_CONTEXT_MAJOR_VERSION_KHR, grAPIversion[0],
+		EGL_CONTEXT_MINOR_VERSION_KHR, grAPIversion[1],
+		EGL_NONE
+	};
+	gl.context = eglCreateContext(gl.display, gl.config,
+			EGL_NO_CONTEXT, context_attribs);
+	if (gl.context == NULL) {
+		printf("failed to create context\n");
+		return -1;
+	}
+
+	gl.surface = eglCreateWindowSurface(gl.display, gl.config, gbm.surface, NULL);
+	if (gl.surface == EGL_NO_SURFACE) {
+		printf("failed to create egl surface\n");
+		return -1;
+	}
+
+	/* connect the context to the surface */
+	eglMakeCurrent(gl.display, gl.surface, gl.surface, gl.context);
+
+	eglSurfaceAttrib(gl.display, gl.surface, EGL_SWAP_BEHAVIOR, EGL_BUFFER_PRESERVED);
+	eglSurfaceAttrib(gl.display, gl.surface, EGL_RENDER_BUFFER, EGL_SINGLE_BUFFER);
+
+
+	printf("GL Extensions: \"%s\"\n", glGetString(GL_EXTENSIONS));
+
+	compute_shader = glCreateShader(GL_COMPUTE_SHADER);
+
+	if(nocs==0){
+	glShaderSource(compute_shader, 1, &compute_shader_source, NULL);
+	glCompileShader(compute_shader);
+
+	glGetShaderiv(compute_shader, GL_COMPILE_STATUS, &ret);
+	if (!ret) {
+		char *log;
+
+		printf("compute shader compilation failed!:\n");
+		glGetShaderiv(compute_shader, GL_INFO_LOG_LENGTH, &ret);
+		if (ret > 1) {
+			log = malloc(ret);
+			glGetShaderInfoLog(compute_shader, ret, NULL, log);
+			printf("%s", log);
+		}
+
+		return -1;
+	}
+	}
+	if(novs==0){
+	vertex_shader = glCreateShader(GL_VERTEX_SHADER);
+
+	glShaderSource(vertex_shader, 1, &vertex_shader_source, NULL);
+	glCompileShader(vertex_shader);
+
+	glGetShaderiv(vertex_shader, GL_COMPILE_STATUS, &ret);
+	if (!ret) {
+		char *log;
+
+		printf("vertex shader compilation failed!:\n");
+		glGetShaderiv(vertex_shader, GL_INFO_LOG_LENGTH, &ret);
+		if (ret > 1) {
+			log = malloc(ret);
+			glGetShaderInfoLog(vertex_shader, ret, NULL, log);
+			printf("%s", log);
+		}
+
+		return -1;
+	}
+	}
+	if(nogs==0){
+	geometry_shader = glCreateShader(GL_GEOMETRY_SHADER);
+
+	glShaderSource(geometry_shader, 1, &geometry_shader_source, NULL);
+	glCompileShader(geometry_shader);
+
+	glGetShaderiv(geometry_shader, GL_COMPILE_STATUS, &ret);
+	if (!ret) {
+		char *log;
+
+		printf("geometry shader compilation failed!:\n");
+		glGetShaderiv(geometry_shader, GL_INFO_LOG_LENGTH, &ret);
+		if (ret > 1) {
+			log = malloc(ret);
+			glGetShaderInfoLog(geometry_shader, ret, NULL, log);
+			printf("%s", log);
+		}
+
+		return -1;
+	}
+	}
+	if(nofs==0){
+	fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
+
+	glShaderSource(fragment_shader, 1, &fragment_shader_source, NULL);
+	glCompileShader(fragment_shader);
+
+	glGetShaderiv(fragment_shader, GL_COMPILE_STATUS, &ret);
+	if (!ret) {
+		char *log;
+
+		printf("fragment shader compilation failed!:\n");
+		glGetShaderiv(fragment_shader, GL_INFO_LOG_LENGTH, &ret);
+
+		if (ret > 1) {
+			log = malloc(ret);
+			glGetShaderInfoLog(fragment_shader, ret, NULL, log);
+			printf("%s", log);
+		}
+
+		return -1;
+	}
+	}
+
+	gl.program = glCreateProgram();
+
+	if(nocs==0)
+	glAttachShader(gl.program, compute_shader);
+	if(novs==0)
+	glAttachShader(gl.program, vertex_shader);
+	if(nogs==0)
+	glAttachShader(gl.program, geometry_shader);
+	if(nofs==0)
+	glAttachShader(gl.program, fragment_shader);
+
+	//glBindAttribLocation(gl.program, 0, "in_position");
+
+	glLinkProgram(gl.program);
+
+	glGetProgramiv(gl.program, GL_LINK_STATUS, &ret);
+	if (!ret) {
+		char *log;
+
+		printf("program linking failed!:\n");
+		glGetProgramiv(gl.program, GL_INFO_LOG_LENGTH, &ret);
+
+		if (ret > 1) {
+			log = malloc(ret);
+			glGetProgramInfoLog(gl.program, ret, NULL, log);
+			printf("%s", log);
+		}
+
+		return -1;
+	}
+
+	glUseProgram(gl.program);
+
+	
+
+	gl.mouse = glGetUniformLocation(gl.program, "iMouse");
+	gl.time = glGetUniformLocation(gl.program, "iTime");
+	gl.resolution = glGetUniformLocation(gl.program, "iResolution");
+	udeck=glGetUniformLocation(gl.program,"deck");
+
+	//gl.textures[0] = glGetUniformLocation(gl.program, "iChannel0");
+	//glUniform1i = (gl.textures[0],0);
+	
+	//glGenTextures(1,gl.textures);
+	//unsigned int twidth,theight,tnrChannels;
+	//unsigned char* texture_data = stbi_load("textures/wn.jpg",&twidth,&theight,&tnrChannels,0);
+	/*
+	unsigned char* texture_data;
+	for(unsigned int tw=0; tw<twidth; tw++){
+		for(unsigned int th=0; th<theight; th++){
+			texture_data[tw*theight*tnrChannels+th*tnrChannels]=
+		}
+	}
+	*/
+
+/*
+	glBindTexture(GL_TEXTURE_2D, gl.textures[0]);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, twidth, theight, 0, GL_RGB, GL_UNSIGNED_BYTE, texture_data);
+	stbi_image_free(texture_data);
+	glActiveTexture(GL_TEXTURE0);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+*/
+
+	//glBindSampler(0, gl.);
+
+	unsigned int vao;
+	glGenVertexArrays(1,&vao);
+	glBindVertexArray(vao);
+	
+	glViewport(0, 0, drm.mode->hdisplay, drm.mode->vdisplay);
+	glEnable(GL_CULL_FACE);
+	//glDisable(GL_CULL_FACE);
+	//glDisable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+
+	//gl.positionsoffset = 0;
+	//gl.colorsoffset = sizeof(vVertices);
+	//gl.normalsoffset = sizeof(vVertices) + sizeof(vColors);
+	//glGenBuffers(1, &gl.vbo);
+	//glBindBuffer(GL_ARRAY_BUFFER, gl.vbo);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(deck), 0, GL_STATIC_DRAW);
+	//glBufferSubData(GL_ARRAY_BUFFER, gl.positionsoffset, sizeof(deck), &deck[0]);
+	//glBufferSubData(GL_ARRAY_BUFFER, gl.colorsoffset, sizeof(vColors), &vColors[0]);
+	//glBufferSubData(GL_ARRAY_BUFFER, gl.normalsoffset, sizeof(vNormals), &vNormals[0]);
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)(intptr_t)gl.positionsoffset);
+	//glEnableVertexAttribArray(0);
+	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)(intptr_t)gl.normalsoffset);
+	//glEnableVertexAttribArray(1);
+	//glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)(intptr_t)gl.colorsoffset);
+	//glEnableVertexAttribArray(2);
+	
+
+	//	printf("failed to initialize EGL\n");
 
 	/* clear the color buffer */
-	//glClearColor(0.5, 0.5, 0.5, 1.0);
-	//glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(0.5, 0.5, 0.5, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT);
 	eglSwapBuffers(gl.display, gl.surface);
+	struct gbm_bo *bo;
 	bo = gbm_surface_lock_front_buffer(gbm.surface);
+	struct drm_fb *fb;
+	//struct drm_fb *fb = gbm_bo_get_user_data(bo);
 	fb = drm_fb_get_from_bo(bo);
+	//struct drm_fb *fbs[2];
+	//fbs[0]=fb;
+
+	uint32_t width, height, stride, handle;
+
+	if (!fb){
+		fb = calloc(1, sizeof *fb);
+		fb->bo = bo;
+
+		width = gbm_bo_get_width(bo);
+		height = gbm_bo_get_height(bo);
+		stride = gbm_bo_get_stride(bo);
+		handle = gbm_bo_get_handle(bo).u32;
+
+		ret = drmModeAddFB(drm.fd, width, height, 24, 32, stride, handle, &fb->fb_id);
+		if (ret) {
+			printf("failed to create fb: %s\n", strerror(errno));
+			free(fb);
+		}
+
+		gbm_bo_set_user_data(bo, fb, drm_fb_destroy_callback);
+
+	}
 
 	/* set mode: */
+	write(1,"\nllol\n",6);
 	ret = drmModeSetCrtc(drm.fd, drm.crtc_id, fb->fb_id, 0, 0,
 			&drm.connector_id, 1, drm.mode);
 	if (ret) {
@@ -1425,6 +1594,7 @@ int main(int argc, char *argv[])
 		eglSwapBuffers(gl.display, gl.surface);
 		next_bo = gbm_surface_lock_front_buffer(gbm.surface);
 		fb = drm_fb_get_from_bo(next_bo);
+		fbs[1]=fb;
 
 		ret = drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,
 				DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
@@ -1454,33 +1624,58 @@ int main(int argc, char *argv[])
 		*/
 	//mouse process
 	mouse = mmap(0,3,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
+	//posoff = mmap(0,12,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,kapfd,0);
 	cur = mmap(0,8,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
+	//modelview = mmap(0,16*4,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
 	//int ppid = getpid();
-	char *quit = mmap(0,1,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
-	quit[0]=0;
+	//char *quit = mmap(0,1,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,mapfd,0);
+	//quit[0]=0;
 	mpid=syscall(SYS_clone,0,0);
 	if(mpid==0){
 		moufd=syscall(SYS_open,mousepath,0);
 		if(moufd==-1){
-			syscall(SYS_munmap,mouse,3);
-			syscall(1,"Meow! Where is the mouse?\n",26);
+			syscall(SYS_munmap,cur,3);
+			syscall(1,1,"Meow! Where is the mouse?\n",26);
 			return 0;
 		}
-		while(1){
-			syscall(SYS_read,moufd,mouse,3);
-			cur[0]-=(float)mouse[1]/10;
-			cur[1]+=(float)mouse[2]/10;
-		}
+		close(0);
+		close(1);
+		close(2);
+		close(3);
+		close(4);
+		//#ifdef __X86_64
+		asm("movq $5,%rdi; mov mouse(%rip),%rsi; mov $3,%rdx;");
+		//#elif
+		//#endif
+		mouse_loop:
+			//#ifdef __X86_64
+			asm("xor %rax,%rax; syscall; movq mouse(%rip), %r8; movq cur(%rip), %r9; pxor %xmm0, %xmm0; pxor %xmm1, %xmm1; movsbl 1(%r8), %ecx; cvtsi2ssl %ecx, %xmm0; addss (%r9), %xmm0; movss %xmm0, (%r9); movsbl 2(%r8), %r8d; movss 4(%r9), %xmm0; cvtsi2ssl %r8d, %xmm1; subss %xmm1, %xmm0; movss %xmm0, 4(%r9)");
+			//#elif
+			//read(moufd,mouse,3);
+			//cur[0]+=mouse[1];
+			//cur[1]-=mouse[2];
+			
+			//if(mouse[0]==0x09){
+				//write(1,&cur[0],1);
+			//}
+			//else if(mouse[0]==0x0c){
+			//	quit[0]=1;
+				//syscall(SYS_kill,15,ppid);
+			//	return 0;
+			//}
+			//#endif
+			
+		goto mouse_loop;
 	}
 	//keyboard process
-	//keyboard = mmap(0,72,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,kapfd,0);
-	posoff = mmap(0,12,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,kapfd,0);
+	/*
+	keyboard = mmap(0,72,PROT_READ|PROT_WRITE,MAP_ANONYMOUS|MAP_SHARED,kapfd,0);
 	kpid=syscall(SYS_clone,0,0);
 	if(kpid==0){
 		kfd=syscall(SYS_open,keyboardpath,0);
 		if(kfd==-1){
 			//syscall(SYS_munmap,keyboard,72);
-			syscall(1,"no keyboard found\n",18);
+			syscall(1,1,"no keyboard found\n",18);
 			return 0;
 		}
 		char keyboard[72];
@@ -1500,27 +1695,21 @@ int main(int argc, char *argv[])
 		//PS/2 keys
 		switch(keyboard[20]){
 		case 0x1b:{
-			posoff[2]-=0.1;
 			break;
 			  }
 		case 0x1d:{
-			posoff[2]+=0.1;
 			break;
 			  }
 		case 0x1c:{
-			posoff[0]+=0.1;
 			break;
 			  }
 		case 0x23:{
-			posoff[0]-=0.1;
 			break;
 			  }
 		case 0x24:{
-			posoff[1]-=0.1;
 			break;
 			  }
 		case 0x15:{
-			posoff[1]+=0.1;
 			break;
 			  }
 		case 0x2d:{
@@ -1539,17 +1728,11 @@ int main(int argc, char *argv[])
 #else
 		//if(keyboard[44]==1){
 			if(keyboard[keyoffset]==key[0])
-				posoff[2]-=0.6;
 			else if(keyboard[keyoffset]==key[1])
-				posoff[2]+=0.6;
 			else if(keyboard[keyoffset]==key[2])
-				posoff[0]+=0.6;
 			else if(keyboard[keyoffset]==key[3])
-				posoff[0]-=0.6;
 			else if(keyboard[keyoffset]==key[4])
-				posoff[1]-=0.6;
 			else if(keyboard[keyoffset]==key[5])
-				posoff[1]+=0.6;
 			else if (keyboard[44]==1 && keyboard[keyoffset]==key[6]){
 				//syscall(SYS_exit,0);
 				//syscall(SYS_kill,ppid,15);
@@ -1557,324 +1740,367 @@ int main(int argc, char *argv[])
 				printf("quit");
 			}
 		//}
-		/*
+		
 		if(keyboard[44]==0){
 			if(keyboard[keyoffset]==key[0] || keyboard[keyoffset]==key[1])
-				posoff[2]=0.0;
 			if(keyboard[keyoffset]==key[2] || keyboard[keyoffset]==key[3])
-				posoff[0]=0.0;
 			if(keyboard[keyoffset]==key[4] || keyboard[keyoffset]==key[5])
-				posoff[1]=0.0;
 		}
-		*/
+		
 #endif
 		}
 	}
+*/
 
 
 
 	aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
+		//eglSwapBuffers(gl.display, gl.surface);
+		//next_bo = gbm_surface_lock_front_buffer(gbm.surface);
+		//fb = drm_fb_get_from_bo(next_bo);
+		//fbs[1]=fb;
 
-	//moufd=syscall(SYS_open,mousepath,0);
-	posoff[0]=0;
-	posoff[1]=0;
-	posoff[2]=20;
-		ESMatrix modelview;
-		esMatrixLoadIdentity(&modelview);
-		ESMatrix projection;
-		esMatrixLoadIdentity(&projection);
-		esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
-		ESMatrix modelviewprojection;
-		esMatrixLoadIdentity(&modelviewprojection);
-#define g 0.098
-	while(quit[0]==0) {
-		posoff[1]=posoff[1]-g*(posoff[1]>-50);
-		//syscall(SYS_read,moufd,&mouse,3);
-		//cur[0]+=mouse[1];
-		//cur[1]+=mouse[2];
-		/*
-		if(mouse[0]==0x9){
-			if(posoff[0]<(1)&&posoff[0]>(-1)&&posoff[1]<(1)&&posoff[1]>(-1)&&posoff[2]>0){
-				write(1,"*You just shot a cube!*\n",25);
-				posoff[0]+=rand()%2;
-				posoff[1]+=rand()%2;
+		//ret = drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id, DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
+		//if (ret) {
+		//	printf("failed to queue page flip: %s\n", strerror(errno));
+		//	return -1;
+		//}
 
-				cubeoff[0]=random()*0.2;
-				//cubeoff[1]=random()*1.1;
-				vVertices[0]+=cubeoff[0];
-				vVertices[3]+=cubeoff[0];
-				vVertices[6]+=cubeoff[0];
-				vVertices[9]+=cubeoff[0];
-				vVertices[12]+=cubeoff[0];
-				vVertices[15]+=cubeoff[0];
-				vVertices[18]+=cubeoff[0];
-				vVertices[21]+=cubeoff[0];
-				vVertices[24]+=cubeoff[0];
-				vVertices[27]+=cubeoff[0];
-				vVertices[30]+=cubeoff[0];
-				vVertices[33]+=cubeoff[0];
-				vVertices[36]+=cubeoff[0];
-				vVertices[39]+=cubeoff[0];
-				vVertices[1]+=cubeoff[0];
-				vVertices[4]+=cubeoff[0];
-				vVertices[7]+=cubeoff[0];
-				vVertices[10]+=cubeoff[0];
-				vVertices[13]+=cubeoff[0];
-				vVertices[16]+=cubeoff[0];
-				vVertices[19]+=cubeoff[0];
-				vVertices[22]+=cubeoff[0];
-				vVertices[25]+=cubeoff[0];
-				vVertices[28]+=cubeoff[0];
-				vVertices[31]+=cubeoff[0];
-				vVertices[34]+=cubeoff[0];
-				vVertices[37]+=cubeoff[0];
-				vVertices[40]+=cubeoff[0];
-				glBufferSubData(GL_ARRAY_BUFFER, gl.positionsoffset, vnum, &vVertices[0]);
-				*/
-	/*vVertices[] = {
-	-1.0f, 1.0f, 1.0f,     // Front-top-left
-	-1.0f, -1.0f, 1.0f,      // Front-top-right
-	1.0f, 1.0f, 1.0f,    // Front-bottom-left
-	1.0f, -1.0f, 1.0f,     // Front-bottom-right
-	1.0f, -1.0f, -1.0f,    // Back-bottom-right
-	-1.0f, -1.0f, 1.0f,      // Front-top-right
-	-1.0f, -1.0f, -1.0f,     // Back-top-right
-	-1.0f, 1.0f, 1.0f,     // Front-top-left
-	-1.0f, 1.0f, -1.0f,    // Back-top-left
-	1.0f, 1.0f, 1.0f,    // Front-bottom-left
-	1.0f, 1.0f, -1.0f,   // Back-bottom-left
-	1.0f, -1.0f, -1.0f,    // Back-bottom-right
-	-1.0f, 1.0f, -1.0f,    // Back-top-left
-	-1.0f, -1.0f, -1.0f      // Back-top-right
+	/*
+		moufd=syscall(SYS_open,mousepath,0);
+		if(moufd==-1){
+			syscall(1,1,"Meow! Where is the mouse?\n",26);
+			goto exit;
+		}
+		*/
+	//drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,0,0);
+	//glClear(GL_COLOR_BUFFER_BIT);
+		write(1,"\nlol2\n",6);
+	//unsigned long stm=0;
+	gbm_surface_release_buffer(gbm.surface, bo);
+	//struct timeval time;
+	//gettimeofday(time,NULL);
+	float time=0;
+	float resolution[2]={drm.mode->vdisplay, drm.mode->hdisplay};
+	glUniform2fv(gl.resolution, 1, resolution);
+	
+//game init
+	int bhj=0;
+	//char cvt=0;
+	/*
+	for(bhj=0; bhj<52*6;bhj+=6){
+		deck[bhj+0]=-csx+.5;
+		deck[bhj+1]=-csz+.5;
+		//deck[bhj+2]=0;
+		deck[bhj+2]=(float)(((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*100+bhj-((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*13*6);
+		deck[bhj+3]=+csx+.5;
+		deck[bhj+4]=-csz+.5;
+		//deck[bhj+6]=0;
+		deck[bhj+5]=(float)(((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*100+bhj-((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*13*6);
+		deck[bhj+6]=-csx+.5;
+		deck[bhj+7]=+csz+.5;
+		//deck[bhj+10]=0;
+		deck[bhj+8]=(float)(((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*100+bhj-((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*13*6);
+		deck[bhj+9]=+csx+.5;
+		deck[bhj+10]=-csz+.5;
+		//deck[bhj+14]=0;
+		deck[bhj+11]=(float)(((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*100+bhj-((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*13*6);
+		deck[bhj+12]=-csx+.5;
+		deck[bhj+13]=+csz+.5;
+		//deck[bhj+18]=0;
+		deck[bhj+14]=(float)(((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*100+bhj-((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*13*6);
+		deck[bhj+15]=+csx+.5;
+		deck[bhj+16]=+csz+.5;
+		//deck[bhj+22]=0;
+		deck[bhj+17]=(float)(((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*100+bhj-((bhj>12*6)+(bhj>25*6)+(bhj>38*6))*13*6);
+	}
 	*/
-				//vVertices[
-
-		/*
-			}else if(posoff[1]>100000){
-				write(1,"*You have reached the space! You win!*\n",40);
-				goto exit;
+	//for(bhj=0;bhj<52*6*3;bhj++){
+	//	deck[bhj]=rand()/1000.;
+	//}
+	printf("start loop\n");
+	/*
+	int deck2[52];
+	char rndnum;
+#define g 9.8
+shuffle:
+	for(bhj=0; bhj<52;bhj++){
+		deck2[bhj]=deck[bhj][3];
+		deck[bhj][3]=0;
+	}
+	for(bhj=0; bhj<52;bhj++){
+		rndnum=random(top);
+		if(rndnum==top){
+			top--;
+		}
+		while(deck2[rndnum]==0){
+			rndnum++;
+			if(rndnum>top){
+				rndnum=0;
 			}
 		}
-		*/
+		deck[bhj][3]=deck2[rndnum];
+		deck2[rndnum]=0;
+	}
+gather:
+	for(bhj=0; bhj<52;bhj++){
+		deck[bhj][0]=700;
+		deck[bhj][1]=700;
+		deck[bhj][2]=0;
+	}
+	*/
+	top=51;	
+
+	close(0);
+	close(1);
+	close(2);
+glloop:
+		//read(moufd,&mouse,3);
+		//cur[0]+=mouse[1];
+		//cur[1]+=mouse[2];
+		//cur[0]+=(float)mouse[1];
+		//cur[1]-=(float)mouse[2];
 		/*
-		switch(mouse[0]){
-		case 0x09:
-			farcp-=10.0f;
-			projection.m[0][0]=1.0f;
-			projection.m[0][1]=0.0f;
-			projection.m[0][2]=0.0f;
-			projection.m[0][3]=0.0f;
-			projection.m[1][0]=0.0f;
-			projection.m[1][1]=1.0f;
-			projection.m[1][2]=0.0f;
-			projection.m[1][3]=0.0f;
-			projection.m[2][0]=0.0f;
-			projection.m[2][1]=0.0f;
-			projection.m[2][2]=1.0f;
-			projection.m[2][3]=0.0f;
-			projection.m[3][0]=0.0f;
-			projection.m[3][1]=0.0f;
-			projection.m[3][2]=0.0f;
-			projection.m[3][3]=1.0f;
-			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
-		case 0x29:
-			farcp+=10.0f;
-			projection.m[0][0]=1.0f;
-			projection.m[0][1]=0.0f;
-			projection.m[0][2]=0.0f;
-			projection.m[0][3]=0.0f;
-			projection.m[1][0]=0.0f;
-			projection.m[1][1]=1.0f;
-			projection.m[1][2]=0.0f;
-			projection.m[1][3]=0.0f;
-			projection.m[2][0]=0.0f;
-			projection.m[2][1]=0.0f;
-			projection.m[2][2]=1.0f;
-			projection.m[2][3]=0.0f;
-			projection.m[3][0]=0.0f;
-			projection.m[3][1]=0.0f;
-			projection.m[3][2]=0.0f;
-			projection.m[3][3]=1.0f;
-			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
-		case 0x0a:
-			nearcp+=1.0f;
-			projection.m[0][0]=1.0f;
-			projection.m[0][1]=0.0f;
-			projection.m[0][2]=0.0f;
-			projection.m[0][3]=0.0f;
-			projection.m[1][0]=0.0f;
-			projection.m[1][1]=1.0f;
-			projection.m[1][2]=0.0f;
-			projection.m[1][3]=0.0f;
-			projection.m[2][0]=0.0f;
-			projection.m[2][1]=0.0f;
-			projection.m[2][2]=1.0f;
-			projection.m[2][3]=0.0f;
-			projection.m[3][0]=0.0f;
-			projection.m[3][1]=0.0f;
-			projection.m[3][2]=0.0f;
-			projection.m[3][3]=1.0f;
-			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
-		case 0x1a:
-			nearcp-=1.0f;
-			projection.m[0][0]=1.0f;
-			projection.m[0][1]=0.0f;
-			projection.m[0][2]=0.0f;
-			projection.m[0][3]=0.0f;
-			projection.m[1][0]=0.0f;
-			projection.m[1][1]=1.0f;
-			projection.m[1][2]=0.0f;
-			projection.m[1][3]=0.0f;
-			projection.m[2][0]=0.0f;
-			projection.m[2][1]=0.0f;
-			projection.m[2][2]=1.0f;
-			projection.m[2][3]=0.0f;
-			projection.m[3][0]=0.0f;
-			projection.m[3][1]=0.0f;
-			projection.m[3][2]=0.0f;
-			projection.m[3][3]=1.0f;
-			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
-		case 0x0c:
-			viewsize-=1.0f;
-			projection.m[0][0]=1.0f;
-			projection.m[0][1]=0.0f;
-			projection.m[0][2]=0.0f;
-			projection.m[0][3]=0.0f;
-			projection.m[1][0]=0.0f;
-			projection.m[1][1]=1.0f;
-			projection.m[1][2]=0.0f;
-			projection.m[1][3]=0.0f;
-			projection.m[2][0]=0.0f;
-			projection.m[2][1]=0.0f;
-			projection.m[2][2]=1.0f;
-			projection.m[2][3]=0.0f;
-			projection.m[3][0]=0.0f;
-			projection.m[3][1]=0.0f;
-			projection.m[3][2]=0.0f;
-			projection.m[3][3]=1.0f;
-			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
-		case 0x2c:
-			viewsize+=1.0f;
-			projection.m[0][0]=1.0f;
-			projection.m[0][1]=0.0f;
-			projection.m[0][2]=0.0f;
-			projection.m[0][3]=0.0f;
-			projection.m[1][0]=0.0f;
-			projection.m[1][1]=1.0f;
-			projection.m[1][2]=0.0f;
-			projection.m[1][3]=0.0f;
-			projection.m[2][0]=0.0f;
-			projection.m[2][1]=0.0f;
-			projection.m[2][2]=1.0f;
-			projection.m[2][3]=0.0f;
-			projection.m[3][0]=0.0f;
-			projection.m[3][1]=0.0f;
-			projection.m[3][2]=0.0f;
-			projection.m[3][3]=1.0f;
-			esFrustum(&projection, -2.8f*viewsize, +2.8f*viewsize, -2.8f * aspect*viewsize, +2.8f * aspect*viewsize, nearcp, farcp);
+		if(mouse[0]==0x0c){
+			goto exit;
+			printf("stop, it's time to stop\n");
 		}
 		*/
+		/*
+		if(mouse[0]==0x9){
+			//glBufferSubData(GL_ARRAY_BUFFER, gl.positionsoffset, vnum, &vVertices[0]);
+		}
+		*/
+/*
+		switch(mouse[0]){
+		case 0x09:
+		case 0x19:
+		case 0x29:
+		case 0x39:
+			stm+=10000;
+			break;
+		case 0x0a:
+		case 0x1a:
+		case 0x2a:
+		case 0x3a:
+			stm-=10000*(stm>=10000);
+			stm*=(stm>10000);
+			break;
+		case 0x0c:
+		case 0x1c:
+		case 0x2c:
+		case 0x3c:
+			goto exit;
+		}
+*/
+		
 
-		waiting_for_flip = 1;
-		i++;
+		//i++;
 
 		/*if(mouse[0]==12){
 			break;
 		}*/
 
 		/* clear the color buffer */
-		glClearColor((10/(posoff[1]+.01)), (1000.0f/(posoff[1]+.01)), (2500.0f/(posoff[1]+.01)), 1.0);
-		glClear(GL_COLOR_BUFFER_BIT);
+		//glClearColor(0,0,1,0);
+		//glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-		//ESMatrix modelview;
-		//esMatrixLoadIdentity(&modelview);
-
-		//esTranslate(&modelview, 0.0, 0.0, 0.0);
-		//esTranslate(&modelview, posoff[0], posoff[1], posoff[2]);
-		//esRotate(&modelview, 90, 0.0f, 0.0f, 1.0f);
-		modelview.m[0][0]=1.0f;
-		modelview.m[0][1]=0.0f;
-		modelview.m[0][2]=0.0f;
-		modelview.m[0][3]=0.0f;
-		modelview.m[1][0]=0.0f;
-		modelview.m[1][1]=1.0f;
-		modelview.m[1][2]=0.0f;
-		modelview.m[1][3]=0.0f;
-		modelview.m[2][0]=0.0f;
-		modelview.m[2][1]=0.0f;
-		modelview.m[2][2]=1.0f;
-		modelview.m[2][3]=0.0f;
-		modelview.m[3][0]=0.0f;
-		modelview.m[3][1]=0.0f;
-		modelview.m[3][2]=0.0f;
-		modelview.m[3][3]=1.0f;
-		esRotate(&modelview, cur[0], 0.0f, 1.0f, 0.0f);
-		esRotate(&modelview, cur[1], 1.0f, 0.0f, 0.0f);
-
-		//posoff[0]=position[0];
-		//posoff[1]=position[1];
-		//posoff[2]=position[2];
-		//esTranslate(&modelview, position[0], position[1], position[2]);
-		//esTranslate(&modelview, posoff[0], posoff[1], posoff[2]);
+		//float aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
 		
-		//esRotate(&modelview, 45.0f + (0.25f * i), 1.0f, 0.0f, 0.0f);
-		//esRotate(&modelview, 45.0f - (0.5f * i), 0.0f, 1.0f, 0.0f);
-		//esRotate(&modelview, 10.0f + (0.15f * i), 0.0f, 0.0f, 1.0f);
-		
+		//game loop
+		if(holding==-1){
+			switch(mouse[0]){
+			case 0x09:
+			case 0x19:
+			case 0x29:
+			case 0x39:
+				for(holding=top;holding>=0;holding--){
+					if(cur[0]<deck[holding][0]+40 && cur[0]>deck[holding][0]-40 && -cur[1]<deck[holding][1]+80 && -cur[1]>deck[holding][1]-80){
+						card[0]=deck[holding][0];
+						card[1]=deck[holding][1];
+						card[2]=deck[holding][2];
+						card[3]=deck[holding][3];
+						for(char jhn=holding;jhn<top;jhn++){
+							deck[jhn][0]=deck[jhn+1][0];
+							deck[jhn][1]=deck[jhn+1][1];
+							deck[jhn][2]=deck[jhn+1][2];
+							deck[jhn][3]=deck[jhn+1][3];
+						}
+						deck[top][0]=card[0];
+						deck[top][1]=card[1];
+						deck[top][2]=card[2];
+						deck[top][3]=card[3];
+						break;
+					}
+				}
+			}
+		}else{	
+			switch(mouse[0]){
+			case 0x09:
+			case 0x19:
+			case 0x29:
+			case 0x39:
+				deck[top][0]=cur[0];
+				deck[top][1]=-cur[1];
+				break;
+			case 0x00:
+			case 0x08:
+			case 0x18:
+			case 0x28:
+			case 0x38:
+				holding=-1;
+			}
+		}
+		/*
+		if(holding==-1){
+			switch(mouse[0]){
+			case 0x09:
+			case 0x19:
+			case 0x29:
+			case 0x39:
+				for(holding=top*6;holding>=0;holding-=6){
+					if(cur[0]<deck[holding]+40 &&cur[0]>deck[holding]-40 && cur[1]<deck[holding+1]+80 && cur[1]>deck[holding+1]-80){
+						card[0]=deck[holding-23];
+						card[1]=deck[holding-22];
+						card[2]=deck[holding-21];
+						card[3]=deck[holding-20];
+						card[4]=deck[holding-19];
+						card[5]=deck[holding-18];
+						card[6]=deck[holding-17];
+						card[7]=deck[holding-16];
+						card[8]=deck[holding-15];
+						card[9]=deck[holding-14];
+						card[10]=deck[holding-13];
+						card[11]=deck[holding-12];
+						card[12]=deck[holding-11];
+						card[13]=deck[holding-10];
+						card[14]=deck[holding-9];
+						card[15]=deck[holding-8];
+						card[16]=deck[holding-7];
+						card[17]=deck[holding-6];
+						card[18]=deck[holding-5];
+						card[19]=deck[holding-4];
+						card[20]=deck[holding-3];
+						card[21]=deck[holding-2];
+						card[22]=deck[holding-1];
+						card[23]=deck[holding];
+						for(char jhn=holding;jhn<top;jhn++){
+							deck[jhn-23]=deck[jhn+1];
+							deck[jhn-22]=deck[jhn+2];
+							deck[jhn-21]=deck[jhn+3];
+							deck[jhn-20]=deck[jhn+4];
+							deck[jhn-19]=deck[jhn+5];
+							deck[jhn-18]=deck[jhn+6];
+							deck[jhn-17]=deck[jhn+7];
+							deck[jhn-16]=deck[jhn+8];
+							deck[jhn-15]=deck[jhn+9];
+							deck[jhn-14]=deck[jhn+10];
+							deck[jhn-13]=deck[jhn+11];
+							deck[jhn-12]=deck[jhn+12];
+							deck[jhn-11]=deck[jhn+13];
+							deck[jhn-10]=deck[jhn+14];
+							deck[jhn-9]=deck[jhn+15];
+							deck[jhn-8]=deck[jhn+16];
+							deck[jhn-7]=deck[jhn+17];
+							deck[jhn-6]=deck[jhn+18];
+							deck[jhn-5]=deck[jhn+19];
+							deck[jhn-4]=deck[jhn+20];
+							deck[jhn-3]=deck[jhn+21];
+							deck[jhn-2]=deck[jhn+22];
+							deck[jhn-1]=deck[jhn+23];
+							deck[jhn]=deck[jhn+24];
+						}
+						deck[top*6-23]=card[0];
+						deck[top*6-22]=card[1];
+						deck[top*6-21]=card[2];
+						deck[top*6-20]=card[3];
+						deck[top*6-19]=card[4];
+						deck[top*6-18]=card[5];
+						deck[top*6-17]=card[6];
+						deck[top*6-16]=card[7];
+						deck[top*6-15]=card[8];
+						deck[top*6-14]=card[9];
+						deck[top*6-13]=card[10];
+						deck[top*6-12]=card[11];
+						deck[top*6-11]=card[12];
+						deck[top*6-10]=card[13];
+						deck[top*6-9]=card[14];
+						deck[top*6-8]=card[15];
+						deck[top*6-7]=card[16];
+						deck[top*6-6]=card[17];
+						deck[top*6-5]=card[18];
+						deck[top*6-4]=card[19];
+						deck[top*6-3]=card[20];
+						deck[top*6-2]=card[21];
+						deck[top*6-1]=card[22];
+						deck[top*6]=card[23];
+						break;
+					}
+				}
+			}
+		}else{	
+			switch(mouse[0]){
+			case 0x09:
+			case 0x19:
+			case 0x29:
+			case 0x39:
+				deck[top*6-11]=cur[0]-csx;
+				deck[top*6-10]=cur[1]-csz;
+				deck[top*6-9]=cur[0]+csx;
+				deck[top*6-8]=cur[1]-csz;
+				deck[top*6-7]=cur[0]-csx;
+				deck[top*6-6]=cur[1]+csz;
+				deck[top*6-5]=cur[0]+csx;
+				deck[top*6-4]=cur[1]-csz;
+				deck[top*6-3]=cur[0]-csx;
+				deck[top*6-2]=cur[1]+csz;
+				deck[top*6-1]=cur[0]+csx;
+				deck[top*6]=cur[1]+csz;
+				glBufferSubData(GL_ARRAY_BUFFER, 0, 52*6, &deck[0]);
+				break;
+			case 0x00:
+			case 0x08:
+			case 0x18:
+			case 0x28:
+			case 0x38:
+				holding=-1;
+			}
+		}
+		*/
+		//
+		glUniform4iv(udeck,52,deck);
+		time+=0.01;
+		glUniform2fv(gl.mouse, 1, cur);
+		glUniform1f(gl.time, time);
 
-		//GLfloat aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
-
-		//ESMatrix projection;
-		//esMatrixLoadIdentity(&projection);
-
-		//esFrustum(&projection, -frustumW, frustumW, -frustumH, frustumH, 1.0f, 100.0f);
-		//esFrustum(&projection, -2.8f*3, +2.8f*3, -2.8f * aspect*3, +2.8f * aspect*3, 10.00f, 100000000.0f);
-
-		esMatrixMultiply(&modelviewprojection, &modelview, &projection);
-
-		float normal[9];
-		normal[0] = modelview.m[0][0];
-		normal[1] = modelview.m[0][1];
-		normal[2] = modelview.m[0][2];
-		normal[3] = modelview.m[1][0];
-		normal[4] = modelview.m[1][1];
-		normal[5] = modelview.m[1][2];
-		normal[6] = modelview.m[2][0];
-		normal[7] = modelview.m[2][1];
-		normal[8] = modelview.m[2][2];
-
-		glUniformMatrix4fv(gl.modelviewmatrix, 1, GL_FALSE, &modelview.m[0][0]);
-		glUniformMatrix4fv(gl.modelviewprojectionmatrix, 1, GL_FALSE, &modelviewprojection.m[0][0]);
-		glUniformMatrix3fv(gl.normalmatrix, 1, GL_FALSE, normal);
-		glUniform4fv(gl.posoffvector, 1, posoff);
-		//write(1,&posoff,16);
-
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, vnum/3);
-		//glDrawArrays(GL_TRIANGLE_STRIP, 4, 4);
-		//glDrawArrays(GL_TRIANGLE_STRIP, 8, 4);
-		//glDrawArrays(GL_TRIANGLE_STRIP, 12, 4);
-		//glDrawArrays(GL_TRIANGLE_STRIP, 16, 4);
-		//glDrawArrays(GL_TRIANGLE_STRIP, 20, 4);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 15);
+		//glDrawElements(GL_TRIANGLES, 0, 52*4*6,GL_TRIANGLES,deck[0]);
 
 		eglSwapBuffers(gl.display, gl.surface);
-		next_bo = gbm_surface_lock_front_buffer(gbm.surface);
-		fb = drm_fb_get_from_bo(next_bo);
-
+		//next_bo = gbm_surface_lock_front_buffer(gbm.surface);
+		//fb = drm_fb_get_from_bo(next_bo);
+		
 		//drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,0,0);
-	//			DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
+//				DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
+		//fbstick=1-fbstick;
+		//usleep(100000);
 		/*
 		 * Here you could also update drm plane layers if you want
 		 * hw composition
 		 */
 
 		
-		ret = drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id,
-				DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
+		//ret =
+		//drmModePageFlip(drm.fd, drm.crtc_id, fb->fb_id, DRM_MODE_PAGE_FLIP_EVENT, &waiting_for_flip);
+		/*
 		if (ret) {
 			printf("failed to queue page flip: %s\n", strerror(errno));
 			return -1;
 		}
+		*/
 
+		/*
+		waiting_for_flip = 1;
 		while (waiting_for_flip) {
 			ret = select(drm.fd + 1, &fds, NULL, NULL, NULL);
 			if (ret < 0) {
@@ -1886,16 +2112,18 @@ int main(int argc, char *argv[])
 				goto exit;
 			} else if (FD_ISSET(0, &fds)) {
 				printf("user interrupted!\n");
-				break;
+		//		break;
 			}
 			drmHandleEvent(drm.fd, &evctx);
 		}
+		*/
+		
 		
 
 		/* release last buffer to render on again: */
-		gbm_surface_release_buffer(gbm.surface, bo);
-		bo = next_bo;
-	}
+		//gbm_surface_release_buffer(gbm.surface, bo);
+		//bo = next_bo;
+	goto glloop;
 exit:
 	syscall(SYS_kill,mpid,15);
 	syscall(SYS_kill,kpid,15);
@@ -1904,10 +2132,9 @@ exit:
 #endif
 	syscall(SYS_munmap,mouse,3);
 	syscall(SYS_munmap,cur,8);
-	syscall(SYS_munmap,posoff,12);
 	drmModeSetCrtc(drm.fd, drm.crtc_id, fb->fb_id, 0, 0,
 			&drm.connector_id, 1, drm.mode);
-	//drmModeFreeCrtc (crtc);
+	//drmModeFreeCrtc(drm.crtc_id);
 
 	if (bo) {
 		drmModeRmFB(drm.fd, fb->fb_id);
@@ -1915,8 +2142,10 @@ exit:
 	}
 
 	//glDetachShader(gl.program,vertex_shader);
+	//glDetachShader(gl.program,geometry_shader);
 	//glDetachShader(gl.program,fragment_shader);
 	//glDeleteShader(vertex_shader);
+	//glDeleteShader(geometry_shader);
 	//glDeleteShader(fragment_shader);
 	glDeleteProgram(gl.program);
 	//glDeleteBuffers(&bo);
@@ -1925,14 +2154,17 @@ exit:
 	eglDestroyContext (gl.display, gl.context);
 	eglTerminate (gl.display);
 	gbm_device_destroy (gbm.dev);
+	ioctl(drm.fd, DRM_IOCTL_DROP_MASTER, 0);
+	close(drm.fd);
 
 	syscall(SYS_wait4,mpid,0,0,0);
-	syscall(SYS_wait4,kpid,0,0,0);
+	//syscall(SYS_wait4,kpid,0,0,0);
 #ifdef SOUND
 	syscall(SYS_wait4,spid,0,0,0);
-	syscall(SYS_kill,spid,9);
+	syscall(SYS_kill,spid,1);
 #endif
-	syscall(SYS_kill,mpid,9);
-	syscall(SYS_kill,kpid,9);
+	syscall(SYS_kill,mpid,1);
+	//syscall(SYS_kill,kpid,1);
+	write(1,"nice exit\n",10);
 	return ret;
 }
