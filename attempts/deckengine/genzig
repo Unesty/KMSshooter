@@ -1,0 +1,1 @@
+zig translate-c main.c -I /usr/include -I /usr/include/libdrm/ > main.zig

@@ -1,0 +1,1120 @@
+[src/swa/wayland.c:2398] seat name: seat0
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_device_group_creation
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_display
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_external_fence_capabilities
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_external_memory_capabilities
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_external_semaphore_capabilities
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_get_display_properties2
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_get_physical_device_properties2
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_get_surface_capabilities2
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_surface
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_surface_protected_capabilities
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_wayland_surface
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_xcb_surface
+[example-vulkan.c:646] Vulkan Instance extensions VK_KHR_xlib_surface
+[example-vulkan.c:646] Vulkan Instance extensions VK_EXT_acquire_xlib_display
+[example-vulkan.c:646] Vulkan Instance extensions VK_EXT_debug_report
+[example-vulkan.c:646] Vulkan Instance extensions VK_EXT_direct_mode_display
+[example-vulkan.c:646] Vulkan Instance extensions VK_EXT_display_surface_counter
+[example-vulkan.c:646] Vulkan Instance extensions VK_EXT_debug_utils
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_bind_memory2
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_create_renderpass2
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_dedicated_allocation
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_depth_stencil_resolve
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_descriptor_update_template
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_device_group
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_draw_indirect_count
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_driver_properties
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_external_fence
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_external_fence_fd
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_external_memory
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_external_memory_fd
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_external_semaphore
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_external_semaphore_fd
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_get_memory_requirements2
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_image_format_list
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_imageless_framebuffer
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_incremental_present
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_maintenance1
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_maintenance2
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_maintenance3
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_multiview
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_pipeline_executable_properties
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_push_descriptor
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_relaxed_block_layout
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_sampler_mirror_clamp_to_edge
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_sampler_ycbcr_conversion
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_shader_draw_parameters
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_storage_buffer_storage_class
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_swapchain
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_swapchain_mutable_format
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_uniform_buffer_standard_layout
+[example-vulkan.c:898] Vulkan Device extensions VK_KHR_variable_pointers
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_calibrated_timestamps
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_depth_clip_enable
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_display_control
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_external_memory_dma_buf
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_external_memory_host
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_host_query_reset
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_image_drm_format_modifier
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_index_type_uint8
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_inline_uniform_block
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_line_rasterization
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_memory_budget
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_pci_bus_info
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_pipeline_creation_feedback
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_scalar_block_layout
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_separate_stencil_usage
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_shader_demote_to_helper_invocation
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_shader_viewport_index_layer
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_subgroup_size_control
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_texel_buffer_alignment
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_vertex_attribute_divisor
+[example-vulkan.c:898] Vulkan Device extensions VK_EXT_ycbcr_image_arrays
+[example-vulkan.c:898] Vulkan Device extensions VK_GOOGLE_decorate_string
+[example-vulkan.c:898] Vulkan Device extensions VK_GOOGLE_hlsl_functionality1
+[example-vulkan.c:898] Vulkan Device extensions VK_NV_compute_shader_derivatives
+[example-vulkan.c:198] resized to 1366 768
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 1600827424768.000000
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.552123
+[example-vulkan.c:112] acquire image time: 0.001631
+[example-vulkan.c:140] vkQueueSubmit time: 1.770588
+[example-vulkan.c:149] swa_window_surface_frame time: 0.011032
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.068330
+[example-vulkan.c:187] swa_window_refresh time: 0.000399
+[src/swa/wayland.c:377] assertion 'dpy->mouse_enter_serial' failed
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 27.692629
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.528244
+[example-vulkan.c:112] acquire image time: 0.005352
+[example-vulkan.c:140] vkQueueSubmit time: 2.454348
+[example-vulkan.c:149] swa_window_surface_frame time: 0.011985
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.060280
+[example-vulkan.c:187] swa_window_refresh time: 0.000411
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 29.787523
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.068590
+[example-vulkan.c:112] acquire image time: 0.005713
+[example-vulkan.c:140] vkQueueSubmit time: 0.092008
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008684
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.076017
+[example-vulkan.c:187] swa_window_refresh time: 0.000737
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.231955
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.062656
+[example-vulkan.c:112] acquire image time: 0.005427
+[example-vulkan.c:140] vkQueueSubmit time: 0.082327
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008634
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.072389
+[example-vulkan.c:187] swa_window_refresh time: 0.000742
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.217810
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.063624
+[example-vulkan.c:112] acquire image time: 0.005312
+[example-vulkan.c:140] vkQueueSubmit time: 0.064456
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008149
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.071893
+[example-vulkan.c:187] swa_window_refresh time: 0.000711
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.216242
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.062937
+[example-vulkan.c:112] acquire image time: 0.005372
+[example-vulkan.c:140] vkQueueSubmit time: 0.065368
+[example-vulkan.c:149] swa_window_surface_frame time: 0.010108
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.075938
+[example-vulkan.c:187] swa_window_refresh time: 0.000737
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.269947
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.064306
+[example-vulkan.c:112] acquire image time: 0.005407
+[example-vulkan.c:140] vkQueueSubmit time: 0.063694
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008248
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.072759
+[example-vulkan.c:187] swa_window_refresh time: 0.000707
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.251106
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.061580
+[example-vulkan.c:112] acquire image time: 0.005453
+[example-vulkan.c:140] vkQueueSubmit time: 0.063839
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008800
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.071637
+[example-vulkan.c:187] swa_window_refresh time: 0.000777
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.267178
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.063905
+[example-vulkan.c:112] acquire image time: 0.005307
+[example-vulkan.c:140] vkQueueSubmit time: 0.064296
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008138
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.070435
+[example-vulkan.c:187] swa_window_refresh time: 0.000712
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.247040
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.062206
+[example-vulkan.c:112] acquire image time: 0.005522
+[example-vulkan.c:140] vkQueueSubmit time: 0.064490
+[example-vulkan.c:149] swa_window_surface_frame time: 0.009041
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.070284
+[example-vulkan.c:187] swa_window_refresh time: 0.000726
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.445200
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.437722
+[example-vulkan.c:112] acquire image time: 0.015415
+[example-vulkan.c:140] vkQueueSubmit time: 0.115226
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015064
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104161
+[example-vulkan.c:187] swa_window_refresh time: 0.001313
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.579274
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.427870
+[example-vulkan.c:112] acquire image time: 0.015324
+[example-vulkan.c:140] vkQueueSubmit time: 0.118022
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015951
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104933
+[example-vulkan.c:187] swa_window_refresh time: 0.001053
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.744852
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.429964
+[example-vulkan.c:112] acquire image time: 0.015665
+[example-vulkan.c:140] vkQueueSubmit time: 0.116935
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014743
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105925
+[example-vulkan.c:187] swa_window_refresh time: 0.001208
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.564089
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.424236
+[example-vulkan.c:112] acquire image time: 0.015145
+[example-vulkan.c:140] vkQueueSubmit time: 0.117236
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016668
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106085
+[example-vulkan.c:187] swa_window_refresh time: 0.001107
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.669197
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.431357
+[example-vulkan.c:112] acquire image time: 0.014052
+[example-vulkan.c:140] vkQueueSubmit time: 0.114570
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015290
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105248
+[example-vulkan.c:187] swa_window_refresh time: 0.001047
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.647065
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.371081
+[example-vulkan.c:112] acquire image time: 0.011095
+[example-vulkan.c:140] vkQueueSubmit time: 0.106466
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015646
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104857
+[example-vulkan.c:187] swa_window_refresh time: 0.001108
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.716997
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.439742
+[example-vulkan.c:112] acquire image time: 0.015185
+[example-vulkan.c:140] vkQueueSubmit time: 0.115602
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015029
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102312
+[example-vulkan.c:187] swa_window_refresh time: 0.001253
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.749310
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.429889
+[example-vulkan.c:112] acquire image time: 0.015575
+[example-vulkan.c:140] vkQueueSubmit time: 0.118383
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015169
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103014
+[example-vulkan.c:187] swa_window_refresh time: 0.001012
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.695787
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.445339
+[example-vulkan.c:112] acquire image time: 0.015049
+[example-vulkan.c:140] vkQueueSubmit time: 0.114540
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014057
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105288
+[example-vulkan.c:187] swa_window_refresh time: 0.001423
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.477985
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.418721
+[example-vulkan.c:112] acquire image time: 0.007432
+[example-vulkan.c:140] vkQueueSubmit time: 0.057659
+[example-vulkan.c:149] swa_window_surface_frame time: 0.006843
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.050561
+[example-vulkan.c:187] swa_window_refresh time: 0.000481
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.040358
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.441595
+[example-vulkan.c:112] acquire image time: 0.015449
+[example-vulkan.c:140] vkQueueSubmit time: 0.121561
+[example-vulkan.c:149] swa_window_surface_frame time: 0.013952
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.107584
+[example-vulkan.c:187] swa_window_refresh time: 0.001147
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.571244
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.427244
+[example-vulkan.c:112] acquire image time: 0.014954
+[example-vulkan.c:140] vkQueueSubmit time: 0.118653
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015982
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106331
+[example-vulkan.c:187] swa_window_refresh time: 0.001103
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.820085
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.430806
+[example-vulkan.c:112] acquire image time: 0.015104
+[example-vulkan.c:140] vkQueueSubmit time: 0.114845
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015590
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.101756
+[example-vulkan.c:187] swa_window_refresh time: 0.001207
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.675231
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.427634
+[example-vulkan.c:112] acquire image time: 0.015239
+[example-vulkan.c:140] vkQueueSubmit time: 0.117622
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015129
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106897
+[example-vulkan.c:187] swa_window_refresh time: 0.001262
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.633371
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.428902
+[example-vulkan.c:112] acquire image time: 0.014929
+[example-vulkan.c:140] vkQueueSubmit time: 0.117411
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015104
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103620
+[example-vulkan.c:187] swa_window_refresh time: 0.001574
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.752159
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.432325
+[example-vulkan.c:112] acquire image time: 0.016513
+[example-vulkan.c:140] vkQueueSubmit time: 0.118759
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015435
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103008
+[example-vulkan.c:187] swa_window_refresh time: 0.001242
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.608299
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.389618
+[example-vulkan.c:112] acquire image time: 0.011972
+[example-vulkan.c:140] vkQueueSubmit time: 0.103024
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015114
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102677
+[example-vulkan.c:187] swa_window_refresh time: 0.001298
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.775834
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.427720
+[example-vulkan.c:112] acquire image time: 0.016181
+[example-vulkan.c:140] vkQueueSubmit time: 0.118022
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014679
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105068
+[example-vulkan.c:187] swa_window_refresh time: 0.001208
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.613058
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.393612
+[example-vulkan.c:112] acquire image time: 0.011556
+[example-vulkan.c:140] vkQueueSubmit time: 0.102347
+[example-vulkan.c:149] swa_window_surface_frame time: 0.013661
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.098554
+[example-vulkan.c:187] swa_window_refresh time: 0.000917
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.714007
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.477397
+[example-vulkan.c:112] acquire image time: 0.014924
+[example-vulkan.c:140] vkQueueSubmit time: 0.119095
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015014
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104537
+[example-vulkan.c:187] swa_window_refresh time: 0.001173
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.612488
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.387153
+[example-vulkan.c:112] acquire image time: 0.011460
+[example-vulkan.c:140] vkQueueSubmit time: 0.106972
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015626
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102362
+[example-vulkan.c:187] swa_window_refresh time: 0.001318
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.750906
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.460218
+[example-vulkan.c:112] acquire image time: 0.016067
+[example-vulkan.c:140] vkQueueSubmit time: 0.120669
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016533
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105494
+[example-vulkan.c:187] swa_window_refresh time: 0.001188
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.552139
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.429575
+[example-vulkan.c:112] acquire image time: 0.011376
+[example-vulkan.c:140] vkQueueSubmit time: 0.105404
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015120
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.100909
+[example-vulkan.c:187] swa_window_refresh time: 0.001077
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.761395
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.424091
+[example-vulkan.c:112] acquire image time: 0.014999
+[example-vulkan.c:140] vkQueueSubmit time: 0.118709
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016353
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106055
+[example-vulkan.c:187] swa_window_refresh time: 0.001518
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.549275
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.423755
+[example-vulkan.c:112] acquire image time: 0.014243
+[example-vulkan.c:140] vkQueueSubmit time: 0.116755
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015890
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105965
+[example-vulkan.c:187] swa_window_refresh time: 0.001528
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.619975
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.395878
+[example-vulkan.c:112] acquire image time: 0.011175
+[example-vulkan.c:140] vkQueueSubmit time: 0.067843
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008747
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.052753
+[example-vulkan.c:187] swa_window_refresh time: 0.000428
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.822415
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.438153
+[example-vulkan.c:112] acquire image time: 0.050950
+[example-vulkan.c:140] vkQueueSubmit time: 0.124793
+[example-vulkan.c:149] swa_window_surface_frame time: 0.013862
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104062
+[example-vulkan.c:187] swa_window_refresh time: 0.001243
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.309346
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.410873
+[example-vulkan.c:112] acquire image time: 0.016412
+[example-vulkan.c:140] vkQueueSubmit time: 0.121110
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015209
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.107157
+[example-vulkan.c:187] swa_window_refresh time: 0.001413
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.823278
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.425008
+[example-vulkan.c:112] acquire image time: 0.007846
+[example-vulkan.c:140] vkQueueSubmit time: 0.060751
+[example-vulkan.c:149] swa_window_surface_frame time: 0.006904
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.053428
+[example-vulkan.c:187] swa_window_refresh time: 0.000543
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.047041
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.409533
+[example-vulkan.c:112] acquire image time: 0.016142
+[example-vulkan.c:140] vkQueueSubmit time: 0.124923
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016287
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.121024
+[example-vulkan.c:187] swa_window_refresh time: 0.002285
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.534570
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.442583
+[example-vulkan.c:112] acquire image time: 0.015775
+[example-vulkan.c:140] vkQueueSubmit time: 0.121510
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014478
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.149714
+[example-vulkan.c:187] swa_window_refresh time: 0.001774
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.502992
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.429632
+[example-vulkan.c:112] acquire image time: 0.007980
+[example-vulkan.c:140] vkQueueSubmit time: 0.062126
+[example-vulkan.c:149] swa_window_surface_frame time: 0.007955
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.052529
+[example-vulkan.c:187] swa_window_refresh time: 0.000502
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.932079
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.409725
+[example-vulkan.c:112] acquire image time: 0.009404
+[example-vulkan.c:140] vkQueueSubmit time: 0.065165
+[example-vulkan.c:149] swa_window_surface_frame time: 0.007284
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.051859
+[example-vulkan.c:187] swa_window_refresh time: 0.000509
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.160152
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.447234
+[example-vulkan.c:112] acquire image time: 0.015795
+[example-vulkan.c:140] vkQueueSubmit time: 0.123084
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015154
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.173338
+[example-vulkan.c:187] swa_window_refresh time: 0.001779
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.392925
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.430335
+[example-vulkan.c:112] acquire image time: 0.016102
+[example-vulkan.c:140] vkQueueSubmit time: 0.118429
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015571
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.116193
+[example-vulkan.c:187] swa_window_refresh time: 0.001619
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.703186
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.503932
+[example-vulkan.c:112] acquire image time: 0.016517
+[example-vulkan.c:140] vkQueueSubmit time: 0.124582
+[example-vulkan.c:149] swa_window_surface_frame time: 0.017073
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102212
+[example-vulkan.c:187] swa_window_refresh time: 0.002155
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.503972
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.437632
+[example-vulkan.c:112] acquire image time: 0.014598
+[example-vulkan.c:140] vkQueueSubmit time: 0.119967
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015189
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105414
+[example-vulkan.c:187] swa_window_refresh time: 0.001488
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.558717
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.424277
+[example-vulkan.c:112] acquire image time: 0.014859
+[example-vulkan.c:140] vkQueueSubmit time: 0.117978
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015790
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.109458
+[example-vulkan.c:187] swa_window_refresh time: 0.002040
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.723710
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.432425
+[example-vulkan.c:112] acquire image time: 0.015199
+[example-vulkan.c:140] vkQueueSubmit time: 0.172297
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014507
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105188
+[example-vulkan.c:187] swa_window_refresh time: 0.001222
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.745950
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.433908
+[example-vulkan.c:112] acquire image time: 0.015330
+[example-vulkan.c:140] vkQueueSubmit time: 0.119064
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016453
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106922
+[example-vulkan.c:187] swa_window_refresh time: 0.001424
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.415737
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.402517
+[example-vulkan.c:112] acquire image time: 0.011266
+[example-vulkan.c:140] vkQueueSubmit time: 0.109454
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014678
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.099861
+[example-vulkan.c:187] swa_window_refresh time: 0.001693
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.820945
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.409508
+[example-vulkan.c:112] acquire image time: 0.012738
+[example-vulkan.c:140] vkQueueSubmit time: 0.109468
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015595
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.107023
+[example-vulkan.c:187] swa_window_refresh time: 0.001153
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.692849
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.413592
+[example-vulkan.c:112] acquire image time: 0.015145
+[example-vulkan.c:140] vkQueueSubmit time: 0.121180
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014804
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.101570
+[example-vulkan.c:187] swa_window_refresh time: 0.001253
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.773461
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.397857
+[example-vulkan.c:112] acquire image time: 0.012378
+[example-vulkan.c:140] vkQueueSubmit time: 0.103540
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016157
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.100743
+[example-vulkan.c:187] swa_window_refresh time: 0.001118
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.713211
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.435126
+[example-vulkan.c:112] acquire image time: 0.015430
+[example-vulkan.c:140] vkQueueSubmit time: 0.122733
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014583
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.186323
+[example-vulkan.c:187] swa_window_refresh time: 0.001423
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.514491
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.417030
+[example-vulkan.c:112] acquire image time: 0.014844
+[example-vulkan.c:140] vkQueueSubmit time: 0.109488
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014447
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.096379
+[example-vulkan.c:187] swa_window_refresh time: 0.001163
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.699996
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.431583
+[example-vulkan.c:112] acquire image time: 0.015094
+[example-vulkan.c:140] vkQueueSubmit time: 0.115402
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014913
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104296
+[example-vulkan.c:187] swa_window_refresh time: 0.001383
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.621438
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.393948
+[example-vulkan.c:112] acquire image time: 0.011295
+[example-vulkan.c:140] vkQueueSubmit time: 0.107614
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015921
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103644
+[example-vulkan.c:187] swa_window_refresh time: 0.001167
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.802303
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.499492
+[example-vulkan.c:112] acquire image time: 0.016397
+[example-vulkan.c:140] vkQueueSubmit time: 0.122893
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015756
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103655
+[example-vulkan.c:187] swa_window_refresh time: 0.001283
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.514877
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.463922
+[example-vulkan.c:112] acquire image time: 0.015500
+[example-vulkan.c:140] vkQueueSubmit time: 0.124607
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015720
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.110616
+[example-vulkan.c:187] swa_window_refresh time: 0.001443
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.432971
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.397621
+[example-vulkan.c:112] acquire image time: 0.011882
+[example-vulkan.c:140] vkQueueSubmit time: 0.109062
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014833
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102011
+[example-vulkan.c:187] swa_window_refresh time: 0.001458
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.906825
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.457342
+[example-vulkan.c:112] acquire image time: 0.016056
+[example-vulkan.c:140] vkQueueSubmit time: 0.129934
+[example-vulkan.c:149] swa_window_surface_frame time: 0.018041
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.126271
+[example-vulkan.c:187] swa_window_refresh time: 0.001604
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.561351
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.399486
+[example-vulkan.c:112] acquire image time: 0.011711
+[example-vulkan.c:140] vkQueueSubmit time: 0.104988
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014228
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.101225
+[example-vulkan.c:187] swa_window_refresh time: 0.001498
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.766844
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.451563
+[example-vulkan.c:112] acquire image time: 0.015656
+[example-vulkan.c:140] vkQueueSubmit time: 0.127289
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016482
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.112034
+[example-vulkan.c:187] swa_window_refresh time: 0.001488
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.518254
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.373531
+[example-vulkan.c:112] acquire image time: 0.006786
+[example-vulkan.c:140] vkQueueSubmit time: 0.054720
+[example-vulkan.c:149] swa_window_surface_frame time: 0.007371
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.051322
+[example-vulkan.c:187] swa_window_refresh time: 0.000466
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.100706
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.396634
+[example-vulkan.c:112] acquire image time: 0.011836
+[example-vulkan.c:140] vkQueueSubmit time: 0.106136
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014348
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105549
+[example-vulkan.c:187] swa_window_refresh time: 0.001263
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.726368
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.354932
+[example-vulkan.c:112] acquire image time: 0.006066
+[example-vulkan.c:140] vkQueueSubmit time: 0.053178
+[example-vulkan.c:149] swa_window_surface_frame time: 0.007176
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.050145
+[example-vulkan.c:187] swa_window_refresh time: 0.000455
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.924351
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.434424
+[example-vulkan.c:112] acquire image time: 0.015591
+[example-vulkan.c:140] vkQueueSubmit time: 0.121159
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015982
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.109553
+[example-vulkan.c:187] swa_window_refresh time: 0.001794
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.727824
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.394453
+[example-vulkan.c:112] acquire image time: 0.012589
+[example-vulkan.c:140] vkQueueSubmit time: 0.117396
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014658
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.108426
+[example-vulkan.c:187] swa_window_refresh time: 0.001358
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.721190
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.392084
+[example-vulkan.c:112] acquire image time: 0.012142
+[example-vulkan.c:140] vkQueueSubmit time: 0.107720
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015270
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104571
+[example-vulkan.c:187] swa_window_refresh time: 0.001839
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.719209
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.401760
+[example-vulkan.c:112] acquire image time: 0.011271
+[example-vulkan.c:140] vkQueueSubmit time: 0.105048
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014217
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102884
+[example-vulkan.c:187] swa_window_refresh time: 0.001158
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.733689
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.397285
+[example-vulkan.c:112] acquire image time: 0.012358
+[example-vulkan.c:140] vkQueueSubmit time: 0.104707
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014769
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106466
+[example-vulkan.c:187] swa_window_refresh time: 0.001388
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.769993
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.393322
+[example-vulkan.c:112] acquire image time: 0.011796
+[example-vulkan.c:140] vkQueueSubmit time: 0.104202
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015085
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102497
+[example-vulkan.c:187] swa_window_refresh time: 0.001312
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.606186
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.356590
+[example-vulkan.c:112] acquire image time: 0.006069
+[example-vulkan.c:140] vkQueueSubmit time: 0.053418
+[example-vulkan.c:149] swa_window_surface_frame time: 0.007487
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.050388
+[example-vulkan.c:187] swa_window_refresh time: 0.000678
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.997427
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.554367
+[example-vulkan.c:112] acquire image time: 0.009174
+[example-vulkan.c:140] vkQueueSubmit time: 0.074947
+[example-vulkan.c:149] swa_window_surface_frame time: 0.010988
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.074483
+[example-vulkan.c:187] swa_window_refresh time: 0.000908
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.675576
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.072655
+[example-vulkan.c:112] acquire image time: 0.005873
+[example-vulkan.c:140] vkQueueSubmit time: 0.075751
+[example-vulkan.c:149] swa_window_surface_frame time: 0.011029
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103865
+[example-vulkan.c:187] swa_window_refresh time: 0.001027
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.264214
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.066381
+[example-vulkan.c:112] acquire image time: 0.005432
+[example-vulkan.c:140] vkQueueSubmit time: 0.065598
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008549
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.070851
+[example-vulkan.c:187] swa_window_refresh time: 0.000727
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.200926
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.062973
+[example-vulkan.c:112] acquire image time: 0.005683
+[example-vulkan.c:140] vkQueueSubmit time: 0.065765
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008985
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.070124
+[example-vulkan.c:187] swa_window_refresh time: 0.000727
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.201794
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.070426
+[example-vulkan.c:112] acquire image time: 0.005448
+[example-vulkan.c:140] vkQueueSubmit time: 0.064261
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008084
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.059511
+[example-vulkan.c:187] swa_window_refresh time: 0.000722
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.333912
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.063679
+[example-vulkan.c:112] acquire image time: 0.005378
+[example-vulkan.c:140] vkQueueSubmit time: 0.065569
+[example-vulkan.c:149] swa_window_surface_frame time: 0.009116
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.069743
+[example-vulkan.c:187] swa_window_refresh time: 0.000751
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.243774
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.067818
+[example-vulkan.c:112] acquire image time: 0.005723
+[example-vulkan.c:140] vkQueueSubmit time: 0.065725
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008414
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.060732
+[example-vulkan.c:187] swa_window_refresh time: 0.000666
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.239559
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.090129
+[example-vulkan.c:112] acquire image time: 0.005838
+[example-vulkan.c:140] vkQueueSubmit time: 0.065955
+[example-vulkan.c:149] swa_window_surface_frame time: 0.009220
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.059234
+[example-vulkan.c:187] swa_window_refresh time: 0.000687
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.237238
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.122462
+[example-vulkan.c:112] acquire image time: 0.005843
+[example-vulkan.c:140] vkQueueSubmit time: 0.068570
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008605
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.059395
+[example-vulkan.c:187] swa_window_refresh time: 0.000832
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.189720
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.061334
+[example-vulkan.c:112] acquire image time: 0.005282
+[example-vulkan.c:140] vkQueueSubmit time: 0.091407
+[example-vulkan.c:149] swa_window_surface_frame time: 0.009812
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.064756
+[example-vulkan.c:187] swa_window_refresh time: 0.000742
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 16.471655
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.426422
+[example-vulkan.c:112] acquire image time: 0.015240
+[example-vulkan.c:140] vkQueueSubmit time: 0.176272
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014198
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104923
+[example-vulkan.c:187] swa_window_refresh time: 0.001138
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.554661
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.401239
+[example-vulkan.c:112] acquire image time: 0.013120
+[example-vulkan.c:140] vkQueueSubmit time: 0.103816
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014323
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.099220
+[example-vulkan.c:187] swa_window_refresh time: 0.001228
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.518706
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.440187
+[example-vulkan.c:112] acquire image time: 0.015275
+[example-vulkan.c:140] vkQueueSubmit time: 0.119496
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015571
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106968
+[example-vulkan.c:187] swa_window_refresh time: 0.001328
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.713527
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.372003
+[example-vulkan.c:112] acquire image time: 0.011566
+[example-vulkan.c:140] vkQueueSubmit time: 0.104687
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016162
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103745
+[example-vulkan.c:187] swa_window_refresh time: 0.001343
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.766857
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.453929
+[example-vulkan.c:112] acquire image time: 0.015145
+[example-vulkan.c:140] vkQueueSubmit time: 0.121100
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014889
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104342
+[example-vulkan.c:187] swa_window_refresh time: 0.001924
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.586891
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.396960
+[example-vulkan.c:112] acquire image time: 0.011079
+[example-vulkan.c:140] vkQueueSubmit time: 0.106356
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014684
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102116
+[example-vulkan.c:187] swa_window_refresh time: 0.001273
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.720315
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.435232
+[example-vulkan.c:112] acquire image time: 0.015129
+[example-vulkan.c:140] vkQueueSubmit time: 0.120123
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014718
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105249
+[example-vulkan.c:187] swa_window_refresh time: 0.001283
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.685679
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.427298
+[example-vulkan.c:112] acquire image time: 0.011265
+[example-vulkan.c:140] vkQueueSubmit time: 0.109774
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015981
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102598
+[example-vulkan.c:187] swa_window_refresh time: 0.001363
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.695500
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.392951
+[example-vulkan.c:112] acquire image time: 0.006622
+[example-vulkan.c:140] vkQueueSubmit time: 0.112127
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015099
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.100764
+[example-vulkan.c:187] swa_window_refresh time: 0.001283
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.691798
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.388931
+[example-vulkan.c:112] acquire image time: 0.051907
+[example-vulkan.c:140] vkQueueSubmit time: 0.111037
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014513
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103810
+[example-vulkan.c:187] swa_window_refresh time: 0.001008
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.669612
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.438418
+[example-vulkan.c:112] acquire image time: 0.059830
+[example-vulkan.c:140] vkQueueSubmit time: 0.131488
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015476
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105178
+[example-vulkan.c:187] swa_window_refresh time: 0.001203
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.578310
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.394294
+[example-vulkan.c:112] acquire image time: 0.011115
+[example-vulkan.c:140] vkQueueSubmit time: 0.143931
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016597
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.110746
+[example-vulkan.c:187] swa_window_refresh time: 0.001373
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.682207
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.429463
+[example-vulkan.c:112] acquire image time: 0.014598
+[example-vulkan.c:140] vkQueueSubmit time: 0.161305
+[example-vulkan.c:149] swa_window_surface_frame time: 0.008001
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.111122
+[example-vulkan.c:187] swa_window_refresh time: 0.001188
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.551440
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.369868
+[example-vulkan.c:112] acquire image time: 0.010704
+[example-vulkan.c:140] vkQueueSubmit time: 0.104331
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015285
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106416
+[example-vulkan.c:187] swa_window_refresh time: 0.000787
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.807922
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.517774
+[example-vulkan.c:112] acquire image time: 0.014614
+[example-vulkan.c:140] vkQueueSubmit time: 0.175999
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015665
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.111388
+[example-vulkan.c:187] swa_window_refresh time: 0.001508
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.407747
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.376062
+[example-vulkan.c:112] acquire image time: 0.010659
+[example-vulkan.c:140] vkQueueSubmit time: 0.104021
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015951
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102778
+[example-vulkan.c:187] swa_window_refresh time: 0.001313
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.805836
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.431348
+[example-vulkan.c:112] acquire image time: 0.015330
+[example-vulkan.c:140] vkQueueSubmit time: 0.118904
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015054
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106361
+[example-vulkan.c:187] swa_window_refresh time: 0.001839
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.543335
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.449761
+[example-vulkan.c:112] acquire image time: 0.006843
+[example-vulkan.c:140] vkQueueSubmit time: 0.111816
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015741
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.099906
+[example-vulkan.c:187] swa_window_refresh time: 0.001297
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.806618
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.431463
+[example-vulkan.c:112] acquire image time: 0.014102
+[example-vulkan.c:140] vkQueueSubmit time: 0.117987
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014943
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102929
+[example-vulkan.c:187] swa_window_refresh time: 0.001428
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.633606
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.375631
+[example-vulkan.c:112] acquire image time: 0.010975
+[example-vulkan.c:140] vkQueueSubmit time: 0.103389
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016733
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103590
+[example-vulkan.c:187] swa_window_refresh time: 0.001183
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.773944
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.427654
+[example-vulkan.c:112] acquire image time: 0.015515
+[example-vulkan.c:140] vkQueueSubmit time: 0.120113
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015199
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104923
+[example-vulkan.c:187] swa_window_refresh time: 0.001453
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.600525
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.372449
+[example-vulkan.c:112] acquire image time: 0.010364
+[example-vulkan.c:140] vkQueueSubmit time: 0.101245
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015254
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.101159
+[example-vulkan.c:187] swa_window_refresh time: 0.001153
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.836756
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.430065
+[example-vulkan.c:112] acquire image time: 0.014618
+[example-vulkan.c:140] vkQueueSubmit time: 0.116369
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014744
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106015
+[example-vulkan.c:187] swa_window_refresh time: 0.001248
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.615304
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.367017
+[example-vulkan.c:112] acquire image time: 0.011290
+[example-vulkan.c:140] vkQueueSubmit time: 0.102227
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015014
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103815
+[example-vulkan.c:187] swa_window_refresh time: 0.001423
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.813966
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.433181
+[example-vulkan.c:112] acquire image time: 0.015004
+[example-vulkan.c:140] vkQueueSubmit time: 0.119220
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014147
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102753
+[example-vulkan.c:187] swa_window_refresh time: 0.001508
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.561637
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.374644
+[example-vulkan.c:112] acquire image time: 0.011125
+[example-vulkan.c:140] vkQueueSubmit time: 0.102227
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015816
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104196
+[example-vulkan.c:187] swa_window_refresh time: 0.001067
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.868534
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.429779
+[example-vulkan.c:112] acquire image time: 0.014783
+[example-vulkan.c:140] vkQueueSubmit time: 0.117406
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015971
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105274
+[example-vulkan.c:187] swa_window_refresh time: 0.001603
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.675105
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.374730
+[example-vulkan.c:112] acquire image time: 0.011506
+[example-vulkan.c:140] vkQueueSubmit time: 0.102939
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016633
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103334
+[example-vulkan.c:187] swa_window_refresh time: 0.002070
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.768005
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.389789
+[example-vulkan.c:112] acquire image time: 0.011421
+[example-vulkan.c:140] vkQueueSubmit time: 0.103669
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014528
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102873
+[example-vulkan.c:187] swa_window_refresh time: 0.002120
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.658071
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.373792
+[example-vulkan.c:112] acquire image time: 0.011065
+[example-vulkan.c:140] vkQueueSubmit time: 0.103159
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015019
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103359
+[example-vulkan.c:187] swa_window_refresh time: 0.001228
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.825150
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.426522
+[example-vulkan.c:112] acquire image time: 0.015525
+[example-vulkan.c:140] vkQueueSubmit time: 0.117747
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014729
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.105013
+[example-vulkan.c:187] swa_window_refresh time: 0.001499
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.603291
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.376212
+[example-vulkan.c:112] acquire image time: 0.011556
+[example-vulkan.c:140] vkQueueSubmit time: 0.102703
+[example-vulkan.c:149] swa_window_surface_frame time: 0.016327
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102167
+[example-vulkan.c:187] swa_window_refresh time: 0.001153
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.650466
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.385553
+[example-vulkan.c:112] acquire image time: 0.011552
+[example-vulkan.c:140] vkQueueSubmit time: 0.105575
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014412
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.098438
+[example-vulkan.c:187] swa_window_refresh time: 0.001267
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.929821
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.375406
+[example-vulkan.c:112] acquire image time: 0.010204
+[example-vulkan.c:140] vkQueueSubmit time: 0.189800
+[example-vulkan.c:149] swa_window_surface_frame time: 0.017315
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.106832
+[example-vulkan.c:187] swa_window_refresh time: 0.001293
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.756875
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.390721
+[example-vulkan.c:112] acquire image time: 0.011972
+[example-vulkan.c:140] vkQueueSubmit time: 0.106706
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014573
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.098168
+[example-vulkan.c:187] swa_window_refresh time: 0.001308
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.592338
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.367062
+[example-vulkan.c:112] acquire image time: 0.010434
+[example-vulkan.c:140] vkQueueSubmit time: 0.104477
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014713
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.102006
+[example-vulkan.c:187] swa_window_refresh time: 0.001373
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.835201
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.377822
+[example-vulkan.c:112] acquire image time: 0.011982
+[example-vulkan.c:140] vkQueueSubmit time: 0.103801
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014854
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.099030
+[example-vulkan.c:187] swa_window_refresh time: 0.001213
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.721906
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.370660
+[example-vulkan.c:112] acquire image time: 0.010769
+[example-vulkan.c:140] vkQueueSubmit time: 0.099385
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015275
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.100924
+[example-vulkan.c:187] swa_window_refresh time: 0.001158
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.833843
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.395396
+[example-vulkan.c:112] acquire image time: 0.011546
+[example-vulkan.c:140] vkQueueSubmit time: 0.100217
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014823
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.111062
+[example-vulkan.c:187] swa_window_refresh time: 0.001383
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.635581
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.374609
+[example-vulkan.c:112] acquire image time: 0.010654
+[example-vulkan.c:140] vkQueueSubmit time: 0.104451
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015309
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104176
+[example-vulkan.c:187] swa_window_refresh time: 0.001383
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.858288
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.374013
+[example-vulkan.c:112] acquire image time: 0.011331
+[example-vulkan.c:140] vkQueueSubmit time: 0.104927
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014829
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103520
+[example-vulkan.c:187] swa_window_refresh time: 0.001108
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.671838
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.373165
+[example-vulkan.c:112] acquire image time: 0.010830
+[example-vulkan.c:140] vkQueueSubmit time: 0.104217
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015796
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103144
+[example-vulkan.c:187] swa_window_refresh time: 0.001333
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.846020
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.372454
+[example-vulkan.c:112] acquire image time: 0.011560
+[example-vulkan.c:140] vkQueueSubmit time: 0.102722
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014438
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104577
+[example-vulkan.c:187] swa_window_refresh time: 0.001453
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.695680
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.371461
+[example-vulkan.c:112] acquire image time: 0.009782
+[example-vulkan.c:140] vkQueueSubmit time: 0.103344
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015059
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.103024
+[example-vulkan.c:187] swa_window_refresh time: 0.001323
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.858644
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.374494
+[example-vulkan.c:112] acquire image time: 0.011446
+[example-vulkan.c:140] vkQueueSubmit time: 0.104241
+[example-vulkan.c:149] swa_window_surface_frame time: 0.015244
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.099225
+[example-vulkan.c:187] swa_window_refresh time: 0.001814
+[example-vulkan.c:69] Redrawing
+[example-vulkan.c:80] Time between redraws: 15.689969
+[example-vulkan.c:89] vkDeviceWaitIdle time: 0.374900
+[example-vulkan.c:112] acquire image time: 0.011682
+[example-vulkan.c:140] vkQueueSubmit time: 0.102547
+[example-vulkan.c:149] swa_window_surface_frame time: 0.014873
+[example-vulkan.c:177] vkQueuePresentKHR time: 0.104738
+[example-vulkan.c:187] swa_window_refresh time: 0.001328
+[example-vulkan.c:259] Escape pressed, exiting
+[example-vulkan.c:381] Exiting cleanly

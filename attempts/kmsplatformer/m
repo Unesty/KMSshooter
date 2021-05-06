@@ -1,0 +1,7 @@
+#!/bin/sh
+export USE_EGL
+export USE_VULKAN
+gcc -static-libgcc -I/usr/include/libdrm -I./ -L/usr/lib -L. -I./Vulkan-Loader/loader -L./Vulkan-Loader/loader -I/usr/lib  -s -O1 main.c -o ds -Lminigbm -l:libminigbm.so.1.0.0 -ldrm -lm -ldl libvolk.a # -lGLESv2 -lGL -lEGL
+#gcc -lm -I/usr/include/libdrm -O1 main.c -o main
+#gcc -lm -I/usr/include/libdrm  -I/usr/include -ldrm -lGLESv2 -lgbm -lGL  -lEGL -O1 main.s -o main.o
+#gcc -lm -I/usr/include/libdrm  -I/usr/include -ldrm -lGLESv2 -lgbm -lGL  -lEGL -O1 main.o -o main

@@ -1,0 +1,1 @@
+gcc -flto -Wall -O3 modeset3.c -o l -I/usr/include/libdrm/ -ldrm

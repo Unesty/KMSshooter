@@ -1,0 +1,6 @@
+[
+	{"directory": "/home/kitty/Documents/projects/vulkan-wayland-clients/",
+	"command": "clang -static-libgcc -flto -I/usr/include/libdrm -I./ -L/usr/lib -I/usr/lib  -O1 main.c -o ds -lGL -lgbm -Lminigbm -ldrm -lm -lEGL",
+	"file": "comptri2.c"
+	}
+]

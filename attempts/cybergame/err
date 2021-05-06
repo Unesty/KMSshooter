@@ -1,0 +1,58 @@
+modeset.c: In function 'modeset_draw':
+modeset.c:668:7: warning: passing argument 1 of 'mmap' makes pointer from integer without a cast [-Wint-conversion]
+  668 |  mmap(cxaddr,4,PROT_READ,MAP_ANONYMOUS|MAP_SHARED,cxfd,0);
+      |       ^~~~~~
+      |       |
+      |       int
+In file included from modeset.c:37:
+/usr/include/sys/mman.h:112:7: note: expected 'void *' but argument is of type 'int'
+  112 | void *mmap (void *, size_t, int, int, int, off_t);
+      |       ^~~~
+modeset.c:957:70: warning: suggest parentheses around '+' inside '<<' [-Wparentheses]
+  957 |      *(uint32_t*)&iter->map[off] = ((k>90)*(k<500)*(j>310)*(j<400)*30+bsett << 16) | i/20 << 8 | (k<cx+CURSOR_SIZE/2)*(k>cx-CURSOR_SIZE/2)*(j<cy+CURSOR_SIZE/2)*(j>cy-CURSOR_SIZE/2)*90; //(int)(100*sin(off/900000*(cy/120));
+      |                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+modeset.c:664:20: warning: unused variable 'bquit' [-Wunused-variable]
+  664 |  char bstart,bsett,bquit;
+      |                    ^~~~~
+modeset.c:664:7: warning: unused variable 'bstart' [-Wunused-variable]
+  664 |  char bstart,bsett,bquit;
+      |       ^~~~~~
+modeset.c:660:6: warning: variable 'mx' set but not used [-Wunused-but-set-variable]
+  660 |  int mx,my,cx,cy;
+      |      ^~
+modeset.c:659:37: warning: unused variable 'kt' [-Wunused-variable]
+  659 |  unsigned int i, j, k, off,blink,jt,kt,fede;
+      |                                     ^~
+modeset.c:659:34: warning: unused variable 'jt' [-Wunused-variable]
+  659 |  unsigned int i, j, k, off,blink,jt,kt,fede;
+      |                                  ^~
+modeset.c:659:28: warning: unused variable 'blink' [-Wunused-variable]
+  659 |  unsigned int i, j, k, off,blink,jt,kt,fede;
+      |                            ^~~~~
+modeset.c:657:16: warning: unused variable 'b' [-Wunused-variable]
+  657 |  uint8_t r, g, b;
+      |                ^
+modeset.c:657:13: warning: unused variable 'g' [-Wunused-variable]
+  657 |  uint8_t r, g, b;
+      |             ^
+modeset.c:657:10: warning: unused variable 'r' [-Wunused-variable]
+  657 |  uint8_t r, g, b;
+      |          ^
+At top level:
+modeset.c:604:16: warning: 'next_color' defined but not used [-Wunused-function]
+  604 | static uint8_t next_color(bool *up, uint8_t cur, unsigned int mod)
+      |                ^~~~~~~~~~
+modeset.c: In function 'modeset_draw':
+modeset.c:668:2: warning: 'cxfd' is used uninitialized in this function [-Wuninitialized]
+  668 |  mmap(cxaddr,4,PROT_READ,MAP_ANONYMOUS|MAP_SHARED,cxfd,0);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+modeset.c:668:2: warning: 'cxaddr' is used uninitialized in this function [-Wuninitialized]
+modeset.c: In function 'main':
+modeset.c:664:14: warning: 'bsett' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  664 |  char bstart,bsett,bquit;
+      |              ^~~~~
+modeset.c:572:9: warning: 'fd' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  572 |   ret = drmModeSetCrtc(fd, iter->crtc, iter->fb, 0, 0,
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  573 |          &iter->conn, 1, &iter->mode);
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,82 @@
+warning: unknown warning option '-Wl' [-Wunknown-warning-option]
+vklauncher.c:971:15: warning: implicit declaration of function 'get_time_ticks' is invalid in C99 [-Wimplicit-function-declaration]
+        long ticks = get_time_ticks();
+                     ^
+vklauncher.c:1900:4: warning: implicit declaration of function 'demo_draw' is invalid in C99 [-Wimplicit-function-declaration]
+                        demo_draw(demo);
+                        ^
+vklauncher.c:2707:25: error: indirection requires pointer operand ('struct demo' invalid)
+        memset(demo, 0, sizeof(*demo));
+                               ^~~~~
+vklauncher.c:2712:6: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        demo->presentMode = VK_PRESENT_MODE_MAILBOX_KHR; //VK_PRESENT_MODE_FIFO_KHR //VK_PRESENT_MODE_IMMEDIATE_KHR
+        ~~~~^~
+            .
+vklauncher.c:2712:20: error: expression is not assignable
+        demo->presentMode = VK_PRESENT_MODE_MAILBOX_KHR; //VK_PRESENT_MODE_FIFO_KHR //VK_PRESENT_MODE_IMMEDIATE_KHR
+        ~~~~~~~~~~~~~~~~~ ^
+vklauncher.c:2714:6: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        demo->frameCount = INT32_MAX;
+        ~~~~^~
+            .
+vklauncher.c:2714:19: error: expression is not assignable
+        demo->frameCount = INT32_MAX;
+        ~~~~~~~~~~~~~~~~ ^
+vklauncher.c:2742:6: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        demo->display = wl_display_connect(NULL);
+        ~~~~^~
+            .
+vklauncher.c:2742:16: error: expression is not assignable
+        demo->display = wl_display_connect(NULL);
+        ~~~~~~~~~~~~~ ^
+vklauncher.c:2744:10: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        if (demo->display == NULL) {
+            ~~~~^~
+                .
+vklauncher.c:2750:6: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        demo->registry = wl_display_get_registry(demo->display);
+        ~~~~^~
+            .
+vklauncher.c:2750:47: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        demo->registry = wl_display_get_registry(demo->display);
+                                                 ~~~~^~
+                                                     .
+vklauncher.c:2750:17: error: expression is not assignable
+        demo->registry = wl_display_get_registry(demo->display);
+        ~~~~~~~~~~~~~~ ^
+vklauncher.c:2751:31: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        wl_registry_add_listener(demo->registry, &registry_listener, demo);
+                                 ~~~~^~
+                                     .
+vklauncher.c:2751:63: error: passing 'struct demo' to parameter of incompatible type 'void *'
+        wl_registry_add_listener(demo->registry, &registry_listener, demo);
+                                                                     ^~~~
+/usr/include/wayland-client-protocol.h:1039:56: note: passing argument to parameter 'data' here
+                         const struct wl_registry_listener *listener, void *data)
+                                                                            ^
+vklauncher.c:2752:26: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        wl_display_dispatch(demo->display);
+                            ~~~~^~
+                                .
+vklauncher.c:2759:37: error: too few arguments provided to function-like macro invocation
+                ERR_EXIT("volkInitialize() failed");
+                                                  ^
+vklauncher.c:99:9: note: macro 'ERR_EXIT' defined here
+#define ERR_EXIT(err_msg, err_class) \
+        ^
+vklauncher.c:2759:3: error: use of undeclared identifier 'ERR_EXIT'
+                ERR_EXIT("volkInitialize() failed");
+                ^
+vklauncher.c:2762:6: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        demo->enabled_extension_count = 0;
+        ~~~~^~
+            .
+vklauncher.c:2762:32: error: expression is not assignable
+        demo->enabled_extension_count = 0;
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+vklauncher.c:2763:6: error: member reference type 'struct demo' is not a pointer; did you mean to use '.'?
+        demo->enabled_layer_count = 0;
+        ~~~~^~
+            .
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+3 warnings and 20 errors generated.

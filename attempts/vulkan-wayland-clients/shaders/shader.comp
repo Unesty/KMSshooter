@@ -1,0 +1,21 @@
+#version 460
+
+//layout (local_size_x = 32) in;
+
+layout(binding = 0) buffer VB {
+ vec2 Position[];
+}VertexBuffer;
+
+/*
+layout(binding = 2) buffer outVertexBuffer {
+ vec2 outPosition[];
+}outVertexBuffer;
+*/
+
+void main()
+{
+	//uint id = gl_GlobalInvocationID;
+	VertexBuffer.Position[gl_GlobalInvocationID.x].y = sin(VertexBuffer.Position[gl_GlobalInvocationID.x].y*100+VertexBuffer.Position[gl_GlobalInvocationID.x].x/0.0075-1.0);
+	//VertexBuffer.Position[gl_GlobalInvocationID.x].x = (gl_GlobalInvocationID.x)*0.0075-1.0;
+	//VertexBuffer.Position[gl_GlobalInvocationID.x].y = sin((gl_GlobalInvocationID.x)*0.075-1.0);
+}

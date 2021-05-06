@@ -1,0 +1,99 @@
+3616  execve("./modeset", ["./modeset"], 0x7ffea397db98 /* 18 vars */) = 0
+3616  brk(NULL)                         = 0x5607f7810000
+3616  arch_prctl(0x3001 /* ARCH_??? */, 0x7fff38079f80) = -1 EINVAL (Invalid argument)
+3616  access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+3616  openat(AT_FDCWD, "/usr/lib/tls/x86_64/x86_64/libdrm.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+3616  stat("/usr/lib/tls/x86_64/x86_64", 0x7fff380791c0) = -1 ENOENT (No such file or directory)
+3616  openat(AT_FDCWD, "/usr/lib/tls/x86_64/libdrm.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+3616  stat("/usr/lib/tls/x86_64", 0x7fff380791c0) = -1 ENOENT (No such file or directory)
+3616  openat(AT_FDCWD, "/usr/lib/tls/x86_64/libdrm.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+3616  stat("/usr/lib/tls/x86_64", 0x7fff380791c0) = -1 ENOENT (No such file or directory)
+3616  openat(AT_FDCWD, "/usr/lib/tls/libdrm.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+3616  stat("/usr/lib/tls", 0x7fff380791c0) = -1 ENOENT (No such file or directory)
+3616  openat(AT_FDCWD, "/usr/lib/x86_64/x86_64/libdrm.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+3616  stat("/usr/lib/x86_64/x86_64", 0x7fff380791c0) = -1 ENOENT (No such file or directory)
+3616  openat(AT_FDCWD, "/usr/lib/x86_64/libdrm.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+3616  stat("/usr/lib/x86_64", 0x7fff380791c0) = -1 ENOENT (No such file or directory)
+3616  openat(AT_FDCWD, "/usr/lib/x86_64/libdrm.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+3616  stat("/usr/lib/x86_64", 0x7fff380791c0) = -1 ENOENT (No such file or directory)
+3616  openat(AT_FDCWD, "/usr/lib/libdrm.so.2", O_RDONLY|O_CLOEXEC) = 3
+3616  read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 P\0\0\0\0\0\0"..., 832) = 832
+3616  fstat(3, {st_mode=S_IFREG|0755, st_size=79536, ...}) = 0
+3616  mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f2455dc2000
+3616  mmap(NULL, 84464, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2455dad000
+3616  mmap(0x7f2455db2000, 40960, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x5000) = 0x7f2455db2000
+3616  mmap(0x7f2455dbc000, 16384, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xf000) = 0x7f2455dbc000
+3616  mmap(0x7f2455dc0000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x12000) = 0x7f2455dc0000
+3616  close(3)                          = 0
+3616  openat(AT_FDCWD, "/usr/lib/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+3616  read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0p\363\0\0\0\0\0\0"..., 832) = 832
+3616  fstat(3, {st_mode=S_IFREG|0755, st_size=1329272, ...}) = 0
+3616  mmap(NULL, 1331224, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2455c67000
+3616  mmap(0x7f2455c76000, 638976, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xf000) = 0x7f2455c76000
+3616  mmap(0x7f2455d12000, 626688, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xab000) = 0x7f2455d12000
+3616  mmap(0x7f2455dab000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x143000) = 0x7f2455dab000
+3616  close(3)                          = 0
+3616  openat(AT_FDCWD, "/usr/lib/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+3616  read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`q\2\0\0\0\0\0"..., 832) = 832
+3616  pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+3616  pread64(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32, 848) = 32
+3616  pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\22\344\22\321\223\216\303\377yu\37\16\205\363\33\305"..., 68, 880) = 68
+3616  fstat(3, {st_mode=S_IFREG|0755, st_size=2145592, ...}) = 0
+3616  pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+3616  pread64(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32, 848) = 32
+3616  pread64(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\22\344\22\321\223\216\303\377yu\37\16\205\363\33\305"..., 68, 880) = 68
+3616  mmap(NULL, 1856312, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f2455aa1000
+3616  mmap(0x7f2455ac6000, 1359872, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x25000) = 0x7f2455ac6000
+3616  mmap(0x7f2455c12000, 307200, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x171000) = 0x7f2455c12000
+3616  mmap(0x7f2455c5d000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1bb000) = 0x7f2455c5d000
+3616  mmap(0x7f2455c63000, 13112, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f2455c63000
+3616  close(3)                          = 0
+3616  mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f2455a9e000
+3616  arch_prctl(ARCH_SET_FS, 0x7f2455a9e740) = 0
+3616  mprotect(0x7f2455c5d000, 12288, PROT_READ) = 0
+3616  mprotect(0x7f2455dab000, 4096, PROT_READ) = 0
+3616  mprotect(0x7f2455dc0000, 4096, PROT_READ) = 0
+3616  mprotect(0x5607f1cf2000, 4096, PROT_READ) = 0
+3616  mprotect(0x7f2455def000, 4096, PROT_READ) = 0
+3616  write(2, "using card '/dev/dri/card0'\n", 28) = 28
+3616  openat(AT_FDCWD, "/dev/dri/card0", O_RDWR|O_CLOEXEC) = 3
+3616  ioctl(3, DRM_IOCTL_GET_CAP, 0x7fff38079e60) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_GETRESOURCES, 0x7fff38079e00) = 0
+3616  brk(NULL)                         = 0x5607f7810000
+3616  brk(0x5607f7831000)               = 0x5607f7831000
+3616  ioctl(3, DRM_IOCTL_MODE_GETRESOURCES, 0x7fff38079e00) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7fff38079db0) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7fff38079db0) = 0
+3616  write(2, "mode for connector 76 is 1366x76"..., 34) = 34
+3616  ioctl(3, DRM_IOCTL_MODE_GETENCODER, 0x7fff38079e60) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_CREATE_DUMB, 0x7fff38079f00) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_ADDFB, 0x7fff38079e50) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_MAP_DUMB, 0x7fff38079ef0) = 0
+3616  mmap(NULL, 4227072, PROT_READ|PROT_WRITE, MAP_SHARED, 3, 0x100000000) = 0x7f2455696000
+3616  ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7fff38079db0) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7fff38079db0) = 0
+3616  write(2, "ignoring unused connector 80\n", 29) = 29
+3616  ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7fff38079db0) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7fff38079db0) = 0
+3616  write(2, "ignoring unused connector 83\n", 29) = 29
+3616  ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7fff38079db0) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7fff38079db0) = 0
+3616  write(2, "ignoring unused connector 91\n", 29) = 29
+3616  ioctl(3, DRM_IOCTL_MODE_GETCRTC, 0x7fff38079e10) = 0
+3616  ioctl(3, DRM_IOCTL_MODE_SETCRTC, 0x7fff38079e10) = 0
+3616  write(1, "drawing\0", 8)          = 8
+3616  close(0)                          = 0
+3616  close(1)                          = 0
+3616  close(2)                          = 0
+3616  mmap(NULL, 3, PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, 0, 0) = 0x7f2455dee000
+3616  clone(child_stack=NULL, flags=0)  = 3617
+3617  close(4)                          = -1 EBADF (Bad file descriptor)
+3617  close(5)                          = -1 EBADF (Bad file descriptor)
+3617  close(6)                          = -1 EBADF (Bad file descriptor)
+3617  openat(AT_FDCWD, "/dev/input/mouse0", O_RDONLY) = 0
+3617  read(0,  <unfinished ...>
+3616  --- SIGINT {si_signo=SIGINT, si_code=SI_KERNEL} ---
+3617  <... read resumed>0x7fff38079f00, 3) = ? ERESTARTSYS (To be restarted if SA_RESTART is set)
+3617  --- SIGINT {si_signo=SIGINT, si_code=SI_KERNEL} ---
+3616  +++ killed by SIGINT +++
+3617  +++ killed by SIGINT +++

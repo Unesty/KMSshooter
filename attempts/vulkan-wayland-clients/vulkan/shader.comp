@@ -1,0 +1,81 @@
+#version 460
+
+//layout (local_size_x = 32) in;
+
+layout(binding = 0) buffer VB {
+ vec2 Position[];
+}VertexBuffer;
+
+/*
+layout(binding = 2) buffer outVertexBuffer {
+ vec2 outPosition[];
+}outVertexBuffer;
+*/
+
+layout (binding = 1) buffer host_visible
+{
+	vec4 Mouse;
+	vec4 Date;
+	bvec2 Mouse_lr; //is mouse left[0], right[1] clicked
+	vec2 Resolution;
+	bool debugdraw;
+	bool pause;
+	float Time;
+	float TimeDelta;
+	int Frame;
+} i;
+
+/*
+int xid=0;
+float setx(float x)
+{
+	x=((1.-min(max(gl_GlobalInvocationID.x,xid),xid)))*x;
+	xid++;
+	return x;
+}
+
+int yid=0;
+float sety(float y)
+{
+	y=(1.-min(max(gl_GlobalInvocationID.x,yid),yid))*y;
+	yid++;
+	return y;
+}
+*/
+
+/*
+const vec2 verts[20] = {
+	vec2(0.4,0.4),
+	vec2(-0.4,0.4),
+	vec2(-0.4,-0.4),
+	vec2(0.4,-0.4),
+	vec2(0.5,0.5),
+	vec2(0.6,0.6),
+	vec2(0.7,0.7),
+	vec2(0.8,.8),
+	vec2(.9,.9),
+	vec2(.10,.9),
+	vec2(.11,.9),
+	vec2(.12,.9),
+	vec2(.13,.9),
+	vec2(.14,.9),
+	vec2(.15,.9),
+	vec2(.16,.9),
+	vec2(.17,.9),
+	vec2(.18,.9),
+	vec2(.19,.9),
+	vec2(.20,.9),
+};
+*/
+
+void main()
+{
+	//uint id = gl_GlobalInvocationID;
+
+	VertexBuffer.Position[gl_GlobalInvocationID.x].y = sin(VertexBuffer.Position[gl_GlobalInvocationID.x].y+VertexBuffer.Position[gl_GlobalInvocationID.x].x/0.75-1.0);
+
+	//VertexBuffer.Position[gl_GlobalInvocationID.x].x = (gl_GlobalInvocationID.x)*0.0075-1.0;
+	//VertexBuffer.Position[gl_GlobalInvocationID.x].y = sin((gl_GlobalInvocationID.x)*0.075-1.0);
+	
+	//VertexBuffer.Position[gl_GlobalInvocationID.x].xy = verts[gl_GlobalInvocationID.x];
+}

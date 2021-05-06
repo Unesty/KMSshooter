@@ -1,0 +1,3 @@
+[submodule "minigbm"]
+	path = minigbm
+	url = ./minigbm/

@@ -1,0 +1,15 @@
+www.viva64.com/en/w:1:1: error: Help: The documentation for all analyzer warnings is available here: https://www.viva64.com/en/w/.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:46:1: warning: V677 Custom declaration of a standard 'size_t' type. The declaration from system header files should be used instead.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:14:1: warning: V677 Custom declaration of a standard 'va_list' type. The declaration from system header files should be used instead.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:35:1: warning: V677 Custom declaration of a standard 'ptrdiff_t' type. The declaration from system header files should be used instead.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:74:1: warning: V677 Custom declaration of a standard 'wchar_t' type. The declaration from system header files should be used instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:187:1: note: V576 Incorrect format. Consider checking the second actual argument of the 'dlg__printf_format' function. The SIGNED integer type argument is expected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:198:1: note: V576 Incorrect format. Consider checking the second actual argument of the 'dlg__printf_format' function. The SIGNED integer type argument is expected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:204:1: note: V576 Incorrect format. Consider checking the second actual argument of the 'dlg__printf_format' function. The SIGNED integer type argument is expected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:236:1: error: V547 Expression 'nbyte < 0' is always false. Unsigned type value is never < 0.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:17:1: note: V1059 The 'va_start' macro name overrides a reserved name from C standard. This may lead to undefined behavior.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:18:1: note: V1059 The 'va_end' macro name overrides a reserved name from C standard. This may lead to undefined behavior.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:19:1: note: V1059 The 'va_arg' macro name overrides a reserved name from C standard. This may lead to undefined behavior.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:27:1: note: V1059 The 'va_copy' macro name overrides a reserved name from C standard. This may lead to undefined behavior.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdbool.h:20:1: note: V1059 Macro name overrides the '_Bool' keyword. This may lead to undefined behavior.
+ :1:1: error: Renew Your license will expire in 8 days. Click 'Renew' to learn more or contact us at support@viva64.com.

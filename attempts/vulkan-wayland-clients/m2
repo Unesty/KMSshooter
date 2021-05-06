@@ -1,0 +1,5 @@
+wayland-scanner client-header /usr/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-client-protocol.h
+wayland-scanner private-code /usr/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml xdg-shell-protocol.c
+gcc -g -m64 -lm -lxcb -O3  -fdata-sections -ffunction-sections vklauncher.c  -o vkme -lwayland-client -lvulkan
+#libvulkan.so.1.2.132
+#xdg-shell-protocol.o

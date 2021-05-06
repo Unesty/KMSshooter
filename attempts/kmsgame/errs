@@ -1,0 +1,242 @@
+/home/kitty/Documents/projects/kmscube/main.c: In function 'sexithand':
+/home/kitty/Documents/projects/kmscube/main.c:843:17: error: 'pcm_handle' undeclared (first use in this function); did you mean 'drm_handle_t'?
+   snd_pcm_drain(pcm_handle);
+                 ^~~~~~~~~~
+                 drm_handle_t
+/home/kitty/Documents/projects/kmscube/main.c:843:17: note: each undeclared identifier is reported only once for each function it appears in
+/home/kitty/Documents/projects/kmscube/main.c:845:8: error: 'buff' undeclared (first use in this function); did you mean 'erff'?
+   free(buff);
+        ^~~~
+        erff
+/home/kitty/Documents/projects/kmscube/main.c: In function 'main':
+/home/kitty/Documents/projects/kmscube/main.c:852:2: warning: implicit declaration of function 'rt_sigaction'; did you mean 'sa_sigaction'? [-Wimplicit-function-declaration]
+  rt_sigaction(15,soundexit,0);
+  ^~~~~~~~~~~~
+  sa_sigaction
+/home/kitty/Documents/projects/kmscube/main.c:855:6: error: 'pcm' undeclared (first use in this function)
+  if (pcm = snd_pcm_open(&pcm_handle, PCM_DEVICE,
+      ^~~
+/home/kitty/Documents/projects/kmscube/main.c:855:26: error: 'pcm_handle' undeclared (first use in this function); did you mean 'drm_handle_t'?
+  if (pcm = snd_pcm_open(&pcm_handle, PCM_DEVICE,
+                          ^~~~~~~~~~
+                          drm_handle_t
+/home/kitty/Documents/projects/kmscube/main.c:855:38: error: 'PCM_DEVICE' undeclared (first use in this function); did you mean 'SW_MUTE_DEVICE'?
+  if (pcm = snd_pcm_open(&pcm_handle, PCM_DEVICE,
+                                      ^~~~~~~~~~
+                                      SW_MUTE_DEVICE
+In file included from /usr/include/alsa/asoundlib.h:49,
+                 from /home/kitty/Documents/projects/kmscube/main.c:58:
+/home/kitty/Documents/projects/kmscube/main.c:861:28: error: 'params' undeclared (first use in this function)
+  snd_pcm_hw_params_alloca(&params);
+                            ^~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:874:63: error: 'channels' undeclared (first use in this function)
+  if (pcm = snd_pcm_hw_params_set_channels(pcm_handle, params, channels) < 0)
+                                                               ^~~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:877:65: error: 'rate' undeclared (first use in this function); did you mean 'raise'?
+  if (pcm = snd_pcm_hw_params_set_rate_near(pcm_handle, params, &rate, 0) < 0)
+                                                                 ^~~~
+                                                                 raise
+/home/kitty/Documents/projects/kmscube/main.c:889:42: error: 'tmp' undeclared (first use in this function); did you mean 'tm'?
+  snd_pcm_hw_params_get_channels(params, &tmp);
+                                          ^~~
+                                          tm
+/home/kitty/Documents/projects/kmscube/main.c:903:45: error: 'frames' undeclared (first use in this function); did you mean 'fabs'?
+  snd_pcm_hw_params_get_period_size(params, &frames, 0);
+                                             ^~~~~~
+                                             fabs
+/home/kitty/Documents/projects/kmscube/main.c:905:2: error: 'buff_size' undeclared (first use in this function)
+  buff_size = frames * channels * 2 /* 2 -> sample size */;
+  ^~~~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:906:2: error: 'buff' undeclared (first use in this function); did you mean 'erff'?
+  buff = (char *) malloc(buff_size);
+  ^~~~
+  erff
+/home/kitty/Documents/projects/kmscube/main.c: At top level:
+/home/kitty/Documents/projects/kmscube/main.c:949:2: error: expected identifier or '(' before '/' token
+ */
+  ^
+/home/kitty/Documents/projects/kmscube/main.c:961:2: warning: data definition has no type or storage class
+  ret = init_drm();
+  ^~~
+/home/kitty/Documents/projects/kmscube/main.c:961:2: warning: type defaults to 'int' in declaration of 'ret' [-Wimplicit-int]
+/home/kitty/Documents/projects/kmscube/main.c:961:8: error: initializer element is not constant
+  ret = init_drm();
+        ^~~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:962:2: error: expected identifier or '(' before 'if'
+  if (ret) {
+  ^~
+In file included from /usr/include/sys/select.h:30,
+                 from /usr/include/sys/types.h:196,
+                 from /home/kitty/Documents/projects/kmscube/main.c:27:
+/home/kitty/Documents/projects/kmscube/main.c:967:2: error: expected identifier or '(' before 'do'
+  FD_ZERO(&fds);
+  ^~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:967:2: error: expected identifier or '(' before 'while'
+  FD_ZERO(&fds);
+  ^~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:968:2: error: expected identifier or '(' before 'void'
+  FD_SET(0, &fds);
+  ^~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:968:2: error: expected ')' before '(' token
+  FD_SET(0, &fds);
+  ^~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:969:2: error: expected identifier or '(' before 'void'
+  FD_SET(drm.fd, &fds);
+  ^~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:969:2: error: expected ')' before '(' token
+  FD_SET(drm.fd, &fds);
+  ^~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:971:2: warning: data definition has no type or storage class
+  ret = init_gbm();
+  ^~~
+/home/kitty/Documents/projects/kmscube/main.c:971:2: warning: type defaults to 'int' in declaration of 'ret' [-Wimplicit-int]
+/home/kitty/Documents/projects/kmscube/main.c:971:2: error: redefinition of 'ret'
+/home/kitty/Documents/projects/kmscube/main.c:961:2: note: previous definition of 'ret' was here
+  ret = init_drm();
+  ^~~
+/home/kitty/Documents/projects/kmscube/main.c:971:8: error: initializer element is not constant
+  ret = init_gbm();
+        ^~~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:972:2: error: expected identifier or '(' before 'if'
+  if (ret) {
+  ^~
+/home/kitty/Documents/projects/kmscube/main.c:977:2: warning: data definition has no type or storage class
+  ret = init_gl();
+  ^~~
+/home/kitty/Documents/projects/kmscube/main.c:977:2: warning: type defaults to 'int' in declaration of 'ret' [-Wimplicit-int]
+/home/kitty/Documents/projects/kmscube/main.c:977:2: error: redefinition of 'ret'
+/home/kitty/Documents/projects/kmscube/main.c:961:2: note: previous definition of 'ret' was here
+  ret = init_drm();
+  ^~~
+/home/kitty/Documents/projects/kmscube/main.c:977:8: error: initializer element is not constant
+  ret = init_gl();
+        ^~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:978:2: error: expected identifier or '(' before 'if'
+  if (ret) {
+  ^~
+/home/kitty/Documents/projects/kmscube/main.c:984:15: error: expected declaration specifiers or '...' before numeric constant
+  glClearColor(0.5, 0.5, 0.5, 1.0);
+               ^~~
+/home/kitty/Documents/projects/kmscube/main.c:984:20: error: expected declaration specifiers or '...' before numeric constant
+  glClearColor(0.5, 0.5, 0.5, 1.0);
+                    ^~~
+/home/kitty/Documents/projects/kmscube/main.c:984:25: error: expected declaration specifiers or '...' before numeric constant
+  glClearColor(0.5, 0.5, 0.5, 1.0);
+                         ^~~
+/home/kitty/Documents/projects/kmscube/main.c:984:30: error: expected declaration specifiers or '...' before numeric constant
+  glClearColor(0.5, 0.5, 0.5, 1.0);
+                              ^~~
+In file included from /home/kitty/Documents/projects/kmscube/main.c:40:
+/home/kitty/Documents/projects/kmscube/main.c:985:10: error: expected declaration specifiers or '...' before numeric constant
+  glClear(GL_COLOR_BUFFER_BIT);
+          ^~~~~~~~~~~~~~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:986:19: error: expected ')' before '.' token
+  eglSwapBuffers(gl.display, gl.surface);
+                   ^
+                   )
+/home/kitty/Documents/projects/kmscube/main.c:987:2: warning: data definition has no type or storage class
+  bo = gbm_surface_lock_front_buffer(gbm.surface);
+  ^~
+/home/kitty/Documents/projects/kmscube/main.c:987:2: warning: type defaults to 'int' in declaration of 'bo' [-Wimplicit-int]
+/home/kitty/Documents/projects/kmscube/main.c:987:2: error: conflicting types for 'bo'
+/home/kitty/Documents/projects/kmscube/main.c:956:17: note: previous declaration of 'bo' was here
+  struct gbm_bo *bo;
+                 ^~
+/home/kitty/Documents/projects/kmscube/main.c:987:7: warning: initialization of 'int' from 'struct gbm_bo *' makes integer from pointer without a cast [-Wint-conversion]
+  bo = gbm_surface_lock_front_buffer(gbm.surface);
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:987:7: error: initializer element is not constant
+/home/kitty/Documents/projects/kmscube/main.c:988:2: warning: data definition has no type or storage class
+  fb = drm_fb_get_from_bo(bo);
+  ^~
+/home/kitty/Documents/projects/kmscube/main.c:988:2: warning: type defaults to 'int' in declaration of 'fb' [-Wimplicit-int]
+/home/kitty/Documents/projects/kmscube/main.c:988:2: error: conflicting types for 'fb'
+/home/kitty/Documents/projects/kmscube/main.c:957:17: note: previous declaration of 'fb' was here
+  struct drm_fb *fb;
+                 ^~
+/home/kitty/Documents/projects/kmscube/main.c:988:26: warning: passing argument 1 of 'drm_fb_get_from_bo' makes pointer from integer without a cast [-Wint-conversion]
+  fb = drm_fb_get_from_bo(bo);
+                          ^~
+/home/kitty/Documents/projects/kmscube/main.c:575:58: note: expected 'struct gbm_bo *' but argument is of type 'int'
+ static struct drm_fb * drm_fb_get_from_bo(struct gbm_bo *bo)
+                                           ~~~~~~~~~~~~~~~^~
+/home/kitty/Documents/projects/kmscube/main.c:988:7: warning: initialization of 'int' from 'struct drm_fb *' makes integer from pointer without a cast [-Wint-conversion]
+  fb = drm_fb_get_from_bo(bo);
+       ^~~~~~~~~~~~~~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:988:7: error: initializer element is not constant
+/home/kitty/Documents/projects/kmscube/main.c:991:2: warning: data definition has no type or storage class
+  ret = drmModeSetCrtc(drm.fd, drm.crtc_id, fb->fb_id, 0, 0,
+  ^~~
+/home/kitty/Documents/projects/kmscube/main.c:991:2: warning: type defaults to 'int' in declaration of 'ret' [-Wimplicit-int]
+/home/kitty/Documents/projects/kmscube/main.c:991:2: error: redefinition of 'ret'
+/home/kitty/Documents/projects/kmscube/main.c:961:2: note: previous definition of 'ret' was here
+  ret = init_drm();
+  ^~~
+/home/kitty/Documents/projects/kmscube/main.c:991:46: error: invalid type argument of '->' (have 'int')
+  ret = drmModeSetCrtc(drm.fd, drm.crtc_id, fb->fb_id, 0, 0,
+                                              ^~
+/home/kitty/Documents/projects/kmscube/main.c:993:2: error: expected identifier or '(' before 'if'
+  if (ret) {
+  ^~
+/home/kitty/Documents/projects/kmscube/main.c:1002:2: warning: data definition has no type or storage class
+  aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
+  ^~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:1002:2: warning: type defaults to 'int' in declaration of 'aspect' [-Wimplicit-int]
+/home/kitty/Documents/projects/kmscube/main.c:1002:2: error: conflicting types for 'aspect'
+/home/kitty/Documents/projects/kmscube/main.c:625:9: note: previous declaration of 'aspect' was here
+ GLfloat aspect,frustumW,frustumH;
+         ^~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:1002:11: error: initializer element is not constant
+  aspect = (GLfloat)(drm.mode->vdisplay) / (GLfloat)(drm.mode->hdisplay);
+           ^
+/home/kitty/Documents/projects/kmscube/main.c:1005:2: error: expected identifier or '(' before 'while'
+  while (1) {
+  ^~~~~
+/home/kitty/Documents/projects/kmscube/main.c:1136:5: error: expected '=', ',', ';', 'asm' or '__attribute__' before ':' token
+ exit:
+     ^
+/home/kitty/Documents/projects/kmscube/main.c:1138:10: error: expected declaration specifiers or '...' before numeric constant
+  syscall(62,kpid,15);
+          ^~
+/home/kitty/Documents/projects/kmscube/main.c:1138:13: error: expected declaration specifiers or '...' before 'kpid'
+  syscall(62,kpid,15);
+             ^~~~
+/home/kitty/Documents/projects/kmscube/main.c:1138:18: error: expected declaration specifiers or '...' before numeric constant
+  syscall(62,kpid,15);
+                  ^~
+/home/kitty/Documents/projects/kmscube/main.c:1139:20: error: expected ')' before '.' token
+  drmModeSetCrtc(drm.fd, drm.crtc_id, fb->fb_id, 0, 0,
+                    ^
+                    )
+/home/kitty/Documents/projects/kmscube/main.c:1143:2: error: expected identifier or '(' before 'if'
+  if (bo) {
+  ^~
+/home/kitty/Documents/projects/kmscube/main.c:1148:23: error: expected ')' before '.' token
+  eglDestroySurface (gl.display, gl.surface);
+                       ^
+                       )
+/home/kitty/Documents/projects/kmscube/main.c:1149:26: error: expected ')' before '.' token
+  gbm_surface_destroy (gbm.surface);
+                          ^
+                          )
+/home/kitty/Documents/projects/kmscube/main.c:1150:23: error: expected ')' before '.' token
+  eglDestroyContext (gl.display, gl.context);
+                       ^
+                       )
+/home/kitty/Documents/projects/kmscube/main.c:1151:18: error: expected ')' before '.' token
+  eglTerminate (gl.display);
+                  ^
+                  )
+/home/kitty/Documents/projects/kmscube/main.c:1152:25: error: expected ')' before '.' token
+  gbm_device_destroy (gbm.dev);
+                         ^
+                         )
+/home/kitty/Documents/projects/kmscube/main.c:1154:2: error: expected identifier or '(' before 'return'
+  return ret;
+  ^~~~~~
+/home/kitty/Documents/projects/kmscube/main.c:1155:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+make[2]: *** [CMakeFiles/kmsshooter.dir/build.make:63: CMakeFiles/kmsshooter.dir/main.c.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:73: CMakeFiles/kmsshooter.dir/all] Error 2
+make: *** [Makefile:84: all] Error 2

@@ -1,0 +1,62 @@
+modeset3.c:668:7: warning: incompatible integer to pointer conversion passing 'int' to parameter of type 'void *' [-Wint-conversion]
+        mmap(cxaddr,4,PROT_READ,MAP_ANONYMOUS|MAP_SHARED,cxfd,0);
+             ^~~~~~
+/usr/include/sys/mman.h:57:26: note: passing argument to parameter '__addr' here
+extern void *mmap (void *__addr, size_t __len, int __prot,
+                         ^
+modeset3.c:657:10: warning: unused variable 'r' [-Wunused-variable]
+        uint8_t r, g, b;
+                ^
+modeset3.c:657:13: warning: unused variable 'g' [-Wunused-variable]
+        uint8_t r, g, b;
+                   ^
+modeset3.c:657:16: warning: unused variable 'b' [-Wunused-variable]
+        uint8_t r, g, b;
+                      ^
+modeset3.c:659:28: warning: unused variable 'blink' [-Wunused-variable]
+        unsigned int i, j, k, off,blink,jt,kt,fede;
+                                  ^
+modeset3.c:659:34: warning: unused variable 'jt' [-Wunused-variable]
+        unsigned int i, j, k, off,blink,jt,kt,fede;
+                                        ^
+modeset3.c:659:37: warning: unused variable 'kt' [-Wunused-variable]
+        unsigned int i, j, k, off,blink,jt,kt,fede;
+                                           ^
+modeset3.c:664:7: warning: unused variable 'bstart' [-Wunused-variable]
+        char bstart,bsett,bquit;
+             ^
+modeset3.c:664:20: warning: unused variable 'bquit' [-Wunused-variable]
+        char bstart,bsett,bquit;
+                          ^
+modeset3.c:718:3: warning: variable 'cx' is uninitialized when used here [-Wuninitialized]
+                cx+=mouse[1];
+                ^~
+modeset3.c:661:17: note: initialize the variable 'cx' to silence this warning
+        unsigned int cx,cy;
+                       ^
+                        = 0
+modeset3.c:719:3: warning: variable 'cy' is uninitialized when used here [-Wuninitialized]
+                cy-=mouse[2];
+                ^~
+modeset3.c:661:20: note: initialize the variable 'cy' to silence this warning
+        unsigned int cx,cy;
+                          ^
+                           = 0
+modeset3.c:668:7: warning: variable 'cxaddr' is uninitialized when used here [-Wuninitialized]
+        mmap(cxaddr,4,PROT_READ,MAP_ANONYMOUS|MAP_SHARED,cxfd,0);
+             ^~~~~~
+modeset3.c:666:12: note: initialize the variable 'cxaddr' to silence this warning
+        int cxaddr;
+                  ^
+                   = 0
+modeset3.c:668:51: warning: variable 'cxfd' is uninitialized when used here [-Wuninitialized]
+        mmap(cxaddr,4,PROT_READ,MAP_ANONYMOUS|MAP_SHARED,cxfd,0);
+                                                         ^~~~
+modeset3.c:667:11: note: initialize the variable 'cxfd' to silence this warning
+        char cxfd;
+                 ^
+                  = '\0'
+modeset3.c:604:16: warning: unused function 'next_color' [-Wunused-function]
+static uint8_t next_color(bool *up, uint8_t cur, unsigned int mod)
+               ^
+14 warnings generated.

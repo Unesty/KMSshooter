@@ -1,0 +1,1100 @@
+www.viva64.com/en/w:1:1: error: Help: The documentation for all analyzer warnings is available here: https://www.viva64.com/en/w/.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:46:1: warning: V677 Custom declaration of a standard 'size_t' type. The declaration from system header files should be used instead.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:14:1: warning: V677 Custom declaration of a standard 'va_list' type. The declaration from system header files should be used instead.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:35:1: warning: V677 Custom declaration of a standard 'ptrdiff_t' type. The declaration from system header files should be used instead.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:74:1: warning: V677 Custom declaration of a standard 'wchar_t' type. The declaration from system header files should be used instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:187:1: note: V576 Incorrect format. Consider checking the second actual argument of the 'dlg__printf_format' function. The SIGNED integer type argument is expected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:198:1: note: V576 Incorrect format. Consider checking the second actual argument of the 'dlg__printf_format' function. The SIGNED integer type argument is expected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:204:1: note: V576 Incorrect format. Consider checking the second actual argument of the 'dlg__printf_format' function. The SIGNED integer type argument is expected.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:17:1: note: V1059 The 'va_start' macro name overrides a reserved name from C standard. This may lead to undefined behavior.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:18:1: note: V1059 The 'va_end' macro name overrides a reserved name from C standard. This may lead to undefined behavior.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:19:1: note: V1059 The 'va_arg' macro name overrides a reserved name from C standard. This may lead to undefined behavior.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:27:1: note: V1059 The 'va_copy' macro name overrides a reserved name from C standard. This may lead to undefined behavior.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdbool.h:20:1: note: V1059 Macro name overrides the '_Bool' keyword. This may lead to undefined behavior.
+ :1:1: error: Renew Your license will expire in 8 days. Click 'Renew' to learn more or contact us at support@viva64.com.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:46:1: note: V126 Be advised that the size of the type 'long' varies between LLP64/LP64 data models.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/image.h:46:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/key.h:133:1: warning: V2503 Implicitly specified enumeration constants should be unique - consider specifying constants explicitly: swa_key_hangeul, swa_key_brightness_auto, swa_key_display_toggle, swa_key_fast_reverse.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:54:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:55:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:56:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:57:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:58:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:59:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:60:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:61:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:62:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:63:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:69:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:70:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:71:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:72:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:73:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:74:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:84:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:85:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:86:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:87:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:88:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:89:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:90:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:91:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:92:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:93:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:94:1: warning: V2544 The left operand '1L' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:206:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:229:1: note: V2514 Unions should not be used.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:225:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:248:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:255:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:298:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:320:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:324:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:327:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:337:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:342:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:350:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:352:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:355:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:357:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:359:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:367:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:370:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:372:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:377:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:380:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:382:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:383:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:384:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:385:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:387:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:388:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:392:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:403:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:404:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:405:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:406:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:407:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:408:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:412:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:35:1: note: V126 Be advised that the size of the type 'long' varies between LLP64/LP64 data models.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/__stddef_max_align_t.h:20:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__clang_max_align_nonce1' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/__stddef_max_align_t.h:22:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__clang_max_align_nonce2' identifier.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/subprojects/dlg/include/dlg/dlg.h:121:1: warning: V802 On 64-bit platform, structure size can be reduced from 48 to 40 bytes by rearranging the fields according to their sizes in decreasing order.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/subprojects/dlg/include/dlg/dlg.h:122:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/subprojects/dlg/include/dlg/dlg.h:124:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/subprojects/dlg/include/dlg/dlg.h:126:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/subprojects/dlg/include/dlg/dlg.h:127:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:131:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:132:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:133:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:134:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:135:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:136:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:137:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:138:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:139:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:140:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:141:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:142:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:143:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:144:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:145:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:146:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:147:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:148:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:149:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:150:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:151:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:152:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:153:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:154:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:155:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:156:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:157:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:158:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:159:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:160:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:161:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:162:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:163:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:164:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:165:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:166:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:167:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:168:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:169:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:170:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:171:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:172:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:173:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:174:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:175:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:176:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:177:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:178:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:179:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:180:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:181:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:182:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:183:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:184:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:185:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:186:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:187:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:188:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:189:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:190:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:191:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:192:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:193:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:194:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:195:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:196:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:197:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:198:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:199:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:200:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:201:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:202:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:203:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:204:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:205:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:206:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:207:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:208:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:209:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:210:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:211:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:212:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:213:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:214:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:215:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:216:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:217:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:218:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:219:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:220:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:221:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:222:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:223:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:224:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:225:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:226:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:227:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:228:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:229:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:230:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:231:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:232:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:233:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:234:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:235:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:236:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:237:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:238:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:239:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:240:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:241:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:242:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:243:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:244:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:245:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:246:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:247:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:248:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:249:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:250:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:253:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:254:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:255:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:256:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:257:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:258:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:259:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:260:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:261:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:262:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:263:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:264:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:265:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:266:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:267:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:268:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:271:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:272:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:273:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:274:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:275:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:276:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:277:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:278:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:279:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:280:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:281:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:282:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:283:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:286:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:289:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:292:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:293:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:296:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:303:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:306:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:309:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:310:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:313:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:314:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:315:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:316:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:317:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:320:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:323:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:324:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:325:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:326:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:343:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:350:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:353:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:356:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:359:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:368:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:371:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:372:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:373:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:374:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:375:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:376:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:379:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:380:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:381:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:382:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:385:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:386:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:389:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:390:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:391:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:392:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:393:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:394:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:395:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:396:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:397:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:400:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:401:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:404:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:405:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:406:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:409:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:410:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:411:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:412:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:422:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:423:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:424:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:427:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:428:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:429:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:432:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:435:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:436:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:439:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:440:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:447:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:448:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:455:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:456:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:463:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:464:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:465:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:468:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:471:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:474:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:475:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:478:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:479:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:480:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:483:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:510:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:511:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:514:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:517:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:518:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:519:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:520:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:521:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:524:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:525:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:526:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:533:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:536:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:537:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:540:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:541:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:542:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:543:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:544:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:545:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:551:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:552:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:553:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:556:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:557:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:558:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:559:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:560:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:561:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:562:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:563:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:564:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:565:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:566:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:567:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:570:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:573:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:574:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:575:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:581:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:584:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:585:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:588:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:37:1: note: V2571 Pointer to void should not be converted to a pointer to object. Consider inspecting the expression: '(VkInstance) context'.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:42:1: note: V2571 Pointer to void should not be converted to a pointer to object. Consider inspecting the expression: '(VkDevice) context'.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:65:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'signed' and 'signed' types respectively. Consider inspecting operands: left - '0x00002', right - '0'
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:67:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'signed' and 'signed' types respectively. Consider inspecting operands: left - '0x00002', right - '0'
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:66:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:68:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:71:1: note: V206 Explicit conversion from 'void *' to 'function pointer'.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:71:1: note: V2571 Pointer to void should not be converted to a pointer to object.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:45:1: note: V2506 A function should have a single point of exit at the end.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:90:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:95:1: warning: V2544 The left operand '(1)' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:95:1: warning: V2544 The left operand '(0)' of the '<<' operator should not have the essential 'signed' type.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:95:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'signed' and 'signed' types respectively. Consider inspecting operands: left - '((1) << 22)', right - '((0) << 12)'
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:95:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'signed' and 'signed' types respectively. Consider inspecting operands: left - '((1) << 22) | ((0) << 12)', right - '(0)'
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:94:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.c:86:1: note: V2506 A function should have a single point of exit at the end.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:20:1: warning: V2520 Every switch-clause should be terminated by an unconditional 'break' statement.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:16:1: note: V2506 A function should have a single point of exit at the end.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:69:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:70:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:71:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:72:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:73:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:75:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:76:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:77:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:78:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:79:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:80:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:81:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:82:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:83:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:84:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:85:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:86:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:87:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:88:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:89:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:90:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:91:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:92:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:96:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:106:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:107:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:108:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:109:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:114:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:115:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:130:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'h'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:130:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'w'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:130:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:139:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'Boolean' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:147:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:148:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'Boolean' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:142:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:154:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:152:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:160:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:157:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:166:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:163:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:173:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:170:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:181:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:178:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:187:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:184:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:198:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:195:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:204:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:202:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:209:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:231:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:234:1: warning: V103 Implicit type conversion from memsize to 32-bit type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:234:1: note: V2572 The value of the 'lseek(fd, 0, 2)' expression should not be converted to the narrower essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:237:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:236:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:239:1: warning: V2511 The function with the 'malloc' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:239:1: warning: V106 Implicit type conversion first argument 'nbyte' of function 'malloc' to memsize type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:239:1: note: V2572 The value of the 'nbyte' expression should not be converted from the essential 'signed' type to the essential 'unsigned' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:242:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:241:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:245:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:244:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:247:1: warning: V106 Implicit type conversion third argument 'nbyte' of function 'read' to memsize type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:248:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:247:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:251:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:250:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:253:1: warning: V101 Implicit assignment type conversion to memsize type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:253:1: note: V2572 The value of the 'nbyte' expression should not be converted from the essential 'signed' type to the essential 'unsigned' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:253:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:257:1: warning: V2511 The function with the 'free' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:227:1: note: V2506 A function should have a single point of exit at the end.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:269:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:269:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:280:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:280:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:292:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:292:1: warning: V2568 Both operands of the '&' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:292:1: warning: V2544 The right operand '(1 << i)' of the '&' operator should not have the essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:292:1: warning: V2544 The left operand '(typeFilter & (1 << i))' of the '&&' operator should not have the essential 'unsigned' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:292:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:285:1: note: V2506 A function should have a single point of exit at the end.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:303:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:307:1: note: V2006 Implicit type conversion from enum type to integer type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:307:1: warning: V2544 The left and right operands of the '&' operator should not have essential 'swa_display_cap' and 'swa_display_cap' types respectively. Consider inspecting operands: left - 'swa_display_capabilities(dpy)', right - 'swa_display_cap_vk'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:307:1: warning: V2544 Operand of the '!' operator should have an appropriate essential type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:307:1: warning: V2570 Operands of the '!' operator should have bool essential type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:308:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:310:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:319:1: warning: V2568 Both operands of the '<' operator should have the same essential type. The current types are: 'signed' and 'unsigned'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:320:1: warning: V108 Incorrect index type: instance_extensions[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:326:1: warning: V2544 The left operand '(1)' of the '<<' operator should not have the essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:326:1: warning: V2544 The left operand '(2)' of the '<<' operator should not have the essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:326:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'signed' and 'signed' types respectively. Consider inspecting operands: left - '((1) << 22)', right - '((2) << 12)'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:326:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'signed' and 'signed' types respectively. Consider inspecting operands: left - '((1) << 22) | ((2) << 12)', right - '(0)'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:334:1: warning: V2568 Both operands of the '+' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:339:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:339:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:362:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:362:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:370:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:371:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:377:1: note: V2571 Conversions between pointers and integer types should not be performed. Consider inspecting the expression: '(uint64_t) state.instance'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:384:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:386:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:389:1: note: V2571 Conversions between pointers and integer types should not be performed.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:393:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:394:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:400:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'Boolean' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:406:1: warning: V2568 Both operands of the '!=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:406:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:432:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:432:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:442:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkBufferUsageFlagBits' and 'VkBufferUsageFlagBits' types respectively. Consider inspecting operands: left - 'VK_BUFFER_USAGE_VERTEX_BUFFER_BIT', right - 'VK_BUFFER_USAGE_STORAGE_BUFFER_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:442:1: warning: V2544 The right operand 'VK_BUFFER_USAGE_TRANSFER_DST_BIT' of the '|' operator should not have the essential 'VkBufferUsageFlagBits' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:448:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:448:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:457:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkMemoryPropertyFlagBits' and 'VkMemoryPropertyFlagBits' types respectively. Consider inspecting operands: left - 'VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT', right - 'VK_MEMORY_PROPERTY_HOST_COHERENT_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:460:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:460:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:475:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:475:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:482:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkMemoryPropertyFlagBits' and 'VkMemoryPropertyFlagBits' types respectively. Consider inspecting operands: left - 'VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT', right - 'VK_MEMORY_PROPERTY_HOST_COHERENT_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:484:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:484:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:485:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:485:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:486:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:486:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:495:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkShaderStageFlagBits' and 'VkShaderStageFlagBits' types respectively. Consider inspecting operands: left - 'VK_SHADER_STAGE_COMPUTE_BIT', right - 'VK_SHADER_STAGE_VERTEX_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:495:1: warning: V2544 The right operand 'VK_SHADER_STAGE_FRAGMENT_BIT' of the '|' operator should not have the essential 'VkShaderStageFlagBits' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:502:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkShaderStageFlagBits' and 'VkShaderStageFlagBits' types respectively. Consider inspecting operands: left - 'VK_SHADER_STAGE_COMPUTE_BIT', right - 'VK_SHADER_STAGE_VERTEX_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:515:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:515:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:537:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:537:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:547:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:547:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:607:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:607:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:636:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:636:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:744:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkColorComponentFlagBits' and 'VkColorComponentFlagBits' types respectively. Consider inspecting operands: left - 'VK_COLOR_COMPONENT_R_BIT', right - 'VK_COLOR_COMPONENT_G_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:744:1: warning: V2544 The right operand 'VK_COLOR_COMPONENT_B_BIT' of the '|' operator should not have the essential 'VkColorComponentFlagBits' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:744:1: warning: V2544 The right operand 'VK_COLOR_COMPONENT_A_BIT' of the '|' operator should not have the essential 'VkColorComponentFlagBits' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:766:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:766:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:804:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkAccessFlagBits' and 'VkAccessFlagBits' types respectively. Consider inspecting operands: left - 'VK_ACCESS_COLOR_ATTACHMENT_READ_BIT', right - 'VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:820:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:820:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:844:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:844:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:860:1: note: V2572 The value of the 'VK_IMAGE_ASPECT_COLOR_BIT' expression should not be converted from the essential 'VkImageAspectFlagBits' type to the essential 'unsigned' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:860:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'VkImageAspectFlagBits'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:861:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:862:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:863:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:864:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:866:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:867:1: warning: V108 Incorrect index type: state.images[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:869:1: warning: V108 Incorrect index type: state.imageViews[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:869:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:869:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:875:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:876:1: warning: V108 Incorrect index type: state.imageViews[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:880:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:882:1: warning: V108 Incorrect index type: state.framebuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:882:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:882:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:885:1: warning: V2511 The function with the 'free' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:886:1: warning: V2511 The function with the 'free' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:896:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:896:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:898:1: warning: V104 Implicit conversion of 'state.n_bufs' to memsize type in an arithmetic expression: state.n_bufs * sizeof (VkCommandBuffer)
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:898:1: warning: V2511 The function with the 'malloc' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:906:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:906:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:908:1: warning: V2568 Both operands of the '<' operator should have the same essential type. The current types are: 'signed' and 'unsigned'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:916:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:916:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:916:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:923:1: warning: V108 Incorrect index type: state.framebuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:929:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:930:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:931:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:933:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:936:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:939:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:940:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:942:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:943:1: warning: V108 Incorrect index type: state.commandBuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:943:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:943:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:959:1: warning: V2568 Both operands of the '<' operator should have the same essential type. The current types are: 'signed' and 'unsigned'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:960:1: warning: V108 Incorrect index type: state.framebuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:973:1: warning: V2568 Both operands of the '<' operator should have the same essential type. The current types are: 'signed' and 'unsigned'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:974:1: warning: V108 Incorrect index type: state.imageViews[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:298:1: error: V2008 Cyclomatic complexity:    50. Consider refactoring the 'vulkan' function.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:298:1: note: V2506 A function should have a single point of exit at the end.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:486:1: note: V2571 Pointer to void should not be converted to a pointer to object. Consider inspecting the sixth argument of the 'vkMapMemory' function call.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:1007:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:1003:1: note: V2506 A function should have a single point of exit at the end.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:1003:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'argc'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:1003:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'argv'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:1003:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'envp'.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:19:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__STDDEF_H' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:21:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__need_ptrdiff_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:22:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__need_size_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:23:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__need_wchar_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:24:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__need_NULL' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:25:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__need_STDDEF_H_misc' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:33:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_PTRDIFF_T' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:44:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_SIZE_T' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:58:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_RSIZE_T' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:69:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_WCHAR_T' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:71:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_WCHAR_T_DEFINED' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stddef.h:114:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_WINT_T' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:11:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__STDARG_H' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:15:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_VA_LIST' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:24:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__va_copy' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdarg.h:31:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__GNUC_VA_LIST' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdbool.h:11:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__STDBOOL_H' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdbool.h:29:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__bool_true_false_are_defined' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:14:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__CLANG_STDINT_H' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:43:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__STDC_LIMIT_MACROS' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:44:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__STDC_LIMIT_MACROS_DEFINED_BY_CLANG' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:47:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__STDC_CONSTANT_MACROS' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:48:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__STDC_CONSTANT_MACROS_DEFINED_BY_CLANG' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:99:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least64_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:100:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least64_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:101:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:102:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:103:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:104:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:105:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:106:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:123:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:124:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:125:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:126:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:127:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:128:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:139:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:140:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:141:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:142:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:143:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:144:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:155:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:156:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:157:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:158:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:159:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:160:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:171:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint32_t_defined' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:175:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:176:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least32_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:177:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:178:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:179:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:180:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:197:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:198:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:199:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:200:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:208:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:209:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least16_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:210:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:211:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:227:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:228:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_least8_t' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:240:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int8_t_defined' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:245:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__stdint_join3' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:250:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__intptr_t_defined' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:251:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_INTPTR_T' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:257:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_UINTPTR_T' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:282:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_c_join' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:283:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int_c' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:284:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__uint_c' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:289:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int64_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:290:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int32_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:291:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int16_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:292:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int8_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:316:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int32_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:317:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int16_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:318:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int8_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:333:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int32_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:334:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int16_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:335:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int8_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:350:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int32_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:351:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int16_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:352:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int8_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:365:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int32_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:366:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int16_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:367:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int8_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:390:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int16_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:391:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int8_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:403:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int16_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:404:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int8_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:424:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__int8_c_suffix' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:464:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST64_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:465:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST64_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:466:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST64_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:467:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:468:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:469:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:470:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:471:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:472:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:473:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:474:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:475:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:498:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:499:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:500:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:501:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:502:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:503:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:504:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:505:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:506:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:520:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:521:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:522:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:523:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:524:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:525:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:526:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:527:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:528:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:542:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:543:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:544:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:545:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:546:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:547:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:548:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:549:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:550:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:558:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:559:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:560:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST32_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:561:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:562:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:563:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:564:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:565:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:566:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:589:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:590:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:591:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:592:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:593:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:594:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:602:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:603:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:604:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST16_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:605:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:606:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:607:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:624:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:625:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:626:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINT_LEAST8_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:639:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INTN_MIN' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:640:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INTN_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:641:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINTN_MAX' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:642:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__INTN_C' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/stdint.h:643:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__UINTN_C' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/limits.h:10:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__CLANG_LIMITS_H' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/limits.h:15:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_GCC_LIMITS_H_' identifier.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/subprojects/dlg/include/dlg/dlg.h:6:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '_DLG_DLG_H_' identifier.
+/mnt/sda5/arch/usr/lib/clang/10.0.1/include/__stddef_max_align_t.h:11:1: warning: V2573 Identifiers that start with '__' or '_[A-Z]' are reserved. Consider inspecting the '__CLANG_MAX_ALIGN_T_DEFINED' identifier.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri3.c:236:1: error: V547 Expression 'nbyte < 0' is always false. Unsigned type value is never < 0.
+ :1:1: error: Renew Your license will expire in 7 days. Click 'Renew' to learn more or contact us at support@viva64.com.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:74:1: warning: V591 Non-void function should return a value.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:178:1: note: V576 Incorrect format. Consider checking the second actual argument of the 'dlg__printf_format' function. The SIGNED integer type argument is expected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:189:1: note: V576 Incorrect format. Consider checking the second actual argument of the 'dlg__printf_format' function. The SIGNED integer type argument is expected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:195:1: note: V576 Incorrect format. Consider checking the second actual argument of the 'dlg__printf_format' function. The SIGNED integer type argument is expected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:227:1: error: V547 Expression 'nbyte < 0' is always false. Unsigned type value is never < 0.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:789:1: warning: V769 The 'state.imageViews' pointer in the 'state.imageViews + i' expression could be nullptr. In such case, resulting value will be senseless and it should not be used. Check lines: 789, 785.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:789:1: warning: V1031 The 'createImageView' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:790:1: warning: V1031 The 'createFramebuffer' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:884:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:892:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:898:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:906:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:920:1: warning: V591 Non-void function should return a value.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:925:1: warning: V591 Non-void function should return a value.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:928:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:932:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:954:1: warning: V591 Non-void function should return a value.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:957:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:961:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:966:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:970:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:987:1: warning: V591 Non-void function should return a value.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:992:1: warning: V591 Non-void function should return a value.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:995:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:999:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:1005:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:1009:1: warning: V1031 The 'timespec_get' function is not declared. Passing data to or from this function can be affected.
+ :1:1: error: Renew Your license will expire in 5 days. Click 'Renew' to learn more or contact us at support@viva64.com.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:417:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:418:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:419:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:420:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:430:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:431:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:432:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:435:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:436:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:437:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:440:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:443:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:444:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:447:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:448:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:455:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:456:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:463:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:464:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:475:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:476:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:477:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:480:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:483:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:486:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:487:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:490:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:491:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:492:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:495:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:522:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:523:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:526:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:529:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:530:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:531:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:532:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:533:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:536:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:537:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:538:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:545:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:548:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:549:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:552:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:553:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:554:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:555:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:556:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:557:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:563:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:564:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:565:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:568:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:569:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:570:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:571:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:572:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:573:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:574:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:575:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:576:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:577:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:578:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:579:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:582:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:585:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:586:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:587:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:593:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:596:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:597:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/volk/volk.h:600:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:206:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:212:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:235:1: note: V2514 Unions should not be used.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:231:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:254:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:261:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:304:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:326:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:330:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:333:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:343:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:348:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:356:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:358:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:361:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:363:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:365:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:373:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:376:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:378:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:383:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:386:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:388:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:389:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:390:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:391:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:393:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:394:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:398:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:409:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:410:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:411:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:412:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:413:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:414:1: note: V122 Memsize type is used in the struct/class.
+/mnt/sda5/home/kitty/Documents/projects/vulkan-wayland-clients/subprojects/swa/include/swa/swa.h:418:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:16:1: warning: V2520 Every switch-clause should be terminated by an unconditional 'break' statement.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:12:1: note: V2506 A function should have a single point of exit at the end.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:71:1: warning: V2544 The left operand '1' of the '<<' operator should not have the essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:71:1: warning: V2568 Both operands of the '&' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:71:1: warning: V2544 The right operand '(1 << i)' of the '&' operator should not have the essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:71:1: warning: V2544 The left operand '(typeFilter & (1 << i))' of the '&&' operator should not have the essential 'unsigned' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:71:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:74:1: error: V2542 Function with a non-void return type should return a value from all exit paths.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:77:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:78:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:79:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:80:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:81:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:83:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:84:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:85:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:86:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:87:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:88:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:89:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:90:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:91:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:92:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:93:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:94:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:95:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:96:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:97:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:98:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:99:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:100:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:104:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:114:1: note: V122 Memsize type is used in the struct/class.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:121:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'h'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:121:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'w'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:121:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:130:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'Boolean' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:138:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:139:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'Boolean' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:133:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:145:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:143:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:151:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:148:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:157:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:154:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:164:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:161:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:172:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:169:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:178:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:175:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:189:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:186:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:195:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:193:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'win'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:200:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:222:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:225:1: note: V2572 The value of the 'lseek(fd, 0, 2)' expression should not be converted from the essential 'signed' type to the essential 'unsigned' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:227:1: warning: V2568 Both operands of the '<' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:228:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:227:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:230:1: warning: V2511 The function with the 'malloc' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:233:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:232:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:236:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:235:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:238:1: note: V2572 The value of the 'nbyte' expression should not be converted from the essential 'unsigned' type to the essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:239:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:238:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:242:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:241:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:248:1: warning: V2511 The function with the 'free' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:218:1: note: V2506 A function should have a single point of exit at the end.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:261:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:261:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:272:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:272:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:283:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:288:1: note: V2006 Implicit type conversion from enum type to integer type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:288:1: warning: V2544 The left and right operands of the '&' operator should not have essential 'swa_display_cap' and 'swa_display_cap' types respectively. Consider inspecting operands: left - 'swa_display_capabilities(dpy)', right - 'swa_display_cap_vk'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:288:1: warning: V2544 Operand of the '!' operator should have an appropriate essential type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:288:1: warning: V2570 Operands of the '!' operator should have bool essential type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:289:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:291:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:300:1: warning: V2568 Both operands of the '<' operator should have the same essential type. The current types are: 'signed' and 'unsigned'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:301:1: warning: V108 Incorrect index type: instance_extensions[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:307:1: warning: V2544 The left operand '(1)' of the '<<' operator should not have the essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:307:1: warning: V2544 The left operand '(2)' of the '<<' operator should not have the essential 'signed' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:307:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'signed' and 'signed' types respectively. Consider inspecting operands: left - '((1) << 22)', right - '((2) << 12)'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:307:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'signed' and 'signed' types respectively. Consider inspecting operands: left - '((1) << 22) | ((2) << 12)', right - '(0)'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:315:1: warning: V2568 Both operands of the '+' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:320:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:320:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:343:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:343:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:351:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:352:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:358:1: note: V2571 Conversions between pointers and integer types should not be performed. Consider inspecting the expression: '(uint64_t) state.instance'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:365:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:367:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:370:1: note: V2571 Conversions between pointers and integer types should not be performed.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:374:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:375:1: note: V2502 The 'goto' statement should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:384:1: warning: V2568 Both operands of the '!=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:384:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:410:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:410:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:421:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkBufferUsageFlagBits' and 'VkBufferUsageFlagBits' types respectively. Consider inspecting operands: left - 'VK_BUFFER_USAGE_VERTEX_BUFFER_BIT', right - 'VK_BUFFER_USAGE_STORAGE_BUFFER_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:421:1: warning: V2544 The right operand 'VK_BUFFER_USAGE_TRANSFER_DST_BIT' of the '|' operator should not have the essential 'VkBufferUsageFlagBits' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:427:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:427:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:436:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkMemoryPropertyFlagBits' and 'VkMemoryPropertyFlagBits' types respectively. Consider inspecting operands: left - 'VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT', right - 'VK_MEMORY_PROPERTY_HOST_COHERENT_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:439:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:439:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:462:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:462:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:478:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:478:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:488:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:488:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:529:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:529:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:560:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:560:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:671:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkColorComponentFlagBits' and 'VkColorComponentFlagBits' types respectively. Consider inspecting operands: left - 'VK_COLOR_COMPONENT_R_BIT', right - 'VK_COLOR_COMPONENT_G_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:671:1: warning: V2544 The right operand 'VK_COLOR_COMPONENT_B_BIT' of the '|' operator should not have the essential 'VkColorComponentFlagBits' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:671:1: warning: V2544 The right operand 'VK_COLOR_COMPONENT_A_BIT' of the '|' operator should not have the essential 'VkColorComponentFlagBits' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:693:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:693:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:731:1: warning: V2544 The left and right operands of the '|' operator should not have essential 'VkAccessFlagBits' and 'VkAccessFlagBits' types respectively. Consider inspecting operands: left - 'VK_ACCESS_COLOR_ATTACHMENT_READ_BIT', right - 'VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT'
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:747:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:747:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:771:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:771:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:782:1: warning: V104 Implicit conversion of 'state.n_bufs' to memsize type in an arithmetic expression: state.n_bufs * sizeof (VkImage)
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:782:1: warning: V2511 The function with the 'malloc' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:785:1: warning: V104 Implicit conversion of 'state.n_bufs' to memsize type in an arithmetic expression: state.n_bufs * sizeof (VkImageView)
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:785:1: warning: V2511 The function with the 'malloc' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:786:1: warning: V104 Implicit conversion of 'state.n_bufs' to memsize type in an arithmetic expression: state.n_bufs * sizeof (VkFramebuffer)
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:786:1: warning: V2511 The function with the 'malloc' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:788:1: warning: V2568 Both operands of the '<' operator should have the same essential type. The current types are: 'signed' and 'unsigned'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:789:1: warning: V108 Incorrect index type: images[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:789:1: warning: V104 Implicit conversion of 'i' to memsize type in an arithmetic expression: state.imageViews + i
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:789:1: note: V2562 Expressions with pointer type should not be used in the '+', '-', '+=' and '-=' operations.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:789:1: error: V2541 The 'createImageView' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:790:1: warning: V108 Incorrect index type: imageViews[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:790:1: error: V2541 The 'createFramebuffer' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:802:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:802:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:804:1: warning: V104 Implicit conversion of 'state.n_bufs' to memsize type in an arithmetic expression: state.n_bufs * sizeof (VkCommandBuffer)
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:804:1: warning: V2511 The function with the 'malloc' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:812:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:812:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:822:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:822:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:829:1: warning: V108 Incorrect index type: framebuffers[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:849:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:849:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:853:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'Boolean' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:864:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:864:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:865:1: warning: V2509 The function with the 'exit' name should not be used.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:865:1: warning: V2014 Don't use the 'exit' function in library code.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:884:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:890:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:892:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:898:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:904:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:906:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:919:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:920:1: error: V2542 Function with a non-void return type should return a value from all exit paths.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:923:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:925:1: error: V2542 Function with a non-void return type should return a value from all exit paths.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:928:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:931:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:932:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:937:1: note: V2572 Value of the expression should not be converted from the essential 'VkPipelineStageFlagBits' type to the essential 'unsigned' type.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:941:1: warning: V108 Incorrect index type: state->bufs[not a memsize-type]. Use memsize type instead.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:952:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:954:1: error: V2542 Function with a non-void return type should return a value from all exit paths.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:957:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:960:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:961:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:966:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:969:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:970:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:976:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:979:1: warning: V2568 Both operands of the '=' operator should have the same essential type. The current types are: 'unsigned' and 'signed'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:986:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:987:1: error: V2542 Function with a non-void return type should return a value from all exit paths.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:990:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:992:1: error: V2542 Function with a non-void return type should return a value from all exit paths.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:995:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:998:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:999:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:1005:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:1008:1: warning: V2507 The body of the 'if' statement should be enclosed in braces.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:1009:1: error: V2541 The 'timespec_get' function should not be declared implicitly.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:277:1: error: V2008 Cyclomatic complexity:    61. Consider refactoring the 'main' function.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:277:1: note: V2506 A function should have a single point of exit at the end.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:277:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'argc'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:277:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'argv'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:277:1: note: V2537 Functions should not have unused parameters. Consider inspecting the parameter: 'envp'.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:529:1: warning: V2545 Passing arguments to the 'vkCreatePipelineLayout' function causes implicit conversion between pointers of different object types. Consider inspecting arguments: 4.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:693:1: warning: V2545 Passing arguments to the 'vkCreatePipelineLayout' function causes implicit conversion between pointers of different object types. Consider inspecting arguments: 4.
+/home/kitty/Documents/projects/vulkan-wayland-clients/comptri2.c:802:1: warning: V2545 Passing arguments to the 'vkCreateCommandPool' function causes implicit conversion between pointers of different object types. Consider inspecting arguments: 4.

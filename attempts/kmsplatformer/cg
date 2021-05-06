@@ -1,0 +1,634 @@
+16751 execve("./ds", ["./ds"], 0x7ffed6583f08 /* 8 vars */) = 0
+16751 brk(NULL)                         = 0x5561d76e8000
+16751 arch_prctl(0x3001 /* ARCH_??? */, 0x7ffeb9a71c10) = -1 EINVAL (Invalid argument)
+16751 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+16751 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+16751 fstat(3, {st_mode=S_IFREG|0644, st_size=356556, ...}) = 0
+16751 mmap(NULL, 356556, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fec961c0000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libGLESv2.so.2", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \200\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=79624, ...}) = 0
+16751 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fec961be000
+16751 mmap(NULL, 81936, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec961a9000
+16751 mmap(0x7fec961b1000, 20480, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x8000) = 0x7fec961b1000
+16751 mmap(0x7fec961b6000, 12288, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd000) = 0x7fec961b6000
+16751 mmap(0x7fec961b9000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xf000) = 0x7fec961b9000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libGL.so.1", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0  \4\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=591624, ...}) = 0
+16751 mmap(NULL, 600048, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec96116000
+16751 mmap(0x7fec96158000, 126976, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x42000) = 0x7fec96158000
+16751 mmap(0x7fec96177000, 86016, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x61000) = 0x7fec96177000
+16751 mmap(0x7fec9618c000, 114688, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x75000) = 0x7fec9618c000
+16751 mmap(0x7fec961a8000, 2032, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fec961a8000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libgbm.so.1", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 0\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=59600, ...}) = 0
+16751 mmap(NULL, 62008, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec96106000
+16751 mmap(0x7fec96109000, 24576, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3000) = 0x7fec96109000
+16751 mmap(0x7fec9610f000, 20480, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x9000) = 0x7fec9610f000
+16751 mmap(0x7fec96114000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd000) = 0x7fec96114000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libdrm.so.2", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 @\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=75440, ...}) = 0
+16751 mmap(NULL, 80368, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec960f2000
+16751 mprotect(0x7fec960f6000, 57344, PROT_NONE) = 0
+16751 mmap(0x7fec960f6000, 40960, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4000) = 0x7fec960f6000
+16751 mmap(0x7fec96100000, 12288, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe000) = 0x7fec96100000
+16751 mmap(0x7fec96104000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x11000) = 0x7fec96104000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0p\363\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=1329264, ...}) = 0
+16751 mmap(NULL, 1331224, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95fac000
+16751 mmap(0x7fec95fbb000, 638976, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xf000) = 0x7fec95fbb000
+16751 mmap(0x7fec96057000, 626688, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xab000) = 0x7fec96057000
+16751 mmap(0x7fec960f0000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x143000) = 0x7fec960f0000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libEGL.so.1", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 0\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=79600, ...}) = 0
+16751 mmap(NULL, 83312, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95f97000
+16751 mmap(0x7fec95f9a000, 45056, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3000) = 0x7fec95f9a000
+16751 mmap(0x7fec95fa5000, 20480, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe000) = 0x7fec95fa5000
+16751 mmap(0x7fec95faa000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x12000) = 0x7fec95faa000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\22\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=14512, ...}) = 0
+16751 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fec95f95000
+16751 mmap(NULL, 16528, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95f90000
+16751 mmap(0x7fec95f91000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7fec95f91000
+16751 mmap(0x7fec95f92000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fec95f92000
+16751 mmap(0x7fec95f93000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fec95f93000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360o\2\0\0\0\0\0"..., 832) = 832
+16751 lseek(3, 64, SEEK_SET)            = 64
+16751 read(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784) = 784
+16751 lseek(3, 848, SEEK_SET)           = 848
+16751 read(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32) = 32
+16751 lseek(3, 880, SEEK_SET)           = 880
+16751 read(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0[r\3\222\r=xj\304\n\370\340\325\20F\203"..., 68) = 68
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=2133648, ...}) = 0
+16751 lseek(3, 64, SEEK_SET)            = 64
+16751 read(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784) = 784
+16751 lseek(3, 848, SEEK_SET)           = 848
+16751 read(3, "\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0", 32) = 32
+16751 lseek(3, 880, SEEK_SET)           = 880
+16751 read(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0[r\3\222\r=xj\304\n\370\340\325\20F\203"..., 68) = 68
+16751 mmap(NULL, 1844408, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95dcd000
+16751 mprotect(0x7fec95df2000, 1654784, PROT_NONE) = 0
+16751 mmap(0x7fec95df2000, 1351680, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x25000) = 0x7fec95df2000
+16751 mmap(0x7fec95f3c000, 299008, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16f000) = 0x7fec95f3c000
+16751 mmap(0x7fec95f86000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b8000) = 0x7fec95f86000
+16751 mmap(0x7fec95f8c000, 13496, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fec95f8c000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libGLdispatch.so.0", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \0\4\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=632664, ...}) = 0
+16751 mmap(NULL, 766768, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95d11000
+16751 mprotect(0x7fec95d51000, 204800, PROT_NONE) = 0
+16751 mmap(0x7fec95d51000, 122880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x40000) = 0x7fec95d51000
+16751 mmap(0x7fec95d6f000, 77824, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x5e000) = 0x7fec95d6f000
+16751 mmap(0x7fec95d83000, 172032, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x71000) = 0x7fec95d83000
+16751 mmap(0x7fec95dad000, 127792, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fec95dad000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libGLX.so.0", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 0\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=71376, ...}) = 0
+16751 mmap(NULL, 205856, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95cde000
+16751 mprotect(0x7fec95ce1000, 57344, PROT_NONE) = 0
+16751 mmap(0x7fec95ce1000, 40960, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3000) = 0x7fec95ce1000
+16751 mmap(0x7fec95ceb000, 12288, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd000) = 0x7fec95ceb000
+16751 mmap(0x7fec95cef000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x10000) = 0x7fec95cef000
+16751 mmap(0x7fec95cf1000, 128032, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fec95cf1000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libX11.so.6", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \300\1\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=1300568, ...}) = 0
+16751 mmap(NULL, 1304824, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95b9f000
+16751 mmap(0x7fec95bbb000, 557056, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1c000) = 0x7fec95bbb000
+16751 mmap(0x7fec95c43000, 606208, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xa4000) = 0x7fec95c43000
+16751 mmap(0x7fec95cd7000, 28672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x137000) = 0x7fec95cd7000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libXext.so.6", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 @\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=80784, ...}) = 0
+16751 mmap(NULL, 83768, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95b8a000
+16751 mmap(0x7fec95b8e000, 45056, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4000) = 0x7fec95b8e000
+16751 mmap(0x7fec95b99000, 16384, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xf000) = 0x7fec95b99000
+16751 mmap(0x7fec95b9d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x12000) = 0x7fec95b9d000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360\201\0\0\0\0\0\0"..., 832) = 832
+16751 lseek(3, 824, SEEK_SET)           = 824
+16751 read(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0y\362\224t\233\270[\370\311\373Zi8:C\26"..., 68) = 68
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=155904, ...}) = 0
+16751 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fec95b88000
+16751 lseek(3, 824, SEEK_SET)           = 824
+16751 read(3, "\4\0\0\0\24\0\0\0\3\0\0\0GNU\0y\362\224t\233\270[\370\311\373Zi8:C\26"..., 68) = 68
+16751 mmap(NULL, 131528, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95b67000
+16751 mmap(0x7fec95b6e000, 61440, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x7000) = 0x7fec95b6e000
+16751 mmap(0x7fec95b7d000, 20480, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16000) = 0x7fec95b7d000
+16751 mmap(0x7fec95b82000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1a000) = 0x7fec95b82000
+16751 mmap(0x7fec95b84000, 12744, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fec95b84000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libwayland-server.so.0", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 p\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=84440, ...}) = 0
+16751 mmap(NULL, 87016, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95b51000
+16751 mprotect(0x7fec95b58000, 49152, PROT_NONE) = 0
+16751 mmap(0x7fec95b58000, 28672, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x7000) = 0x7fec95b58000
+16751 mmap(0x7fec95b5f000, 16384, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xe000) = 0x7fec95b5f000
+16751 mmap(0x7fec95b64000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x12000) = 0x7fec95b64000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libexpat.so.1", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 @\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=239280, ...}) = 0
+16751 mmap(NULL, 241680, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95b15000
+16751 mprotect(0x7fec95b19000, 217088, PROT_NONE) = 0
+16751 mmap(0x7fec95b19000, 131072, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4000) = 0x7fec95b19000
+16751 mmap(0x7fec95b39000, 81920, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x24000) = 0x7fec95b39000
+16751 mmap(0x7fec95b4e000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x38000) = 0x7fec95b4e000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libxcb.so.1", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \300\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=165624, ...}) = 0
+16751 mmap(NULL, 168200, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95aeb000
+16751 mmap(0x7fec95af7000, 77824, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xc000) = 0x7fec95af7000
+16751 mmap(0x7fec95b0a000, 36864, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1f000) = 0x7fec95b0a000
+16751 mmap(0x7fec95b13000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x27000) = 0x7fec95b13000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libffi.so.6", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0@ \0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=38792, ...}) = 0
+16751 mmap(NULL, 42248, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95ae0000
+16751 mprotect(0x7fec95ae2000, 28672, PROT_NONE) = 0
+16751 mmap(0x7fec95ae2000, 20480, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fec95ae2000
+16751 mmap(0x7fec95ae7000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x7000) = 0x7fec95ae7000
+16751 mmap(0x7fec95ae9000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x8000) = 0x7fec95ae9000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/librt.so.1", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\3606\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=39408, ...}) = 0
+16751 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fec95ade000
+16751 mmap(NULL, 43512, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95ad3000
+16751 mmap(0x7fec95ad6000, 16384, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3000) = 0x7fec95ad6000
+16751 mmap(0x7fec95ada000, 8192, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x7000) = 0x7fec95ada000
+16751 mmap(0x7fec95adc000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x8000) = 0x7fec95adc000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libXau.so.6", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \20\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=13960, ...}) = 0
+16751 mmap(NULL, 16424, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95ace000
+16751 mmap(0x7fec95acf000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7fec95acf000
+16751 mmap(0x7fec95ad0000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fec95ad0000
+16751 mmap(0x7fec95ad1000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fec95ad1000
+16751 close(3)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libXdmcp.so.6", O_RDONLY|O_CLOEXEC) = 3
+16751 read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0  \0\0\0\0\0\0"..., 832) = 832
+16751 fstat(3, {st_mode=S_IFREG|0755, st_size=26224, ...}) = 0
+16751 mmap(NULL, 28688, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fec95ac6000
+16751 mmap(0x7fec95ac8000, 8192, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fec95ac8000
+16751 mmap(0x7fec95aca000, 8192, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4000) = 0x7fec95aca000
+16751 mmap(0x7fec95acc000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x5000) = 0x7fec95acc000
+16751 close(3)                          = 0
+16751 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fec95ac4000
+16751 arch_prctl(ARCH_SET_FS, 0x7fec95ac53c0) = 0
+16751 mprotect(0x7fec95f86000, 12288, PROT_READ) = 0
+16751 mprotect(0x7fec95acc000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec95ad1000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec95b82000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec95adc000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec95ae9000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec95b13000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec95b4e000, 8192, PROT_READ) = 0
+16751 mprotect(0x7fec95b64000, 8192, PROT_READ) = 0
+16751 mprotect(0x7fec95f93000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec95cd7000, 12288, PROT_READ) = 0
+16751 mprotect(0x7fec95b9d000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec95d83000, 167936, PROT_READ) = 0
+16751 mprotect(0x7fec95cef000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec960f0000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec95faa000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec96104000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec96114000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec9618c000, 110592, PROT_READ) = 0
+16751 mprotect(0x7fec961b9000, 16384, PROT_READ) = 0
+16751 mprotect(0x5561d5a8f000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec96242000, 4096, PROT_READ) = 0
+16751 munmap(0x7fec961c0000, 356556)    = 0
+16751 set_tid_address(0x7fec95ac5690)   = 16751
+16751 set_robust_list(0x7fec95ac56a0, 24) = 0
+16751 rt_sigaction(SIGRTMIN, {sa_handler=0x7fec95b6ec30, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7fec95b7acb0}, NULL, 8) = 0
+16751 rt_sigaction(SIGRT_1, {sa_handler=0x7fec95b6ecd0, sa_mask=[], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7fec95b7acb0}, NULL, 8) = 0
+16751 rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+16751 prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+16751 futex(0x7fec95f94048, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+16751 brk(NULL)                         = 0x5561d76e8000
+16751 brk(0x5561d7709000)               = 0x5561d7709000
+16751 openat(AT_FDCWD, "editme.conf", O_RDONLY) = 3
+16751 read(3, "This is a KMSshooter config\n\nonl"..., 2000) = 392
+16751 close(3)                          = 0
+16751 write(1, "vs load\n", 8)          = 8
+16751 fstat(1, {st_mode=S_IFCHR|0777, st_rdev=makedev(0x4, 0x3), ...}) = 0
+16751 ioctl(1, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+16751 rt_sigaction(SIGCHLD, {sa_handler=SIG_DFL, sa_mask=[ILL BUS RT_1 RT_5 RT_6 RT_8], sa_flags=SA_NOCLDSTOP|SA_NOCLDWAIT}, NULL, 8) = 0
+16751 mmap(NULL, 12, PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, 0, 0) = 0x7fec96241000
+16751 mmap(NULL, 72, PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, 0, 0) = 0x7fec96217000
+16751 clone(child_stack=NULL, flags=)   = 16752
+16751 openat(AT_FDCWD, "/dev/dri/card0", O_RDWR) = 3
+16751 ioctl(3, DRM_IOCTL_MODE_GETRESOURCES, 0x7ffeb9a719b0) = 0
+16751 ioctl(3, DRM_IOCTL_MODE_GETRESOURCES, 0x7ffeb9a719b0) = 0
+16751 ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7ffeb9a71960) = 0
+16751 ioctl(3, DRM_IOCTL_MODE_GETCONNECTOR, 0x7ffeb9a71960) = 0
+16751 ioctl(3, DRM_IOCTL_MODE_GETENCODER, 0x7ffeb9a71a10) = 0
+16751 fstat(3, {st_mode=S_IFCHR|0640, st_rdev=makedev(0xe2, 0), ...}) = 0
+16751 geteuid()                         = 0
+16751 getuid()                          = 0
+16751 ioctl(3, DRM_IOCTL_VERSION, 0x5561d76eae30) = 0
+16751 ioctl(3, DRM_IOCTL_VERSION, 0x5561d76eae30) = 0
+16751 getrandom("\xf4\x29\xab\x4b\x8f\x9b\x74\xa3", 8, GRND_NONBLOCK) = 8
+16751 lstat("/proc", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+16751 lstat("/proc/self", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/proc/self", "16751", 4095) = 5
+16751 lstat("/proc/16751", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+16751 lstat("/proc/16751/exe", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/proc/16751/exe", "/mnt/sda6/home/kitty/Documents/p"..., 4095) = 56
+16751 lstat("/mnt", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/mnt/sda6", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home", {st_mode=S_IFDIR|0777, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty", {st_mode=S_IFDIR|0755, st_size=20480, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty/Documents", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty/Documents/projects", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty/Documents/projects/kmsplatformer", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty/Documents/projects/kmsplatformer/ds", {st_mode=S_IFREG|0755, st_size=55952, ...}) = 0
+16751 openat(AT_FDCWD, "/usr/share/drirc.d", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 4
+16751 fstat(4, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 getdents64(4, /* 3 entries */, 32768) = 96
+16751 getdents64(4, /* 0 entries */, 32768) = 0
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/share/drirc.d/00-mesa-defaults.conf", O_RDONLY) = 4
+16751 read(4, "<!--\n\n=========================="..., 4096) = 4096
+16751 getrandom("\x90\x39\x0a\xfc\x0b\x9c\xe4\x73", 8, GRND_NONBLOCK) = 8
+16751 read(4, "he Definitive Edition which shar"..., 4096) = 4096
+16751 read(4, " executable=\"TheObserver-Linux-S"..., 4096) = 4096
+16751 read(4, "tion name=\"Overlord\" executable="..., 4096) = 4096
+16751 read(4, "        <application name=\"xfwm4"..., 4096) = 3951
+16751 read(4, "", 4096)                 = 0
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/etc/drirc", O_RDONLY) = -1 ENOENT (No such file or directory)
+16751 openat(AT_FDCWD, "/root/.drirc", O_RDONLY) = -1 ENOENT (No such file or directory)
+16751 fstat(3, {st_mode=S_IFCHR|0640, st_rdev=makedev(0xe2, 0), ...}) = 0
+16751 stat("/sys/dev/char/226:0/device/drm", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 readlink("/sys/dev/char/226:0/device/subsystem", "../../../bus/pci", 4096) = 16
+16751 openat(AT_FDCWD, "/dev/dri", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 4
+16751 fstat(4, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 getdents64(4, /* 5 entries */, 32768) = 144
+16751 stat("/dev/dri/renderD128", {st_mode=S_IFCHR|0644, st_rdev=makedev(0xe2, 0x80), ...}) = 0
+16751 stat("/sys/dev/char/226:128/device/drm", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 readlink("/sys/dev/char/226:128/device/subsystem", "../../../bus/pci", 4096) = 16
+16751 lstat("/sys", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+16751 lstat("/sys/dev", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/dev/char", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/dev/char/226:128", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/sys/dev/char/226:128", "../../devices/pci0000:00/0000:00"..., 4095) = 52
+16751 lstat("/sys/devices", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm/renderD128", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm/renderD128/device", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/sys/devices/pci0000:00/0000:00:02.0/drm/renderD128/device", "../../../0000:00:02.0", 4095) = 21
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/uevent", O_RDONLY <unfinished ...>
+16752 open("/dev/input/event3", O_RDONLY <unfinished ...>
+16751 <... openat resumed>)             = 5
+16751 fstat(5, {st_mode=S_IFREG|0644, st_size=4096, ...}) = 0
+16751 read(5, "DRIVER=i915\nPCI_CLASS=30000\nPCI_"..., 4096) = 159
+16751 close(5)                          = 0
+16751 lstat("/sys", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+16751 lstat("/sys/dev", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/dev/char", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/dev/char/226:128", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/sys/dev/char/226:128", "../../devices/pci0000:00/0000:00"..., 4095) = 52
+16751 lstat("/sys/devices",  <unfinished ...>
+16752 <... open resumed>)               = 3
+16751 <... lstat resumed>{st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm/renderD128", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm/renderD128/device", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/sys/devices/pci0000:00/0000:00:02.0/drm/renderD128/device", "../../../0000:00:02.0", 4095) = 21
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/vendor", O_RDONLY) = 5
+16751 fstat(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+16751 read(5, "0x8086\n", 4096)         = 7
+16751 close(5)                          = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/device", O_RDONLY) = 5
+16751 fstat(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+16751 read(5, "0x0156\n", 4096)         = 7
+16751 close(5)                          = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/subsystem_vendor", O_RDONLY) = 5
+16751 fstat(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+16751 read(5, "0x1028\n", 4096)         = 7
+16751 close(5)                          = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/subsystem_device", O_RDONLY) = 5
+16751 fstat(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+16751 read(5, "0x0597\n", 4096)         = 7
+16751 close(5)                          = 0
+16751 stat("/dev/dri/card0", {st_mode=S_IFCHR|0640, st_rdev=makedev(0xe2, 0), ...}) = 0
+16751 stat("/sys/dev/char/226:0/device/drm", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 readlink("/sys/dev/char/226:0/device/subsystem", "../../../bus/pci", 4096) = 16
+16751 lstat("/sys", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+16751 lstat("/sys/dev", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/dev/char", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/dev/char/226:0", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/sys/dev/char/226:0", "../../devices/pci0000:00/0000:00"..., 4095) = 47
+16751 lstat("/sys/devices", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm/card0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm/card0/device", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/sys/devices/pci0000:00/0000:00:02.0/drm/card0/device", "../../../0000:00:02.0", 4095) = 21
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/uevent", O_RDONLY) = 5
+16751 fstat(5, {st_mode=S_IFREG|0644, st_size=4096, ...}) = 0
+16751 read(5, "DRIVER=i915\nPCI_CLASS=30000\nPCI_"..., 4096) = 159
+16751 close(5)                          = 0
+16751 lstat("/sys", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+16751 lstat("/sys/dev", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/dev/char", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/dev/char/226:0", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/sys/dev/char/226:0", "../../devices/pci0000:00/0000:00"..., 4095) = 47
+16751 lstat("/sys/devices", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm/card0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0/drm/card0/device", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/sys/devices/pci0000:00/0000:00:02.0/drm/card0/device", "../../../0000:00:02.0", 4095) = 21
+16751 lstat("/sys/devices/pci0000:00/0000:00:02.0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/vendor", O_RDONLY) = 5
+16751 fstat(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+16751 read(5, "0x8086\n", 4096)         = 7
+16751 close(5)                          = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/device", O_RDONLY) = 5
+16751 fstat(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+16751 read(5, "0x0156\n", 4096)         = 7
+16751 close(5)                          = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/subsystem_vendor", O_RDONLY) = 5
+16751 fstat(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+16751 read(5, "0x1028\n", 4096)         = 7
+16751 close(5)                          = 0
+16751 openat(AT_FDCWD, "/sys/devices/pci0000:00/0000:00:02.0/subsystem_device", O_RDONLY) = 5
+16751 fstat(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+16751 read(5, "0x0597\n", 4096)         = 7
+16751 close(5)                          = 0
+16751 getdents64(4, /* 0 entries */, 32768) = 0
+16751 stat("/dev/dri/card0", {st_mode=S_IFCHR|0640, st_rdev=makedev(0xe2, 0), ...}) = 0
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 4
+16751 fstat(4, {st_mode=S_IFREG|0644, st_size=356556, ...}) = 0
+16751 mmap(NULL, 356556, PROT_READ, MAP_PRIVATE, 4, 0) = 0x7fec95a6c000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libglapi.so.0", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \260\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0755, st_size=198472, ...}) = 0
+16751 mmap(NULL, 207096, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec961e4000
+16751 mmap(0x7fec961ef000, 49152, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0xb000) = 0x7fec961ef000
+16751 mmap(0x7fec961fb000, 90112, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x17000) = 0x7fec961fb000
+16751 mmap(0x7fec96211000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x2c000) = 0x7fec96211000
+16751 mmap(0x7fec96216000, 2296, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fec96216000
+16751 close(4)                          = 0
+16751 mprotect(0x7fec96211000, 16384, PROT_READ) = 0
+16751 munmap(0x7fec95a6c000, 356556)    = 0
+16752 read(3,  <unfinished ...>
+16751 geteuid()                         = 0
+16751 getuid()                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/dri/tls/i965_dri.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+16751 openat(AT_FDCWD, "/usr/lib/dri/i965_dri.so", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 \340\6\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0755, st_size=10403752, ...}) = 0
+16751 mmap(NULL, 11136912, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec95025000
+16751 mprotect(0x7fec95093000, 9486336, PROT_NONE) = 0
+16751 mmap(0x7fec95093000, 7593984, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x6e000) = 0x7fec95093000
+16751 mmap(0x7fec957d1000, 1888256, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x7ac000) = 0x7fec957d1000
+16751 mmap(0x7fec9599f000, 471040, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x979000) = 0x7fec9599f000
+16751 mmap(0x7fec95a12000, 728976, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fec95a12000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 4
+16751 fstat(4, {st_mode=S_IFREG|0644, st_size=356556, ...}) = 0
+16751 mmap(NULL, 356556, PROT_READ, MAP_PRIVATE, 4, 0) = 0x7fec94fcd000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libz.so.1", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\320!\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0755, st_size=91912, ...}) = 0
+16751 mmap(NULL, 2187280, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec94db6000
+16751 mprotect(0x7fec94dcc000, 2093056, PROT_NONE) = 0
+16751 mmap(0x7fec94fcb000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x15000) = 0x7fec94fcb000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libdrm_intel.so.1", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 0\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0755, st_size=146488, ...}) = 0
+16751 mmap(NULL, 148968, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec94d91000
+16751 mmap(0x7fec94d94000, 90112, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x3000) = 0x7fec94d94000
+16751 mmap(0x7fec94daa000, 40960, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x19000) = 0x7fec94daa000
+16751 mmap(0x7fec94db4000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x22000) = 0x7fec94db4000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libdrm_radeon.so.1", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0  \0\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0755, st_size=50864, ...}) = 0
+16751 mmap(NULL, 53384, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec961d6000
+16751 mmap(0x7fec961d8000, 32768, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x2000) = 0x7fec961d8000
+16751 mmap(0x7fec961e0000, 8192, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0xa000) = 0x7fec961e0000
+16751 mmap(0x7fec961e2000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0xb000) = 0x7fec961e2000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libdrm_nouveau.so.2", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0  \0\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0755, st_size=34408, ...}) = 0
+16751 mmap(NULL, 36880, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec961cc000
+16751 mmap(0x7fec961ce000, 16384, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x2000) = 0x7fec961ce000
+16751 mmap(0x7fec961d2000, 8192, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x6000) = 0x7fec961d2000
+16751 mmap(0x7fec961d4000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x7000) = 0x7fec961d4000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0@P\t\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0755, st_size=22613184, ...}) = 0
+16751 mmap(NULL, 1996416, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec94ba9000
+16751 mprotect(0x7fec94c3e000, 1318912, PROT_NONE) = 0
+16751 mmap(0x7fec94c3e000, 1015808, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x95000) = 0x7fec94c3e000
+16751 mmap(0x7fec94d36000, 299008, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x18d000) = 0x7fec94d36000
+16751 mmap(0x7fec94d80000, 57344, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x1d6000) = 0x7fec94d80000
+16751 mmap(0x7fec94d8e000, 9856, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fec94d8e000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0 0\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0644, st_size=869664, ...}) = 0
+16751 mmap(NULL, 103152, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec94b8f000
+16751 mmap(0x7fec94b92000, 69632, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x3000) = 0x7fec94b92000
+16751 mmap(0x7fec94ba3000, 16384, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x14000) = 0x7fec94ba3000
+16751 mmap(0x7fec94ba7000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x17000) = 0x7fec94ba7000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libpciaccess.so.0", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0` \0\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0755, st_size=38576, ...}) = 0
+16751 mmap(NULL, 2134048, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec94985000
+16751 mprotect(0x7fec9498d000, 2097152, PROT_NONE) = 0
+16751 mmap(0x7fec94b8d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x8000) = 0x7fec94b8d000
+16751 close(4)                          = 0
+16751 mprotect(0x7fec94b8d000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec94ba7000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec94d80000, 53248, PROT_READ) = 0
+16751 mprotect(0x7fec961d4000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec961e2000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec94db4000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec94fcb000, 4096, PROT_READ) = 0
+16751 mprotect(0x7fec9599f000, 425984, PROT_READ) = 0
+16751 brk(0x5561d772a000)               = 0x5561d772a000
+16751 munmap(0x7fec94fcd000, 356556)    = 0
+16751 getrandom("\xc7\xfb\x6f\xe4\x1d\x22\x57\xda", 8, GRND_NONBLOCK) = 8
+16751 lstat("/proc", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+16751 lstat("/proc/self", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/proc/self", "16751", 4095) = 5
+16751 lstat("/proc/16751", {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+16751 lstat("/proc/16751/exe", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+16751 readlink("/proc/16751/exe", "/mnt/sda6/home/kitty/Documents/p"..., 4095) = 56
+16751 lstat("/mnt", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 lstat("/mnt/sda6", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home", {st_mode=S_IFDIR|0777, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty", {st_mode=S_IFDIR|0755, st_size=20480, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty/Documents", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty/Documents/projects", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty/Documents/projects/kmsplatformer", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 lstat("/mnt/sda6/home/kitty/Documents/projects/kmsplatformer/ds", {st_mode=S_IFREG|0755, st_size=55952, ...}) = 0
+16751 openat(AT_FDCWD, "/usr/share/drirc.d", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 4
+16751 fstat(4, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 getdents64(4, /* 3 entries */, 32768) = 96
+16751 getdents64(4, /* 0 entries */, 32768) = 0
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/share/drirc.d/00-mesa-defaults.conf", O_RDONLY) = 4
+16751 read(4, "<!--\n\n=========================="..., 4096) = 4096
+16751 getrandom("\x5f\x54\xdb\x66\xad\xa2\x6c\xfc", 8, GRND_NONBLOCK) = 8
+16751 read(4, "he Definitive Edition which shar"..., 4096) = 4096
+16751 read(4, " executable=\"TheObserver-Linux-S"..., 4096) = 4096
+16751 read(4, "tion name=\"Overlord\" executable="..., 4096) = 4096
+16751 read(4, "        <application name=\"xfwm4"..., 4096) = 3951
+16751 read(4, "", 4096)                 = 0
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/etc/drirc", O_RDONLY) = -1 ENOENT (No such file or directory)
+16751 openat(AT_FDCWD, "/root/.drirc", O_RDONLY) = -1 ENOENT (No such file or directory)
+16751 getrandom("\xd3\x48\x12\xbd\xa8\xc7\x9b\xb9", 8, GRND_NONBLOCK) = 8
+16751 openat(AT_FDCWD, "/usr/share/drirc.d", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 4
+16751 fstat(4, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+16751 getdents64(4, /* 3 entries */, 32768) = 96
+16751 getdents64(4, /* 0 entries */, 32768) = 0
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/share/drirc.d/00-mesa-defaults.conf", O_RDONLY) = 4
+16751 read(4, "<!--\n\n=========================="..., 4096) = 4096
+16751 getrandom("\x17\x06\x4f\xec\xf9\x9a\xc3\x87", 8, GRND_NONBLOCK) = 8
+16751 read(4, "he Definitive Edition which shar"..., 4096) = 4096
+16751 read(4, " executable=\"TheObserver-Linux-S"..., 4096) = 4096
+16751 read(4, "tion name=\"Overlord\" executable="..., 4096) = 4096
+16751 read(4, "        <application name=\"xfwm4"..., 4096) = 3951
+16751 read(4, "", 4096)                 = 0
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/etc/drirc", O_RDONLY) = -1 ENOENT (No such file or directory)
+16751 openat(AT_FDCWD, "/root/.drirc", O_RDONLY) = -1 ENOENT (No such file or directory)
+16751 geteuid()                         = 0
+16751 getuid()                          = 0
+16751 ioctl(3, DRM_IOCTL_I915_GETPARAM, 0x7ffeb9a70e00) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GEM_CONTEXT_GETPARAM, 0x7ffeb9a70de0) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GETPARAM, 0x7ffeb9a70de0) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GETPARAM, 0x7ffeb9a70e00) = 0
+16751 futex(0x7fec95ac1f08, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GETPARAM, 0x7ffeb9a70e00) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GEM_GET_APERTURE, 0x7ffeb9a70ec0) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GEM_CREATE, 0x7ffeb9a70dd0) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GEM_SET_TILING, 0x7ffeb9a70d20) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GEM_SET_DOMAIN, 0x7ffeb9a70dc4) = 0
+16751 ioctl(3, DRM_IOCTL_GEM_CLOSE, 0x7ffeb9a70d90) = 0
+16751 ioctl(3, DRM_IOCTL_I915_REG_READ, 0x7ffeb9a70e00) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GETPARAM, 0x7ffeb9a70e00) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GETPARAM, 0x7ffeb9a70e00) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GETPARAM, 0x7ffeb9a70e00) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GETPARAM, 0x7ffeb9a70e00) = 0
+16751 ioctl(3, DRM_IOCTL_I915_GET_RESET_STATS, 0x7ffeb9a70ec0) = 0
+16751 brk(0x5561d774b000)               = 0x5561d774b000
+16751 brk(0x5561d776c000)               = 0x5561d776c000
+16751 brk(0x5561d778d000)               = 0x5561d778d000
+16751 brk(0x5561d77ae000)               = 0x5561d77ae000
+16751 brk(0x5561d77cf000)               = 0x5561d77cf000
+16751 brk(0x5561d77f0000)               = 0x5561d77f0000
+16751 brk(0x5561d7811000)               = 0x5561d7811000
+16751 brk(0x5561d7832000)               = 0x5561d7832000
+16751 ioctl(3, DRM_IOCTL_I915_GETPARAM, 0x7ffeb9a70e00) = 0
+16751 geteuid()                         = 0
+16751 getuid()                          = 0
+16751 getuid()                          = 0
+16751 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 4
+16751 connect(4, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+16751 close(4)                          = 0
+16751 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 4
+16751 connect(4, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/etc/nsswitch.conf", O_RDONLY|O_CLOEXEC) = 4
+16751 fstat(4, {st_mode=S_IFREG|0644, st_size=334, ...}) = 0
+16751 read(4, "# Name Service Switch configurat"..., 4096) = 334
+16751 read(4, "", 4096)                 = 0
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 4
+16751 fstat(4, {st_mode=S_IFREG|0644, st_size=356556, ...}) = 0
+16751 mmap(NULL, 356556, PROT_READ, MAP_PRIVATE, 4, 0) = 0x7fec94fcd000
+16751 close(4)                          = 0
+16751 openat(AT_FDCWD, "/usr/lib/libnss_files.so.2", O_RDONLY|O_CLOEXEC) = 4
+16751 read(4, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\2605\0\0\0\0\0\0"..., 832) = 832
+16751 fstat(4, {st_mode=S_IFREG|0755, st_size=51376, ...}) = 0
+16751 mmap(NULL, 79320, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 4, 0) = 0x7fec94971000
+16751 mmap(0x7fec94974000, 28672, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0x3000) = 0x7fec94974000
+16751 mmap(0x7fec9497b000, 8192, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0xa000) = 0x7fec9497b000
+16751 mmap(0x7fec9497d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 4, 0xb000) = 0x7fec9497d000
+16751 mmap(0x7fec9497f000, 21976, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fec9497f000
+16751 close(4)                          = 0
+16751 mprotect(0x7fec9497d000, 4096, PROT_READ) = 0
+16751 munmap(0x7fec94fcd000, 356556)    = 0
+16751 openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 4
+16751 lseek(4, 0, SEEK_CUR)             = 0
+16751 fstat(4, {st_mode=S_IFREG|0644, st_size=2131, ...}) = 0
+16751 read(4, "root:x:0:0:root:/root:/bin/dash\n"..., 4096) = 2131
+16751 close(4)                          = 0
+16751 stat("/root", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 stat("/root/.cache", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 stat("/root/.cache", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 stat("/root/.cache/mesa_shader_cache", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+16751 openat(AT_FDCWD, "/root/.cache/mesa_shader_cache/index", O_RDWR|O_CREAT|O_CLOEXEC, 0644) = 4
+16751 fstat(4, {st_mode=S_IFREG|0644, st_size=1310728, ...}) = 0
+16751 mmap(NULL, 1310728, PROT_READ|PROT_WRITE, MAP_SHARED, 4, 0) = 0x7fec94830000
+16751 close(4)                          = 0
+16751 rt_sigprocmask(SIG_SETMASK, ~[RTMIN RT_1], [], 8) = 0
+16751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7fec9402f000
+16751 mprotect(0x7fec94030000, 8388608, PROT_READ|PROT_WRITE) = 0
+16751 clone(child_stack=0x7fec9482efb0, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tidptr=0x7fec9482f9d0, tls=0x7fec9482f700, child_tidptr=0x7fec9482f9d0) = 16753
+16751 rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+16751 sched_setscheduler(16753, SCHED_IDLE, [0]) = 0
+16751 futex(0x7fec95abade0, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+16751 openat(AT_FDCWD, "/dev/urandom", O_RDONLY) = 4
+16751 read(4, ".\375\347\203\306\211\322\234\356\334\373\241p\367\310\34", 16) = 16
+16751 close(4)                          = 0
+16751 write(1, "trying Vulkan\n", 14)   = 14
+16751 --- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_ACCERR, si_addr=0x5561d5b22d08} ---
+16753 +++ killed by SIGSEGV +++
+16751 +++ killed by SIGSEGV +++
+16752 <... read resumed>"\230\32\364\\\0\0\0\0t;\5\0\0\0\0\0\4\0\4\0Z\0\0\0\230\32\364\\\0\0\0\0"..., 72) = 72
+16752 read(3, "\232\32\364\\\0\0\0\0!\217\1\0\0\0\0\0\4\0\4\0\24\0\0\0\232\32\364\\\0\0\0\0"..., 72) = 72
+16752 read(3, "\232\32\364\\\0\0\0\0\\T\5\0\0\0\0\0\4\0\4\0\24\0\0\0\232\32\364\\\0\0\0\0"..., 72) = 72
+16752 read(3, "\232\32\364\\\0\0\0\0\220\274\5\0\0\0\0\0\4\0\4\0!\0\0\0\232\32\364\\\0\0\0\0"..., 72) = 72
+16752 --- SIGINT {si_signo=SIGINT, si_code=SI_KERNEL} ---
+16752 +++ killed by SIGINT +++
